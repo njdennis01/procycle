@@ -1,10 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pro Cycling Game</title>
+    <title>ProCycle</title>
 </head>
 <body>
-    <h1>Welcome to Pro Cycling Spotle!</h1>
-    <p>Game coming soon...</p>
+    <h1 style="font-size: 50px; text-align: center;">PROCYCLE</h1>
+    <h2 style="font-size: 20px;text-align: center;">Welcome to PROCYCLE!</h2>
+    <form action="/guess" method="post" style="text-align: center;">
+        <input type="text" name="guess" placeholder="Type a cyclist name..."/>
+        <button>Guess a Professional Cyclist</button>
+    </form>
+    <p th:if="${error}" th:text="${error}" style="color: red; text-align: center;"></p>
+
+    <div th:if="${guessHistory}">
+        <div th:each="guess : ${guessHistory}">
+            <div th:style="'background-color: ' + ${guess.colors[0]}"> 
+                <p>Debut</p>
+                <p th:text="${guess.guessedCyclist.debut}"></p>
+            </div>
+
+            <div th:style="'background-color: ' + ${guess.colors[1]}">
+                <p>Team</p>
+                <p th:text="${guess.guessedCyclist.team}"></p>
+            </div>
+
+            <div th:style="'background-color: ' + ${guess.colors[2]}">
+                <p>Professional Wins</p>
+                <p th:text="${guess.guessedCyclist.wins}"></p>
+            </div>
+
+            <div th:style="'background-color: ' + ${guess.colors[3]}">
+                <p>Gender</p>
+                <p th:text="${guess.guessedCyclist.gender}"></p>
+            </div>
+
+            <div th:style="'background-color: ' + ${guess.colors[4]}">
+                <p>Specialty</p>
+                <p th:text="${guess.guessedCyclist.specialty}"></p>
+            </div>
+
+            <div th:style="'background-color: ' + ${guess.colors[5]}">
+                <p>Nationality</p>
+                <p th:text="${guess.guessedCyclist.nationality}"></p>
+            </div>
+        </div>
+    </div>
+
 </body>
-</html>
+<!export JAVA_HOME=/usr/local/sdkman/candidates/java/21.0.9-ms
+export PATH=$JAVA_HOME/bin:$PATH
+mvn spring-boot:run>
