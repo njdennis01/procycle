@@ -35,6 +35,8 @@ public class HomeController {
         Guess aGuess = new Guess(guessedCyclist, colors);
         ArrayList<Guess> guessHistory = theData.guessHistory(aGuess);
         model.addAttribute("guessHistory", guessHistory);
+        if (guessedCyclist.getName().equals(answerCyclist.getName()))
+            model.addAttribute("won", true);
         return "home";
     }
 }

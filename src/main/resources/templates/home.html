@@ -3,43 +3,51 @@
 <head>
     <title>ProCycle</title>
 </head>
-<body>
+<body style="background-color: lightgray;">
     <h1 style="font-size: 50px; text-align: center;">PROCYCLE</h1>
     <h2 style="font-size: 20px;text-align: center;">Welcome to PROCYCLE!</h2>
-    <form action="/guess" method="post" style="text-align: center;">
-        <input type="text" name="guess" placeholder="Type a cyclist name..."/>
-        <button>Guess a Professional Cyclist</button>
+    <form action="/guess" method="post" style="text-align: center;" th:if="${won == null}">
+        <input type="text" name="guess" placeholder="Type a Professional Cyclist..."/>
+        <button>Guess</button>
     </form>
+    
     <p th:if="${error}" th:text="${error}" style="color: red; text-align: center;"></p>
 
     <div th:if="${guessHistory}">
-        <div th:each="guess : ${guessHistory}">
-            <div th:style="'background-color: ' + ${guess.colors[0]}"> 
+        <div th:if="${won}">
+            <h3 style="font-size: 20px;text-align: center;">YOU WON!</h3>
+            <div style="text-align: center;">
+                <button>Play Unlimited</button>
+            </div>
+        </div>
+
+        <div th:each="guess : ${guessHistory}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 40px; margin-bottom: 50px;">
+            <div th:style="'background-color: ' + ${guess.colors[0]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'"> 
                 <p>Debut</p>
                 <p th:text="${guess.guessedCyclist.debut}"></p>
             </div>
 
-            <div th:style="'background-color: ' + ${guess.colors[1]}">
+            <div th:style="'background-color: ' + ${guess.colors[1]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'">
                 <p>Team</p>
                 <p th:text="${guess.guessedCyclist.team}"></p>
             </div>
 
-            <div th:style="'background-color: ' + ${guess.colors[2]}">
+            <div th:style="'background-color: ' + ${guess.colors[2]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'">
                 <p>Professional Wins</p>
                 <p th:text="${guess.guessedCyclist.wins}"></p>
             </div>
 
-            <div th:style="'background-color: ' + ${guess.colors[3]}">
+            <div th:style="'background-color: ' + ${guess.colors[3]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'">
                 <p>Gender</p>
                 <p th:text="${guess.guessedCyclist.gender}"></p>
             </div>
 
-            <div th:style="'background-color: ' + ${guess.colors[4]}">
+            <div th:style="'background-color: ' + ${guess.colors[4]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'">
                 <p>Specialty</p>
                 <p th:text="${guess.guessedCyclist.specialty}"></p>
             </div>
 
-            <div th:style="'background-color: ' + ${guess.colors[5]}">
+            <div th:style="'background-color: ' + ${guess.colors[5]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'">
                 <p>Nationality</p>
                 <p th:text="${guess.guessedCyclist.nationality}"></p>
             </div>

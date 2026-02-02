@@ -38,7 +38,7 @@ public class GameService {
         if (guess.getDebut() == answer.getDebut())
             result[0] = "Green";
         else if (guess.getDebut() >= (answer.getDebut() - 2) && guess.getDebut() <= (answer.getDebut()+ 2))
-            result[0] = "Yellow";
+            result[0] = "#F0C040";
             //Need to figure out how to add if it is more or less
         else result[0] = "Black";
 
@@ -51,7 +51,7 @@ public class GameService {
         if (guess.getWins() == answer.getWins())
             result[2] = "Green";
         else if (guess.getWins() >= (answer.getWins() - 5) && guess.getWins() <= (answer.getWins()+ 5))
-            result[2] = "Yellow";
+            result[2] = "#F0C040";
             //add more or less
         else result[2] = "Black";
 
