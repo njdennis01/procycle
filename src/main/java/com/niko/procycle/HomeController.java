@@ -28,15 +28,25 @@ public class HomeController {
             model.addAttribute("guessHistory", theData.getGuesses());
             return "home";
         }
-        Cyclist answerCyclist = theData.getDailyCyclist();
+        Cyclist answerCyclist = theData.getCurrentAnswer();
         String[] colors = theData.compareGuess(guessedCyclist, answerCyclist);
         model.addAttribute("guessedCyclist", guessedCyclist);
         model.addAttribute("colors", colors);
+
         Guess aGuess = new Guess(guessedCyclist, colors);
         ArrayList<Guess> guessHistory = theData.guessHistory(aGuess);
         model.addAttribute("guessHistory", guessHistory);
-        if (guessedCyclist.getName().equals(answerCyclist.getName()))
+        if (guessedCyclist.getName().equals(answerCyclist.getName())){
             model.addAttribute("won", true);
+        }
         return "home";
+    }
+    @PostMapping("/Unlimited")
+    public String unlimitedMode(){
+        theData.setMode();
+        theData.setCurrentAnswerToRandom();
+        theData.clearHistory();
+        return "home";
+
     }
 }

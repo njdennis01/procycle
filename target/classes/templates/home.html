@@ -17,11 +17,14 @@
         <div th:if="${won}">
             <h3 style="font-size: 20px;text-align: center;">YOU WON!</h3>
             <div style="text-align: center;">
-                <button>Play Unlimited</button>
+                <form action="/Unlimited" method="post">
+                    <button>Play Unlimited</button>
+                </form>
             </div>
         </div>
 
-        <div th:each="guess : ${guessHistory}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 40px; margin-bottom: 50px;">
+        <div th:each="guess : ${guessHistory}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 20px; margin-bottom: 20px;">
+            <p th:text="${guess.guessedCyclist.name}" style="font-size: 35px; font-weight: bold; color: black; margin-bottom: 25px; width: 100%; text-align: center;">Name</p>
             <div th:style="'background-color: ' + ${guess.colors[0]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'"> 
                 <p>Debut</p>
                 <p th:text="${guess.guessedCyclist.debut}"></p>

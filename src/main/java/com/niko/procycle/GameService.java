@@ -4,20 +4,54 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.InputStream;
 
 public class GameService {
     ArrayList<Cyclist> cyclists = new ArrayList<>();
     ArrayList<Guess> Guesses = new ArrayList<>();
+    Cyclist currentAnswer;
+    String mode;
 
     public GameService() {
-        cyclists.add(new Cyclist("Tadej Pogacar",2019, "UAE-Team Emiretes", 105, "Male", "All Arounder", "Slovinia"));
-        cyclists.add(new Cyclist("Wout van Aert",2018, "Visma-Lease a Bike", 53, "Male", "Classics", "Belgium"));
-        cyclists.add(new Cyclist("Jonas Vingegaard",2019, "Visma-Lease a Bike", 40, "Male", "Climber", "Denmark"));
-        cyclists.add(new Cyclist("Marianne Vos",2006, "Visma-Lease a Bike", 250, "Female", "All Around", "Netherlands"));
-        cyclists.add(new Cyclist("Tom Pidcock", 2021, "36.5 pro cycling", 10, "Male", "All Arounder", "United Kingdoms"));
-        cyclists.add(new Cyclist("Demi vollering",2019, "FDJ-Suez", 55, "Female", "General Classification", "France"));
-        cyclists.add(new Cyclist("Mathieu van der Poel",2019, "Aplecin-Premier Tech", 55, "Male", "Classics", "Netherlands"));
-        cyclists.add(new Cyclist("Remco Evenepoel",2019, "Red Bull-Bora-Hansgrohe", 68, "Male", "Time Trial", "Belgium"));
+        try {
+            createCyclists();
+        } catch (Exception e) {
+            System.out.println("Error loading cyclists: " + e.getMessage());
+        }
+        mode = "Daily";
+        currentAnswer = getDailyCyclist();
+    }
+
+    public void createCyclists() throws Exception {
+        InputStream is = getClass().getClassLoader().getResourceAsStream("cyclists.csv");
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);
+        br.readLine();                
+        String line = br.readLine();
+        while (line != null){
+            String[] parts = line.split(",");
+            cyclists.add(new Cyclist(parts[0], Integer.parseInt(parts[1]), parts[2], Integer.parseInt(parts[3]), parts[4], parts[5], parts[6]));
+            line = br.readLine();
+        }
+    }
+
+    public Cyclist getCurrentAnswer() {
+        return currentAnswer;
+    }
+
+    public void setCurrentAnswerToRandom() {
+        currentAnswer = getRandomCyclist();
+    }
+    
+    public String getMode(){
+        return mode;
+    }
+
+    public String setMode(){
+        mode = "Unlimited";
+        return mode;
     }
 
     public Cyclist getDailyCyclist(){
@@ -92,14 +126,10 @@ public class GameService {
         Guesses.add(0, oldGuess);
         return Guesses;
     }
+    public void clearHistory(){
+        Guesses.clear();
+    }
     public static void main(String[] args){
-        GameService list = new GameService();
-        System.out.println(list.getDailyCyclist());
-        System.out.println(list.getRandomCyclist());
-        Cyclist pogi = new Cyclist("Tadej Pogacar",2019, "UAE-Team Emiretes", 105, "Male", "All Arounder", "Slovinia");
-        list.compareGuess(pogi, list.getDailyCyclist());
-        list.compareGuess(pogi, list.getRandomCyclist());
-        list.findCyclistByName("Wout van Aert");
     }
 
 
