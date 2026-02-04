@@ -5,11 +5,23 @@
 </head>
 <body style="background-color: lightgray;">
     <h1 style="font-size: 50px; text-align: center;">PROCYCLE</h1>
-    <h2 style="font-size: 20px;text-align: center;">Welcome to PROCYCLE!</h2>
-    <form action="/guess" method="post" style="text-align: center;" th:if="${won == null}">
+    <h2 th:if="${mode == 'Daily'}" style="text-align: center;">Welcome to Daily PROCYCLE!</h2>
+    <h2 th:if="${mode == 'Unlimited'}" style="text-align: center;">Welcome to Unlimited PROCYCLE!</h2>
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <form action="/reveal" method="post" th:if="${won == null and guessHistory != null}" style="display: inline;">
+            <button>Reveal Answer</button>
+        </form>
+        <form th:if="${mode == 'Daily'}" action="/Unlimited" method="post" style="display: inline;">
+            <button>Play Unlimited</button>
+        </form>
+        <form th:if="${mode == 'Unlimited'}" action="/daily" method="post" style="display: inline;">
+            <button>Play Daily</button>
+        </form>
+    </div>
+    <form action="/guess" method="post" style="text-align: center;" th:if="${won == null and revealed == null}">
         <div style="position: relative; display: inline-block;">
             <input type="text" name="guess" id="guessInput" placeholder="Type a Professional Cyclist..." autocomplete="off"/>
-            <div id="suggestions" style="position: absolute; background-color: white; width: 300px; left: 50%; transform: translateX(-50%); z-index: 10;"></div>
+            <div id="suggestions" style="position: absolute; background-color: white; width: 300px; left: 50%; transform: translateX(-50%); z-index: 10; max-height: 200px; overflow-y: auto;"></div>
         </div>
         <button>Guess</button>
     </form>
@@ -18,12 +30,16 @@
 
     <div th:if="${guessHistory}">
         <div th:if="${won}">
-            <h3 style="font-size: 20px;text-align: center;">YOU WON!</h3>
+            <h3 style="font-size: 25px;text-align: center; margin-bottom: 10px;">YOU WON!</h3>
+            <p th:if="${guessHistory != null}" th:text="'Guesses: ' + ${guessHistory.size()}" style="text-align: center; font-size: 20px; margin-top: 0px;"></p>
             <div style="text-align: center;">
                 <form action="/Unlimited" method="post">
                     <button>Play Unlimited</button>
                 </form>
             </div>
+        </div>
+        <div th:if="${revealed}" style="text-align: center;">
+            <h3 th:text="'The answer was ' + ${revealedCyclist.name}"></h3>
         </div>
 
         <div th:each="guess : ${guessHistory}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 20px; margin-bottom: 20px;">
@@ -71,28 +87,31 @@
     var input = document.getElementById("guessInput");
     var suggestions = document.getElementById("suggestions");
 
-    input.addEventListener("input", function() {
-        var text = input.value.toLowerCase();
-        suggestions.innerHTML = "";
-            
-        if (text.length == 0) {
-            return;
-        }
-        
-        for (var i = 0; i < cyclists.length; i++) {
-           if (cyclists[i].toLowerCase().startsWith(text) || 
-            cyclists[i].split(" ").some(function(part) { return part.toLowerCase().startsWith(text); })) {
-                var div = document.createElement("div");
-                div.textContent = cyclists[i];
-                div.style.cssText = "padding: 8px; cursor: pointer; border-bottom: 1px solid lightgray;";
-                div.addEventListener("click", function() {
-                    input.value = this.textContent;
-                    suggestions.innerHTML = "";
-                });
-                suggestions.appendChild(div);
+    if (input) {
+        input.addEventListener("input", function() {
+            var text = input.value.toLowerCase();
+            suggestions.innerHTML = "";
+                
+            if (text.length == 0) {
+                return;
             }
-        }
-    });
+            
+            for (var i = 0; i < cyclists.length; i++) {
+            if (cyclists[i].toLowerCase().startsWith(text) || 
+                cyclists[i].split(" ").some(function(part) { return part.toLowerCase().startsWith(text); })) {
+                    var div = document.createElement("div");
+                    div.textContent = cyclists[i];
+                    div.style.cssText = "padding: 8px; cursor: pointer; border-bottom: 1px solid lightgray;";
+                    div.addEventListener("click", function() {
+                        input.value = this.textContent;
+                        suggestions.innerHTML = "";
+                        input.focus();
+                    });
+                    suggestions.appendChild(div);
+                }
+            }
+        });
+    }
 </script>
  
 </body>

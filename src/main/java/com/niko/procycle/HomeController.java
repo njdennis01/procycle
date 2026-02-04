@@ -18,6 +18,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
         return "home";
     }
 
@@ -27,6 +28,8 @@ public class HomeController {
         if (guessedCyclist == null) {
             model.addAttribute("error", "Cyclist not found, try again!");
             model.addAttribute("guessHistory", theData.getGuesses());
+            model.addAttribute("listOfNames", theData.getListOfNames());
+            model.addAttribute("mode", theData.getMode());
             return "home";
         }
         Cyclist answerCyclist = theData.getCurrentAnswer();
@@ -36,7 +39,7 @@ public class HomeController {
         model.addAttribute("colors", colors);
         model.addAttribute("arrows", arrows);
         model.addAttribute("listOfNames", theData.getListOfNames());
-
+        model.addAttribute("mode", theData.getMode());
         Guess aGuess = new Guess(guessedCyclist, colors, arrows);
         ArrayList<Guess> guessHistory = theData.guessHistory(aGuess);
         model.addAttribute("guessHistory", guessHistory);
@@ -47,10 +50,30 @@ public class HomeController {
     }
     @PostMapping("/Unlimited")
     public String unlimitedMode(Model model){
-        theData.setMode();
+        theData.setUnlimitedMode();
         theData.setCurrentAnswerToRandom();
         theData.clearHistory();
         model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
         return "home";
     }
+
+    @PostMapping("/daily")
+    public String dailyMode(Model model){
+        theData.setDailyMode();
+        theData.setCurrentAnswerToDaily();
+        theData.clearHistory();
+        model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
+        return "home";
+    }
+    @PostMapping("/reveal")
+    public String revealAnswer(Model model){
+        model.addAttribute("revealedCyclist", theData.getCurrentAnswer());
+        model.addAttribute("revealed", true);
+        model.addAttribute("guessHistory", theData.getGuesses());
+        model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
+        return "home";
+}
 }

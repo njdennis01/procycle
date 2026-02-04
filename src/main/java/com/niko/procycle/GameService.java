@@ -57,9 +57,18 @@ public class GameService {
         return mode;
     }
 
-    public String setMode(){
+    public String setUnlimitedMode(){
         mode = "Unlimited";
         return mode;
+    }
+
+    public String setDailyMode(){
+        mode = "Daily";
+        return mode;
+    }
+
+    public void setCurrentAnswerToDaily(){
+        currentAnswer = getDailyCyclist();
     }
 
     public Cyclist getDailyCyclist(){
