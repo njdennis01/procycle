@@ -7,7 +7,10 @@
     <h1 style="font-size: 50px; text-align: center;">PROCYCLE</h1>
     <h2 style="font-size: 20px;text-align: center;">Welcome to PROCYCLE!</h2>
     <form action="/guess" method="post" style="text-align: center;" th:if="${won == null}">
-        <input type="text" name="guess" placeholder="Type a Professional Cyclist..."/>
+        <div style="position: relative; display: inline-block;">
+            <input type="text" name="guess" id="guessInput" placeholder="Type a Professional Cyclist..." autocomplete="off"/>
+            <div id="suggestions" style="position: absolute; background-color: white; width: 300px; left: 50%; transform: translateX(-50%); z-index: 10;"></div>
+        </div>
         <button>Guess</button>
     </form>
     
@@ -27,7 +30,10 @@
             <p th:text="${guess.guessedCyclist.name}" style="font-size: 35px; font-weight: bold; color: black; margin-bottom: 25px; width: 100%; text-align: center;">Name</p>
             <div th:style="'background-color: ' + ${guess.colors[0]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'"> 
                 <p>Debut</p>
-                <p th:text="${guess.guessedCyclist.debut}"></p>
+                <p>
+                    <span th:text="${guess.guessedCyclist.debut}"></span>
+                    <span th:text="${guess.arrows[0]}"></span>
+                </p>
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[1]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'">
@@ -37,7 +43,10 @@
 
             <div th:style="'background-color: ' + ${guess.colors[2]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'">
                 <p>Professional Wins</p>
-                <p th:text="${guess.guessedCyclist.wins}"></p>
+                <p>
+                    <span th:text="${guess.guessedCyclist.wins}"></span>
+                    <span th:text="${guess.arrows[1]}"></span>
+                </p>
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[3]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white;'">
@@ -56,7 +65,36 @@
             </div>
         </div>
     </div>
+    <script th:inline="javascript">
+    var cyclists = /*[[${listOfNames}]]*/ [];
 
+    var input = document.getElementById("guessInput");
+    var suggestions = document.getElementById("suggestions");
+
+    input.addEventListener("input", function() {
+        var text = input.value.toLowerCase();
+        suggestions.innerHTML = "";
+            
+        if (text.length == 0) {
+            return;
+        }
+        
+        for (var i = 0; i < cyclists.length; i++) {
+           if (cyclists[i].toLowerCase().startsWith(text) || 
+            cyclists[i].split(" ").some(function(part) { return part.toLowerCase().startsWith(text); })) {
+                var div = document.createElement("div");
+                div.textContent = cyclists[i];
+                div.style.cssText = "padding: 8px; cursor: pointer; border-bottom: 1px solid lightgray;";
+                div.addEventListener("click", function() {
+                    input.value = this.textContent;
+                    suggestions.innerHTML = "";
+                });
+                suggestions.appendChild(div);
+            }
+        }
+    });
+</script>
+ 
 </body>
 <!export JAVA_HOME=/usr/local/sdkman/candidates/java/21.0.9-ms
 export PATH=$JAVA_HOME/bin:$PATH

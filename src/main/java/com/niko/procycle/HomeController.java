@@ -17,6 +17,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
+        model.addAttribute("listOfNames", theData.getListOfNames());
         return "home";
     }
 
@@ -29,11 +30,14 @@ public class HomeController {
             return "home";
         }
         Cyclist answerCyclist = theData.getCurrentAnswer();
+        String[] arrows = theData.getArrows(guessedCyclist, answerCyclist);
         String[] colors = theData.compareGuess(guessedCyclist, answerCyclist);
         model.addAttribute("guessedCyclist", guessedCyclist);
         model.addAttribute("colors", colors);
+        model.addAttribute("arrows", arrows);
+        model.addAttribute("listOfNames", theData.getListOfNames());
 
-        Guess aGuess = new Guess(guessedCyclist, colors);
+        Guess aGuess = new Guess(guessedCyclist, colors, arrows);
         ArrayList<Guess> guessHistory = theData.guessHistory(aGuess);
         model.addAttribute("guessHistory", guessHistory);
         if (guessedCyclist.getName().equals(answerCyclist.getName())){
@@ -42,11 +46,11 @@ public class HomeController {
         return "home";
     }
     @PostMapping("/Unlimited")
-    public String unlimitedMode(){
+    public String unlimitedMode(Model model){
         theData.setMode();
         theData.setCurrentAnswerToRandom();
         theData.clearHistory();
+        model.addAttribute("listOfNames", theData.getListOfNames());
         return "home";
-
     }
 }

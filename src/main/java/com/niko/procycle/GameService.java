@@ -37,6 +37,14 @@ public class GameService {
         }
     }
 
+    public ArrayList<String> getListOfNames(){
+        ArrayList<String> listOfNames = new ArrayList<>();
+        for (Cyclist i: cyclists){
+            listOfNames.add(i.getName());
+        }
+        return listOfNames;
+    }
+
     public Cyclist getCurrentAnswer() {
         return currentAnswer;
     }
@@ -71,7 +79,7 @@ public class GameService {
         String[] result = new String[6];
         if (guess.getDebut() == answer.getDebut())
             result[0] = "Green";
-        else if (guess.getDebut() >= (answer.getDebut() - 2) && guess.getDebut() <= (answer.getDebut()+ 2))
+        else if (guess.getDebut() >= (answer.getDebut() - 5) && guess.getDebut() <= (answer.getDebut()+ 5))
             result[0] = "#F0C040";
             //Need to figure out how to add if it is more or less
         else result[0] = "Black";
@@ -84,7 +92,7 @@ public class GameService {
 
         if (guess.getWins() == answer.getWins())
             result[2] = "Green";
-        else if (guess.getWins() >= (answer.getWins() - 5) && guess.getWins() <= (answer.getWins()+ 5))
+        else if (guess.getWins() >= (answer.getWins() - 10) && guess.getWins() <= (answer.getWins() + 10))
             result[2] = "#F0C040";
             //add more or less
         else result[2] = "Black";
@@ -105,7 +113,21 @@ public class GameService {
         else result[5] = "Black";
             //will add geographic location yellow later, not sure how to yet!
         System.out.println(Arrays.toString(result));
+
         return result;
+    }
+
+    public String[] getArrows(Cyclist guess, Cyclist answer){
+        String[] arrows = new String[2];
+        if(guess.getDebut() > answer.getDebut())
+            arrows[0] = "↓";
+        if(guess.getDebut() < answer.getDebut()) 
+            arrows[0] = "↑";
+        if(guess.getWins() > answer.getWins())
+            arrows[1] = "↓";
+        if(guess.getWins() < answer.getWins())
+            arrows[1] = "↑";
+        return arrows;
     }
 
     public Cyclist findCyclistByName(String guess){
