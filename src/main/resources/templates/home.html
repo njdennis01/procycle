@@ -2,31 +2,33 @@
 <html style="margin: 0; padding: 0;">
 <head>
     <title>ProCycle</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body style="background: linear-gradient(to right, black 0% 20%,white 50%, black 80% 100%); font-family: Montserrat, sans-serif; font-weight: 700; margin: 0px; display: flex; flex-direction: column; min-height: 100vh; padding: 0;">
+<body style="background: linear-gradient(to right, black -10%,white 37% 63%, black 110%); font-family: Montserrat, sans-serif; font-weight: 700; margin: 0px; display: flex; flex-direction: column; min-height: 100vh; padding: 0;">
     <img src="/RainbowJersey.jpg" style="width: 100%; height: 50px;">
 <div style="flex-grow: 1">
-    <h1 style="font-size: 60px; text-align: center; font-weight: 800; margin-top: 20px; margin-bottom: 20px;">PROCYCLE</h1>
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+        <h1 style="font-size: 60px; text-align: center; font-weight: 800; letter-spacing: 5px; display: inline; padding-right: 0px;"><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">P</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">R</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">O</span></h1><h1 style="font-size: 60px; text-align: center; font-weight: 800; display: inline"><span style="color:#007bbf">C</span><span style="color: #da2430">Y</span><span style="color: #111012">C</span><span style="color:#ffed00">L</span><span style="color: #36a73e">E</span></h1>
+    </div>
     <h2 th:if="${mode == 'Daily'}" style="text-align: center; font-weight: 700;">Welcome to Daily PROCYCLE!</h2>
     <h2 th:if="${mode == 'Unlimited'}" style="text-align: center; font-weight: 700;">Welcome to Unlimited PROCYCLE!</h2>
-    <div style="position: absolute; top: 10px; right: 10px;">
+    <div style="position: absolute; top: 60px; right: 10px;">
         <form action="/reveal" method="post" th:if="${won == null and guessHistory != null and revealed == null}" style="display: inline;">
-            <button>Reveal Answer</button>
+            <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Reveal Answer</button>
         </form>
         <form th:if="${mode == 'Daily'}" action="/Unlimited" method="post" style="display: inline;">
-            <button>Play Unlimited</button>
+            <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Play Unlimited</button>
         </form>
         <form th:if="${mode == 'Unlimited'}" action="/daily" method="post" style="display: inline;">
-            <button>Play Daily</button>
+            <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Play Daily</button>
         </form>
     </div>
     <form action="/guess" method="post" style="text-align: center;" th:if="${won == null and revealed == null}">
         <div style="position: relative; display: inline-block;">
-            <input type="text" name="guess" id="guessInput" placeholder="Type a Professional Cyclist..." autocomplete="off"/>
+            <input type="text" name="guess" id="guessInput" placeholder="Type a Cyclist..." autocomplete="off" style="border-radius: 20px; height: 40px; font-size: 15px; font-weight: 600; background-color: black; color: white; font-family: Montserrat, sans-serif; padding-left: 15px; box-sizing: border-box; vertical-align: middle; cursor: pointer;"/>
             <div id="suggestions" style="position: absolute; background-color: white; width: 300px; left: 50%; transform: translateX(-50%); z-index: 10; max-height: 200px; overflow-y: auto;"></div>
         </div>
-        <button>Guess</button>
+        <button style="border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; background-color: white; vertical-align: middle; box-sizing: border-box; padding-left: 10px; padding-right: 10px; cursor: pointer;">Guess</button>
     </form>
     
     <p th:if="${error}" th:text="${error}" style="color: red; text-align: center;"></p>
@@ -37,7 +39,7 @@
             <p th:if="${guessHistory != null}" th:text="'Guesses: ' + ${guessHistory.size()}" style="text-align: center; font-size: 20px; margin-top: 0px; font-weight: 750;"></p>
             <div style="text-align: center;">
                 <form action="/Unlimited" method="post">
-                    <button>Play Unlimited</button>
+                    <button style="border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Play Unlimited</button>
                 </form>
             </div>
         </div>
@@ -48,39 +50,39 @@
         <div th:each="guess : ${guessHistory}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 20px; margin-bottom: 20px;">
             <p th:text="${guess.guessedCyclist.name}" style="font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; width: 100%; text-align: center;">Name</p>
             <div th:style="'background-color: ' + ${guess.colors[0]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'"> 
-                <p>Debut</p>
+                <p style="font-weight: 600;">Debut</p>
                 <p>
-                    <span th:text="${guess.guessedCyclist.debut}"></span>
-                    <span th:text="${guess.arrows[0]}"></span>
+                    <span th:text="${guess.guessedCyclist.debut}" style="font-size: 20px;"></span>
+                    <span th:text="${guess.arrows[0]}" style="font-size: 20px;"></span>
                 </p>
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[1]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p>Team</p>
-                <p th:text="${guess.guessedCyclist.team}"></p>
+                <p style="font-weight: 600;">Team</p>
+                <p th:text="${guess.guessedCyclist.team}" style="font-size: 20px;"></p>
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[2]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p>Professional Wins</p>
+                <p style="font-weight: 600;">Professional Wins</p>
                 <p>
-                    <span th:text="${guess.guessedCyclist.wins}"></span>
-                    <span th:text="${guess.arrows[1]}"></span>
+                    <span th:text="${guess.guessedCyclist.wins}" style="font-size: 20px;"></span>
+                    <span th:text="${guess.arrows[1]}" style="font-size: 20px;"></span>
                 </p>
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[3]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p>Gender</p>
-                <p th:text="${guess.guessedCyclist.gender}"></p>
+                <p style="font-weight: 600;">Gender</p>
+                <p th:text="${guess.guessedCyclist.gender}" style="font-size: 20px;"></p>
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[4]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p>Specialty</p>
-                <p th:text="${guess.guessedCyclist.specialty}"></p>
+                <p style="font-weight: 600;">Specialty</p>
+                <p th:text="${guess.guessedCyclist.specialty}" style="font-size: 20px;"></p>
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[5]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p>Nationality</p>
-                <p th:text="${guess.guessedCyclist.nationality}"></p>
+                <p style="font-weight: 600;">Nationality</p>
+                <p th:text="${guess.guessedCyclist.nationality}" style="font-size: 20px;"></p>
             </div>
         </div>
         <div th:if="${guessHistory != null and won == null and error == null}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 30px;">
@@ -96,8 +98,9 @@
         </div>
     </div>
 </div>
-    <!img src="/RainbowJersey.jpg" style="width: 100%; height: 50px; margin-top: 40px;">
-    
+    <div th:if="${guessHistory != null and guessHistory.size > 1}">
+        <img src="/RainbowJersey.jpg" style="width: 100%; height: 50px; margin-top: 40px;">
+    </div>
     <script th:inline="javascript">
     var cyclists = /*[[${listOfNames}]]*/ [];
 
@@ -112,6 +115,12 @@
             if (text.length == 0) {
                 return;
             }
+        input.addEventListener("keydown", function(e) {
+            if (e.key === "Enter" && suggestions.firstChild) {
+                input.value = suggestions.firstChild.textContent;
+                suggestions.innerHTML = "";
+            }
+        });
             
             for (var i = 0; i < cyclists.length; i++) {
             if (cyclists[i].toLowerCase().startsWith(text) || 
