@@ -1,48 +1,648 @@
-name,debut,team,wins,gender,specialty,nationality
-Tadej Pogacar,2019,UAE-Team Emirates XRG,105,Male,All Rounder,Slovenia
-Wout van Aert,2018,Visma-Lease a Bike,53,Male,Classics,Belgium
-Jonas Vingegaard,2019,Visma-Lease a Bike,15,Male,Climber,Denmark
-Marianne Vos,2006,Visma-Lease a Bike,250,Female,All Rounder,Netherlands
-Tom Pidcock,2021,Q36.5,10,Male,All Rounder,United Kingdom
-Demi Vollering,2019,FDJ-Suez,55,Female,Climber,Netherlands
-Mathieu van der Poel,2019,Alpecin-Premier Tech,55,Male,Classics,Netherlands
-Remco Evenepoel,2019,Red Bull-Bora-Hansgrohe,68,Male,Time Trial,Belgium
-Primoz Roglic,2016,Red Bull-Bora-Hansgrohe,91,Male,GC,Slovenia
-Jasper Philipsen,2019,Alpecin-Premier Tech,54,Male,Sprinter,Belgium
-Mads Pedersen,2017,Lidl-Trek,60,Male,Classics,Denmark
-Biniam Girmay,2020,NSN Cycling,16,Male,Sprinter,Eritrea
-Jonathan Milan,2022,Lidl-Trek,1000,Male,Sprinter,Italy
-Richard Carapaz,2016,EF Education-EasyPost,1000,Male,Climber,Ecuador
-Ben Healy,2022,EF Education-EasyPost,1000,Male,Climber,Ireland
-Isaac del Toro,2024,UAE-Team Emirates XRG,1000,Male,All Rounder,Mexico
-Mattias Skjelmose,2021,Lidl-Trek,1000,Male,GC,Denmark
-Tim Merlier,2018,Soudal-QuickStep,1000,Male,Sprinter,Belgium
-Joao Almeida,2020,UAE-Team Emirates XRG,1000,Male,GC,Portugal
-Juan Ayuso,2022,Lidl-Trek,1000,Male,GC,Spain
-Egan Bernal,2018,INEOS Grenadiers,1000,Male,Climber,Colombia
-Geraint Thomas,2007,INEOS Grenadiers,1000,Male,GC,United Kingdom
-Filippo Ganna,2019,INEOS Grenadiers,1000,Male,Time Trial,Italy
-Matteo Jorgenson,2021,Visma-Lease a Bike,1000,Male,GC,United States
-Neilson Powless,2020,EF Education-EasyPost,1000,Male,Classics,United States
-Nairo Quintana,2012,Movistar,1000,Male,Climber,Colombia
-Enric Mas,2017,Movistar,1000,Male,GC,Spain
-Dylan Groenewegen,2015,Unibet-Rose Rockets,1000,Male,Sprinter,Netherlands
-Alexander Kristoff,2010,Uno-X Mobility,1000,Male,Sprinter,Norway
-Arnaud De Lie,2022,Lotto-Dstny,1000,Male,Sprinter,Belgium
-Pauline Ferrand-Prevot,2012,Visma-Lease a Bike,1000,Female,All Rounder,France
-Lotte Kopecky,2018,SD Worx-Protime,1000,Female,Classics,Belgium
-Elisa Longo Borghini,2012,Lidl-Trek,1000,Female,Classics,Italy
-Lorena Wiebes,2019,SD Worx-Protime,1000,Female,Sprinter,Netherlands
-Annemiek van Vleuten,2009,idk,1000,Female,GC,Netherlands
-Cecilie Uttrup Ludwig,2017,FDJ-Suez,1000,Female,Climber,Denmark
-Kristen Faulkner,2021,EF Education-Oatly,1000,Female,All Rounder,United States
-Magdeleine Vallieres,2023,EF Education-Oatly,1000,Female,idk,Canada
-Stefan Kung,2016,Groupama-FDJ,1000,Male,Time Trial,Switzerland
-Thibaut Pinot,2010,idk,1000,Male,Climber,France
-Mark Cavendish,2007,Retired,165,Male,Sprinter,United Kingdom
-Peter Sagan,2010,Retired,1000,Male,All Rounder,Slovakia
-Chris Froome,2010,idk,1000,Male,GC,United Kingdom
-Caleb Ewan,2015,Jayco-AlUla,1000,Male,Sprinter,Australia
-Michael Matthews,2012,Jayco-AlUla,1000,Male,All Rounder,Australia
-Giulio Pellizzari,2025,Red Bull-Bora-Hansgrohe,1000,Male,Climber,Italy
-Cian Uijtdebroeks,2023,Movistar,1000,Male,GC,Belgium
+Name,Debut,Team,Wins,Gender,Specialty,Nationality
+Simon Yates,2014,Visma-Lease a Bike,36,Male,Climber,Great Britain
+Sepp Kuss,2018,Visma-Lease a Bike,11,Male,Climber,United States
+Anton Schiffer,2026,Visma-Lease a Bike,1,Male,GC,Germany
+Jørgen Nordhagen,2024,Visma-Lease a Bike,0,Male,GC,Norway
+Bart Lemmen,2023,Visma-Lease a Bike,0,Male,GC,Netherlands
+Tijmen Graat,2025,Visma-Lease a Bike,0,Male,GC,Netherlands
+Per Strand Hagenes,2024,Visma-Lease a Bike,3,Male,GC,Norway
+Davide Piganzoli,2023,Visma-Lease a Bike,2,Male,GC,Italy
+Ben Tulett,2020,Visma-Lease a Bike,5,Male,GC,Great Britain
+Matteo Jorgenson,2020,Visma-Lease a Bike,5,Male,GC,United States
+Jonas Vingegaard,2019,Visma-Lease a Bike,42,Male,GC,Denmark
+Wilco Kelderman,2012,Visma-Lease a Bike,4,Male,GC,Netherlands
+Steven Kruijswijk,2010,Visma-Lease a Bike,2,Male,GC,Netherlands
+Filippo Fiorelli,2020,Visma-Lease a Bike,1,Male,Hills,Italy
+Tim Rex,2026,Visma-Lease a Bike,0,Male,Hills,Netherlands
+Pietro Mattio,2026,Visma-Lease a Bike,0,Male,Hills,Italy
+Owain Doull,2016,Visma-Lease a Bike,2,Male,Oneday,Great Britain
+Matthew Brennan,2025,Visma-Lease a Bike,13,Male,Oneday,Great Britain
+Menno Huising,2025,Visma-Lease a Bike,0,Male,Oneday,Netherlands
+Christophe Laporte,2014,Visma-Lease a Bike,33,Male,Oneday,France
+Wout van Aert,2019,Visma-Lease a Bike,51,Male,Oneday,Belgium
+Axel Zingle,2021,Visma-Lease a Bike,6,Male,Oneday,France
+Louis Barré,2023,Visma-Lease a Bike,0,Male,Oneday,France
+Timo Kielich,2024,Visma-Lease a Bike,3,Male,Oneday,Belgium
+Niklas Behrens,2025,Visma-Lease a Bike,0,Male,Sprint,Germany
+Loe van Belle,2024,Visma-Lease a Bike,0,Male,Time Trial,Netherlands
+Edoardo Affini,2019,Visma-Lease a Bike,3,Male,Time Trial,Italy
+Victor Campenaerts,2014,Visma-Lease a Bike,12,Male,Time Trial,Belgium
+Bruno Armirail,2017,Visma-Lease a Bike,4,Male,Time Trial,France
+Aaron Dockx,2026,Alpecin-Deceuninck,0,Male,Climber,Belgium
+Emiel Verstrynge,2025,Alpecin-Deceuninck,0,Male,Climber,Belgium
+Ramses Debruyne,2025,Alpecin-Deceuninck,0,Male,Hills,Belgium
+Jonas Geens,2025,Alpecin-Deceuninck,0,Male,GC,Belgium
+Hugo Houle,2011,Alpecin-Deceuninck,3,Male,GC,Canada
+Luca Vergallito,2024,Alpecin-Deceuninck,0,Male,GC,Italy
+Tibor Del Grosso,2025,Alpecin-Deceuninck,1,Male,Hills,Netherlands
+Gal Glivar,2025,Alpecin-Deceuninck,0,Male,Hills,Slovenia
+Kaden Groves,2019,Alpecin-Deceuninck,21,Male,Hills,Australia
+Henri Uhlig,2024,Alpecin-Deceuninck,1,Male,Hills,Germany
+Michael Gogl,2015,Alpecin-Deceuninck,0,Male,Oneday,Austria
+Senna Remijn,2026,Alpecin-Deceuninck,0,Male,Oneday,Netherlands
+Francesco Busatto,2024,Alpecin-Deceuninck,0,Male,Oneday,Italy
+Maurice Ballerstedt,2022,Alpecin-Deceuninck,0,Male,Oneday,Germany
+Tobias Bayer,2021,Alpecin-Deceuninck,0,Male,Oneday,Austria
+Lindsay De Vylder,2017,Alpecin-Deceuninck,0,Male,Oneday,Belgium
+Edward Planckaert,2017,Alpecin-Deceuninck,1,Male,Oneday,Belgium
+Mathieu van der Poel,2019,Alpecin-Deceuninck,56,Male,Oneday,Netherlands
+Jonas Rickaert,2014,Alpecin-Deceuninck,1,Male,Oneday,Belgium
+Oscar Riesebeek,2017,Alpecin-Deceuninck,1,Male,Oneday,Netherlands
+Florian Sénéchal,2014,Alpecin-Deceuninck,5,Male,Oneday,France
+Silvan Dillier,2014,Alpecin-Deceuninck,8,Male,Oneday,Switzerland
+Jensen Plowright,2023,Alpecin-Deceuninck,2,Male,Sprint,Australia
+Simon Dehairs,2025,Alpecin-Deceuninck,1,Male,Sprint,Belgium
+Tim Marsman,2026,Alpecin-Deceuninck,0,Male,Sprint,Netherlands
+Gerben Thijssen,2019,Alpecin-Deceuninck,9,Male,Sprint,Belgium
+Jasper Philipsen,2019,Alpecin-Deceuninck,58,Male,Sprint,Belgium
+Lennert Belmans,2026,Alpecin-Deceuninck,0,Male,Sprint,Belgium
+Sente Sentjens,2026,Alpecin-Deceuninck,0,Male,Sprint,Belgium
+Johan Price-Pejtersen,2021,Alpecin-Deceuninck,0,Male,Time Trial,Denmark
+Pello Bilbao,2011,Bahrain Victorious,17,Male,Climber,Spain
+Lenny Martinez,2023,Bahrain Victorious,10,Male,Climber,France
+Attila Valter,2020,Bahrain Victorious,7,Male,Climber,Hungary
+Santiago Buitrago,2020,Bahrain Victorious,8,Male,Climber,Colombia
+Jakob Omrzel,2026,Bahrain Victorious,1,Male,GC,Slovenia
+Damiano Caruso,2009,Bahrain Victorious,8,Male,GC,Italy
+Rainer Kepplinger,2023,Bahrain Victorious,0,Male,GC,Austria
+Afonso Eulálio,2025,Bahrain Victorious,0,Male,GC,Portugal
+Antonio Tiberi,2020,Bahrain Victorious,2,Male,GC,Italy
+Oliver Stockwell,2025,Bahrain Victorious,0,Male,Hills,Great Britain
+Max van der Meulen,2024,Bahrain Victorious,0,Male,Hills,Netherlands
+Matevž Govekar,2022,Bahrain Victorious,4,Male,Hills,Slovenia
+Edoardo Zambanini,2022,Bahrain Victorious,0,Male,Hills,Italy
+Pau Miquel,2022,Bahrain Victorious,0,Male,Hills,Spain
+Robert Stannard,2019,Bahrain Victorious,0,Male,Hills,Australia
+Nikias Arndt,2013,Bahrain Victorious,7,Male,Hills,Germany
+Matej Mohorič,2014,Bahrain Victorious,25,Male,Oneday,Slovenia
+Mathijs Paasschens,2019,Bahrain Victorious,0,Male,Oneday,Netherlands
+Roman Ermakov,2025,Bahrain Victorious,0,Male,Oneday,Russia
+Daniel Skerl,2025,Bahrain Victorious,0,Male,Sprint,Slovenia
+Vlad van Mechelen,2024,Bahrain Victorious,0,Male,Sprint,Belgium
+Phil Bauhaus,2015,Bahrain Victorious,22,Male,Sprint,Germany
+Alberto Bruttomesso,2024,Bahrain Victorious,0,Male,Sprint,Italy
+Žak Eržen,2025,Bahrain Victorious,0,Male,Sprint,Slovenia
+Alessandro Borgo,2026,Bahrain Victorious,0,Male,Sprint,Italy
+Fran Miholjević,2022,Bahrain Victorious,3,Male,Time Trial,Croatia
+Alec Segaert,2023,Bahrain Victorious,2,Male,Time Trial,Belgium
+Kamil Gradek,2016,Bahrain Victorious,3,Male,Time Trial,Poland
+Paul Seixas,2025,Decathlon AG2R La Mondiale,0,Male,Climber,France
+Gregor Mühlberger,2016,Decathlon AG2R La Mondiale,9,Male,Climber,Austria
+Matthew Riccitello,2023,Decathlon AG2R La Mondiale,2,Male,Climber,United States
+Felix Gall,2020,Decathlon AG2R La Mondiale,2,Male,Climber,Austria
+Léo Bisiaux,2025,Decathlon AG2R La Mondiale,1,Male,GC,France
+Callum Scotson,2019,Decathlon AG2R La Mondiale,0,Male,GC,Australia
+Aurélien Paret-Peintre,2019,Decathlon AG2R La Mondiale,4,Male,GC,France
+Nicolas Prodhomme,2019,Decathlon AG2R La Mondiale,6,Male,GC,France
+Johannes Staune-Mittet,2024,Decathlon AG2R La Mondiale,1,Male,GC,Norway
+Jordan Labrosse,2023,Decathlon AG2R La Mondiale,0,Male,Hills,France
+Tobias Lund Andresen,2024,Decathlon AG2R La Mondiale,9,Male,Hills,Denmark
+Tiesj Benoot,2015,Decathlon AG2R La Mondiale,4,Male,Oneday,Belgium
+Pierre Gautherat,2022,Decathlon AG2R La Mondiale,1,Male,Oneday,France
+Paul Lapeira,2022,Decathlon AG2R La Mondiale,7,Male,Oneday,France
+Sander De Pestel,2020,Decathlon AG2R La Mondiale,0,Male,Oneday,Belgium
+Robbe Ghys,2018,Decathlon AG2R La Mondiale,1,Male,Oneday,Belgium
+Stan Dewulf,2019,Decathlon AG2R La Mondiale,1,Male,Oneday,Belgium
+Oliver Naesen,2014,Decathlon AG2R La Mondiale,5,Male,Oneday,Belgium
+Olav Kooij,2021,Decathlon AG2R La Mondiale,47,Male,Sprint,Netherlands
+Tord Gudmestad,2022,Decathlon AG2R La Mondiale,1,Male,Sprint,Norway
+Gianluca Pollefliet,2024,Decathlon AG2R La Mondiale,0,Male,Sprint,Belgium
+Rasmus Søjberg Pedersen,2025,Decathlon AG2R La Mondiale,1,Male,Sprint,Denmark
+Noa Isidore,2025,Decathlon AG2R La Mondiale,0,Male,Sprint,France
+Antoine L'Hote,2026,Decathlon AG2R La Mondiale,0,Male,Sprint,France
+Cees Bol,2018,Decathlon AG2R La Mondiale,6,Male,Sprint,Netherlands
+Daan Hoole,2022,Decathlon AG2R La Mondiale,3,Male,Time Trial,Netherlands
+Stefan Bissegger,2020,Decathlon AG2R La Mondiale,7,Male,Time Trial,Switzerland
+Oscar Chamberlain,2025,Decathlon AG2R La Mondiale,0,Male,Time Trial,Australia
+Richard Carapaz,2017,EF Education-EasyPost,24,Male,Climber,Ecuador
+Archie Ryan,2024,EF Education-EasyPost,2,Male,Climber,Ireland
+Georg Steinhauser,2022,EF Education-EasyPost,1,Male,Climber,Germany
+Markel Beloki,2024,EF Education-EasyPost,0,Male,GC,Spain
+Jardi Christiaan van der Lee,2023,EF Education-EasyPost,0,Male,GC,Netherlands
+Harry Sweeny,2021,EF Education-EasyPost,0,Male,GC,Australia
+Alex Baudin,2023,EF Education-EasyPost,2,Male,GC,France
+James Shaw,2018,EF Education-EasyPost,0,Male,GC,Great Britain
+Jefferson Alexander Cepeda,2020,EF Education-EasyPost,4,Male,GC,Ecuador
+Sean Quinn,2021,EF Education-EasyPost,2,Male,GC,United States
+Vincenzo Albanese,2018,EF Education-EasyPost,3,Male,Hills,Italy
+Lukas Nerurkar,2024,EF Education-EasyPost,0,Male,Hills,Great Britain
+Marijn van den Berg,2022,EF Education-EasyPost,9,Male,Hills,Netherlands
+Samuele Battistella,2020,EF Education-EasyPost,1,Male,Hills,Italy
+Ben Healy,2022,EF Education-EasyPost,10,Male,Oneday,Ireland
+Michael Valgren,2014,EF Education-EasyPost,8,Male,Oneday,Denmark
+Neilson Powless,2018,EF Education-EasyPost,8,Male,Oneday,United States
+Madis Mihkels,2023,EF Education-EasyPost,3,Male,Oneday,Estonia
+Mikkel Frølich Honoré,2019,EF Education-EasyPost,2,Male,Oneday,Denmark
+Luke Lamperti,2024,EF Education-EasyPost,6,Male,Sprint,United States
+Colby Simmons,2025,EF Education-EasyPost,0,Male,Sprint,United States
+Noah Hobbs,2025,EF Education-EasyPost,0,Male,Sprint,United States
+Alastair Mackellar,2024,EF Education-EasyPost,0,Male,Time Trial,Australia
+Max Walker,2025,EF Education-EasyPost,1,Male,Time Trial,Australia
+Darren Rafferty,2024,EF Education-EasyPost,1,Male,Time Trial,Ireland
+Michael Leonard,2023,EF Education-EasyPost,1,Male,Time Trial,Ireland
+Kasper Asgreen,2018,EF Education-EasyPost,14,Male,Time Trial,Denmark
+Matthias Schwarzbacher,2026,EF Education-EasyPost,1,Male,Time Trial,Austria
+Guillaume Martin,2016,Groupama-FDJ,11,Male,Climber,France
+Brieuc Rolland,2025,Groupama-FDJ,0,Male,Climber,France
+Rudy Molard,2012,Groupama-FDJ,2,Male,Climber,France
+Clément Berthet,2021,Groupama-FDJ,0,Male,Climber,France
+David Gaudu,2017,Groupama-FDJ,13,Male,Climber,France
+Josh Kench,2026,Groupama-FDJ,0,Male,GC,New Zealand
+Lorenzo Germani,2023,Groupama-FDJ,0,Male,GC,France
+Ewen Costiou,2022,Groupama-FDJ,4,Male,GC,France
+Enzo Paleni,2023,Groupama-FDJ,0,Male,GC,France
+Rémy Rochas,2019,Groupama-FDJ,0,Male,GC,France
+Tom Donnenwirth,2025,Groupama-FDJ,1,Male,Hills,France
+Cyril Barthe,2018,Groupama-FDJ,0,Male,Hills,France
+Thibaud Gruel,2024,Groupama-FDJ,2,Male,Hills,France
+Quentin Pacher,2016,Groupama-FDJ,0,Male,Hills,France
+Romain Grégoire,2023,Groupama-FDJ,12,Male,Hills,France
+Valentin Madouas,2018,Groupama-FDJ,7,Male,Oneday,France
+Kevin Geniets,2019,Groupama-FDJ,5,Male,Oneday,Luxembourg
+Bastien Tronchon,2022,Groupama-FDJ,2,Male,Oneday,France
+Clément Russo,2018,Groupama-FDJ,1,Male,Oneday,France
+Olivier Le Gac,2015,Groupama-FDJ,0,Male,Oneday,France
+Axel Huens,2024,Groupama-FDJ,0,Male,Oneday,France
+Clément Braz Afonso,2025,Groupama-FDJ,0,Male,Oneday,France
+Johan Jacobs,2020,Groupama-FDJ,0,Male,Oneday,Switzerland
+Paul Penhoët,2023,Groupama-FDJ,2,Male,Sprint,France
+Lewis Bower,2025,Groupama-FDJ,0,Male,Sprint,Great Britain
+Matteo Milan,2026,Groupama-FDJ,0,Male,Sprint,Italy
+Rémi Cavagna,2017,Groupama-FDJ,13,Male,Time Trial,France
+Maxime Decomble,2026,Groupama-FDJ,0,Male,Time Trial,France
+Titouan Fontaine,2026,Groupama-FDJ,0,Male,Time Trial,France
+Peter Øxenberg,2025,INEOS Grenadiers,0,Male,Climber,Denmark
+Carlos Rodríguez,2020,INEOS Grenadiers,7,Male,Climber,Spain
+Óscar Rodríguez,2018,INEOS Grenadiers,1,Male,GC,Spain
+Andrew August,2024,INEOS Grenadiers,1,Male,GC,United States
+Oscar Onley,2023,INEOS Grenadiers,2,Male,GC,Great Britain
+Embret Svestad-Bårdseng,2025,INEOS Grenadiers,0,Male,GC,Norway
+Kévin Vauquelin,2021,INEOS Grenadiers,10,Male,GC,France
+Thymen Arensman,2020,INEOS Grenadiers,5,Male,GC,Netherlands
+Brandon Smith Rivera,2020,INEOS Grenadiers,3,Male,GC,Colombia
+Egan Bernal,2018,INEOS Grenadiers,23,Male,GC,Colombia
+Victor Langellotti,2018,INEOS Grenadiers,3,Male,GC,Monaco
+Laurens De Plus,2016,INEOS Grenadiers,1,Male,GC,Belgium
+Jack Haig,2016,INEOS Grenadiers,2,Male,GC,Australia
+Lucas Hamilton,2018,INEOS Grenadiers,4,Male,GC,Australia
+Artem Shmidt,2024,INEOS Grenadiers,1,Male,Hills,Russia
+Dorian Godon,2017,INEOS Grenadiers,16,Male,Hills,France
+Ben Turner,2022,INEOS Grenadiers,3,Male,Hills,Great Britain
+Kim Heiduk,2022,INEOS Grenadiers,0,Male,Hills,Germany
+Axel Laurance,2022,INEOS Grenadiers,5,Male,Hills,France
+Connor Swift,2019,INEOS Grenadiers,3,Male,Oneday,Great Britain
+Michał Kwiatkowski,2011,INEOS Grenadiers,32,Male,Oneday,Poland
+Sam Welsford,2022,INEOS Grenadiers,13,Male,Sprint,Australia
+Ben Swift,2009,INEOS Grenadiers,15,Male,Sprint,Great Britain
+Samuel Watson,2023,INEOS Grenadiers,6,Male,Time Trial,Great Britain
+Filippo Ganna,2017,INEOS Grenadiers,36,Male,Time Trial,Italy
+Magnus Sheffield,2022,INEOS Grenadiers,4,Male,Time Trial,United States
+Bob Jungels,2013,INEOS Grenadiers,27,Male,Time Trial,Luxembourg
+Tobias Foss,2020,INEOS Grenadiers,6,Male,Time Trial,Norway
+Joshua Tarling,2023,INEOS Grenadiers,9,Male,Time Trial,Great Britain
+Patrick Konrad,2014,Lidl-Trek,3,Male,Climber,Austria
+Lennard Kämna,2019,Lidl-Trek,9,Male,Climber,Germany
+Giulio Ciccone,2016,Lidl-Trek,13,Male,Climber,Italy
+Juan Ayuso,2022,Lidl-Trek,16,Male,Climber,Spain
+Derek Gee,2023,Lidl-Trek,6,Male,Climber,Canada
+Bauke Mollema,2008,Lidl-Trek,18,Male,Climber,Netherlands
+Sam Oomen,2016,Lidl-Trek,2,Male,GC,Netherlands
+Amanuel Ghebreigzabhier,2018,Lidl-Trek,6,Male,GC,Eritrea
+Tao Geoghegan Hart,2017,Lidl-Trek,9,Male,GC,Great Britain
+Mattias Skjelmose,2020,Lidl-Trek,14,Male,GC,Denmark
+Carlos Verona,2013,Lidl-Trek,2,Male,GC,Spain
+Julien Bernard,2016,Lidl-Trek,1,Male,GC,France
+Jacopo Mosca,2017,Lidl-Trek,3,Male,Hills,Italy
+Quinn Simmons,2020,Lidl-Trek,7,Male,Hills,United States
+Thibau Nys,2023,Lidl-Trek,12,Male,Hills,Belgium
+Andrea Bagioli,2020,Lidl-Trek,7,Male,Oneday,Italy
+Albert Withen Philipsen,2025,Lidl-Trek,0,Male,Oneday,Denmark
+Mads Pedersen,2015,Lidl-Trek,60,Male,Oneday,Denmark
+Simone Consonni,2017,Lidl-Trek,3,Male,Oneday,Italy
+Toms Skujiņš,2016,Lidl-Trek,14,Male,Oneday,Latvia
+Edward Theuns,2014,Lidl-Trek,10,Male,Oneday,Belgium
+Otto Vergaerde,2014,Lidl-Trek,0,Male,Oneday,Belgium
+Jonathan Milan,2021,Lidl-Trek,27,Male,Sprint,Italy
+Max Walscheid,2016,Lidl-Trek,13,Male,Sprint,Germany
+Tim Torn Teutenberg,2025,Lidl-Trek,0,Male,Sprint,Germany
+Mathias Sunekær Norsgaard,2019,Lidl-Trek,1,Male,Time Trial,Denmark
+Matteo Sobrero,2020,Lidl-Trek,3,Male,Time Trial,Italy
+Søren Kragh Andersen,2016,Lidl-Trek,10,Male,Time Trial,Denmark
+Mathias Vacek,2021,Lidl-Trek,6,Male,Time Trial,Czech Republic
+Jakob Söderqvist,2026,Lidl-Trek,3,Male,Time Trial,Sweden
+Jarno Widar,2026,Lotto Intermarché,0,Male,Climber,Belgium
+Lennert Van Eetvelt,2023,Lotto Intermarché,6,Male,Climber,Belgium
+Felix Ørn-Kristoff,2026,Lotto Intermarché,0,Male,GC,Norway
+Toon Aerts,2025,Lotto Intermarché,0,Male,GC,Belgium
+Reuben Thompson,2023,Lotto Intermarché,0,Male,GC,New Zealand
+Roel van Sintmaartensdijk,2024,Lotto Intermarché,0,Male,GC,Netherlands
+Lars Craps,2024,Lotto Intermarché,0,Male,GC,Belgium
+Liam Slock,2023,Lotto Intermarché,0,Male,GC,Belgium
+Luca Van Boven,2023,Lotto Intermarché,0,Male,Hills,Belgium
+Mathieu Kockelmann,2026,Lotto Intermarché,2,Male,Hills,Luxembourg
+Sébastien Grignard,2021,Lotto Intermarché,0,Male,Oneday,Belgium
+Taco van der Hoorn,2017,Lotto Intermarché,8,Male,Oneday,Netherlands
+Simone Gualdi,2026,Lotto Intermarché,0,Male,Oneday,Italy
+Jasper De Buyst,2013,Lotto Intermarché,6,Male,Oneday,Belgium
+Lorenzo Rota,2016,Lotto Intermarché,2,Male,Oneday,Italy
+Arnaud De Lie,2022,Lotto Intermarché,33,Male,Oneday,Belgium
+Milan Menten,2018,Lotto Intermarché,2,Male,Oneday,Belgium
+Lionel Taminiaux,2019,Lotto Intermarché,4,Male,Oneday,Belgium
+Cedric Beullens,2020,Lotto Intermarché,0,Male,Oneday,Belgium
+Jenno Berckmoes,2022,Lotto Intermarché,3,Male,Oneday,Belgium
+Georg Zimmermann,2020,Lotto Intermarché,4,Male,Oneday,Germany
+Vito Braet,2022,Lotto Intermarché,0,Male,Oneday,Belgium
+Jonas Rutsch,2019,Lotto Intermarché,0,Male,Oneday,Germany
+Robin Orins,2025,Lotto Intermarché,0,Male,Sprint,Belgium
+Joshua Giddings,2025,Lotto Intermarché,0,Male,Sprint,Great Britain
+Matthew Fox,2025,Lotto Intermarché,0,Male,Sprint,Australia
+Matys Grisel,2026,Lotto Intermarché,0,Male,Sprint,France
+Steffen De Schuyteneer,2025,Lotto Intermarché,2,Male,Sprint,Belgium
+Huub Artz,2025,Lotto Intermarché,0,Male,Time Trial,Netherlands
+Baptiste Veistroffer,2025,Lotto Intermarché,1,Male,Time Trial,France
+Davide Formolo,2014,Movistar Team,6,Male,Climber,Italy
+Diego Pescador,2025,Movistar Team,0,Male,Climber,Spain
+Pavel Novák,2026,Movistar Team,0,Male,Climber,Czech Republic
+Pablo Castrillo,2023,Movistar Team,2,Male,Climber,Spain
+Pelayo Sánchez,2021,Movistar Team,3,Male,Climber,Spain
+Einer Rubio,2020,Movistar Team,2,Male,Climber,Colombia
+Enric Mas,2017,Movistar Team,6,Male,Climber,Spain
+Jorge Arcas,2016,Movistar Team,0,Male,GC,Spain
+Albert Torres,2020,Movistar Team,0,Male,GC,Spain
+Nairo Quintana,2012,Movistar Team,51,Male,GC,Colombia
+Javier Romo,2021,Movistar Team,1,Male,GC,Spain
+Cian Uijtdebroeks,2022,Movistar Team,2,Male,GC,Belgium
+Raúl García Pierna,2021,Movistar Team,3,Male,GC,Spain
+Juan Pedro López,2020,Movistar Team,2,Male,GC,Spain
+Jefferson Alveiro Cepeda,2020,Movistar Team,7,Male,GC,Ecuador
+Natnael Tesfatsion,2021,Movistar Team,6,Male,Hills,Eritrea
+Michel Hessmann,2022,Movistar Team,0,Male,Hills,Germany
+Jon Barrenetxea,2021,Movistar Team,2,Male,Hills,Spain
+Carlos Canal,2020,Movistar Team,0,Male,Hills,Spain
+Orluis Aular,2020,Movistar Team,12,Male,Hills,Venezuela
+Gonzalo Serrano,2018,Movistar Team,5,Male,Hills,Spain
+Roger Adrià,2021,Movistar Team,3,Male,Oneday,Spain
+Iván García Cortina,2017,Movistar Team,4,Male,Oneday,Spain
+Manlio Moro,2024,Movistar Team,0,Male,Oneday,Italy
+Filip Maciejuk,2022,Movistar Team,3,Male,Time Trial,Poland
+Nelson Oliveira,2011,Movistar Team,6,Male,Time Trial,Portugal
+Lorenzo Milesi,2023,Movistar Team,0,Male,Time Trial,Italy
+Iván Romeo,2023,Movistar Team,3,Male,Time Trial,Spain
+Nick Schultz,2017,NSN Cycling Team,3,Male,Climber,Australia
+Marco Frigo,2023,NSN Cycling Team,1,Male,Climber,Italy
+Jan Hirt,2015,NSN Cycling Team,5,Male,GC,Czech Republic
+Joseph Blackmore,2024,NSN Cycling Team,4,Male,GC,Great Britain
+Stephen Williams,2019,NSN Cycling Team,11,Male,GC,Great Britain
+Alexey Lutsenko,2013,NSN Cycling Team,41,Male,GC,Kazakhstan
+George Bennett,2012,NSN Cycling Team,4,Male,GC,New Zealand
+Dion Smith,2016,NSN Cycling Team,2,Male,Hills,New Zealand
+Pau Martí,2026,NSN Cycling Team,1,Male,Hills,Spain
+Brady Gilmore,2026,NSN Cycling Team,6,Male,Hills,Canada
+Nadav Raisberg,2024,NSN Cycling Team,1,Male,Hills,Israel
+Corbin Strong,2022,NSN Cycling Team,8,Male,Hills,New Zealand
+Jake Stewart,2020,NSN Cycling Team,4,Male,Hills,Great Britain
+Matis Louvel,2020,NSN Cycling Team,2,Male,Oneday,France
+Simon Clarke,2009,NSN Cycling Team,7,Male,Oneday,Australia
+Guillaume Boivin,2011,NSN Cycling Team,5,Male,Oneday,Canada
+Tom Van Asbroeck,2012,NSN Cycling Team,5,Male,Oneday,Belgium
+Alessandro Pinarello,2022,NSN Cycling Team,0,Male,Oneday,Italy
+Krists Neilands,2017,NSN Cycling Team,9,Male,Oneday,Latvia
+Lewis Askey,2022,NSN Cycling Team,2,Male,Oneday,Great Britain
+Biniam Girmay,2021,NSN Cycling Team,17,Male,Sprint,Eritrea
+Riley Sheehan,2023,NSN Cycling Team,1,Male,Oneday,United States
+Hugo Hofstetter,2016,NSN Cycling Team,3,Male,Oneday,France
+Pier-André Côté,2019,NSN Cycling Team,3,Male,Oneday,Canada
+Oded Kogut,2024,NSN Cycling Team,6,Male,Sprint,Israel
+Rotem Tene,2026,NSN Cycling Team,2,Male,Sprint,Israel
+Floris Van Tricht,2025,NSN Cycling Team,0,Male,Sprint,Belgium
+Ethan Vernon,2022,NSN Cycling Team,13,Male,Sprint,Great Britain
+Itamar Einhorn,2020,NSN Cycling Team,9,Male,Sprint,Israel
+Ryan Mullen,2016,NSN Cycling Team,11,Male,Time Trial,Ireland
+Luke Tuckwell,2026,Red Bull-BORA-hansgrohe,0,Male,Climber,Australia
+Giulio Pellizzari,2022,Red Bull-BORA-hansgrohe,1,Male,Climber,Italy
+Primož Roglič,2016,Red Bull-BORA-hansgrohe,91,Male,Climber,Slovenia
+Aleksandr Vlasov,2018,Red Bull-BORA-hansgrohe,12,Male,Climber,Russia
+Giovanni Aleotti,2021,Red Bull-BORA-hansgrohe,7,Male,GC,Italy
+Ben Zwiehoff,2021,Red Bull-BORA-hansgrohe,0,Male,GC,Germany
+Florian Lipowitz,2023,Red Bull-BORA-hansgrohe,3,Male,GC,Germany
+Finn Fisher-Black,2021,Red Bull-BORA-hansgrohe,6,Male,GC,New Zealand
+Alexander Hajek,2024,Red Bull-BORA-hansgrohe,1,Male,GC,Austria
+Mick van Dijke,2022,Red Bull-BORA-hansgrohe,0,Male,GC,Netherlands
+Jarrad Drizners,2022,Red Bull-BORA-hansgrohe,0,Male,GC,Australia
+Daniel Felipe Martínez,2015,Red Bull-BORA-hansgrohe,15,Male,GC,Colombia
+Jai Hindley,2018,Red Bull-BORA-hansgrohe,9,Male,GC,Australia
+Emil Herzog,2024,Red Bull-BORA-hansgrohe,0,Male,Hills,Germany
+Nico Denz,2015,Red Bull-BORA-hansgrohe,7,Male,Hills,Germany
+Jordi Meeus,2021,Red Bull-BORA-hansgrohe,15,Male,Oneday,Belgium
+Arne Marit,2022,Red Bull-BORA-hansgrohe,2,Male,Oneday,Belgium
+Maxim Van Gils,2021,Red Bull-BORA-hansgrohe,7,Male,Oneday,Belgium
+Frederik Wandahl,2021,Red Bull-BORA-hansgrohe,0,Male,Oneday,Denmark
+Gianni Moscon,2016,Red Bull-BORA-hansgrohe,11,Male,Oneday,Italy
+Laurence Pithie,2023,Red Bull-BORA-hansgrohe,2,Male,Oneday,New Zealand
+Gianni Vermeersch,2020,Red Bull-BORA-hansgrohe,4,Male,Oneday,Belgium
+Haimar Etxeberria,2025,Red Bull-BORA-hansgrohe,1,Male,Oneday,Spain
+Adrien Boichis,2026,Red Bull-BORA-hansgrohe,0,Male,Oneday,France
+Danny van Poppel,2013,Red Bull-BORA-hansgrohe,24,Male,Sprint,Netherlands
+Callum Thornley,2026,Red Bull-BORA-hansgrohe,1,Male,Time Trial,Great Britain
+Remco Evenepoel,2019,Red Bull-BORA-hansgrohe,72,Male,Time Trial,Belgium
+Tim van Dijke,2022,Red Bull-BORA-hansgrohe,2,Male,Time Trial,Netherlands
+Jan Tratnik,2011,Red Bull-BORA-hansgrohe,12,Male,Time Trial,Slovenia
+Mattia Cattaneo,2013,Red Bull-BORA-hansgrohe,4,Male,Time Trial,Italy
+Gianmarco Garofoli,2023,Soudal Quick-Step,0,Male,Climber,Italy
+Valentin Paret-Peintre,2022,Soudal Quick-Step,3,Male,Climber,France
+Mikel Landa,2011,Soudal Quick-Step,16,Male,Climber,Spain
+Mauri Vansevenant,2021,Soudal Quick-Step,3,Male,Climber,Belgium
+Maximilian Schachmann,2017,Soudal Quick-Step,16,Male,GC,Germany
+Gil Gelders,2024,Soudal Quick-Step,0,Male,GC,Belgium
+Junior Lecerf,2024,Soudal Quick-Step,3,Male,GC,Belgium
+Ilan Van Wilder,2020,Soudal Quick-Step,3,Male,GC,Belgium
+Fabio Van den Bossche,2020,Soudal Quick-Step,0,Male,GC,Belgium
+Filippo Zana,2020,Soudal Quick-Step,5,Male,GC,Italy
+Ayco Bastiaens,2024,Soudal Quick-Step,0,Male,GC,Belgium
+Steff Cras,2018,Soudal Quick-Step,1,Male,GC,Belgium
+Louis Vervaeke,2014,Soudal Quick-Step,1,Male,GC,Belgium
+Andrea Raccagni Noviero,2025,Soudal Quick-Step,0,Male,Hills,Italy
+Pepijn Reinderink,2024,Soudal Quick-Step,0,Male,Hills,Netherlands
+Pascal Eenkhoorn,2018,Soudal Quick-Step,5,Male,Oneday,Netherlands
+Paul Magnier,2024,Soudal Quick-Step,24,Male,Oneday,France
+Martin Svrček,2022,Soudal Quick-Step,0,Male,Oneday,Slovakia
+Dries Van Gestel,2016,Soudal Quick-Step,2,Male,Oneday,Belgium
+Yves Lampaert,2013,Soudal Quick-Step,16,Male,Oneday,Belgium
+Dylan van Baarle,2014,Soudal Quick-Step,8,Male,Oneday,Netherlands
+Jasper Stuyven,2014,Soudal Quick-Step,9,Male,Oneday,Belgium
+Laurenz Rex,2021,Soudal Quick-Step,1,Male,Oneday,Belgium
+Casper Pedersen,2019,Soudal Quick-Step,3,Male,Oneday,Denmark
+Warre Vangheluwe,2024,Soudal Quick-Step,2,Male,Sprint,Belgium
+Bert Van Lerberghe,2015,Soudal Quick-Step,0,Male,Sprint,Belgium
+Tim Merlier,2017,Soudal Quick-Step,66,Male,Sprint,Belgium
+Alberto Dainese,2020,Soudal Quick-Step,7,Male,Sprint,Italy
+Ethan Hayter,2020,Soudal Quick-Step,24,Male,Time Trial,Great Britain
+Jonathan Vervenne,2026,Soudal Quick-Step,0,Male,Time Trial,Belgium
+Finlay Pickering,2024,Jayco-AlUla,0,Male,Climber,Great Britain
+Filippo Conca,2021,Jayco-AlUla,1,Male,Climber,Italy
+Koen Bouwman,2015,Jayco-AlUla,6,Male,GC,Netherlands
+Christopher Juul-Jensen,2012,Jayco-AlUla,3,Male,GC,Denmark
+Jelte Krijnsen,2025,Jayco-AlUla,4,Male,GC,Netherlands
+Paul Double,2023,Jayco-AlUla,5,Male,GC,Great Britain
+Rudy Porter,2023,Jayco-AlUla,0,Male,GC,Australia
+Asbjørn Hellemose,2022,Jayco-AlUla,0,Male,GC,Denmark
+Ben O'Connor,2017,Jayco-AlUla,11,Male,GC,Australia
+Hamish McKenzie,2026,Jayco-AlUla,0,Male,Hills,Australia
+Luka Mezgec,2013,Jayco-AlUla,19,Male,Hills,Slovenia
+Davide De Pretto,2024,Jayco-AlUla,1,Male,Hills,Italy
+Dries De Pooter,2023,Jayco-AlUla,1,Male,Hills,Belgium
+Anders Foldager,2024,Jayco-AlUla,1,Male,Hills,Denmark
+Mauro Schmid,2021,Jayco-AlUla,11,Male,Hills,Switzerland
+Andrea Vendrame,2017,Jayco-AlUla,7,Male,Hills,Italy
+Alessandro Covi,2020,Jayco-AlUla,5,Male,Oneday,Italy
+Patrick Gamper,2020,Jayco-AlUla,1,Male,Oneday,Austria
+Felix Engelhardt,2023,Jayco-AlUla,3,Male,Oneday,Germany
+Michael Matthews,2011,Jayco-AlUla,44,Male,Oneday,Australia
+Amaury Capiot,2015,Jayco-AlUla,3,Male,Oneday,Belgium
+Dries De Bondt,2017,Jayco-AlUla,7,Male,Oneday,Belgium
+Pascal Ackermann,2017,Jayco-AlUla,41,Male,Sprint,Germany
+Robert Donaldson,2025,Jayco-AlUla,0,Male,Sprint,Australia
+Kelland O'Brien,2022,Jayco-AlUla,0,Male,Time Trial,Australia
+Luke Plapp,2022,Jayco-AlUla,8,Male,Time Trial,Australia
+Alan Hatherly,2025,Jayco-AlUla,1,Male,GC,South Africa
+Jasha Sütterlin,2014,Jayco-AlUla,1,Male,Time Trial,Germany
+Luke Durbridge,2012,Jayco-AlUla,15,Male,Time Trial,Australia
+Warren Barguil,2013,Picnic PostNL,8,Male,Climber,France
+Gijs Leemreize,2021,Picnic PostNL,0,Male,Climber,Netherlands
+Juan Guillermo Martinez,2025,Picnic PostNL,0,Male,GC,Colombia
+James Knox,2018,Picnic PostNL,0,Male,GC,Great Britain
+Chris Hamilton,2017,Picnic PostNL,0,Male,GC,Australia
+Alexy Faure Prost,2024,Picnic PostNL,0,Male,GC,France
+Tim Naberman,2022,Picnic PostNL,0,Male,GC,Netherlands
+Max Poole,2023,Picnic PostNL,2,Male,GC,Great Britain
+Mattia Gaffuri,2026,Picnic PostNL,0,Male,GC,Italy
+Sean Flynn,2023,Picnic PostNL,0,Male,GC,Ireland
+Frank van den Broek,2024,Picnic PostNL,3,Male,GC,Netherlands
+Bjorn Koerdt,2025,Picnic PostNL,0,Male,Hills,Germany
+Oliver Peace,2026,Picnic PostNL,0,Male,Hills,Great Britain
+Robbe Dhondt,2025,Picnic PostNL,0,Male,Hills,Belgium
+Henri-François Renard-Haquin,2025,Picnic PostNL,0,Male,Hills,France
+Timo Roosen,2015,Picnic PostNL,4,Male,Oneday,Netherlands
+Matthew Dinham,2023,Picnic PostNL,0,Male,Oneday,Australia
+Nils Eekhoff,2020,Picnic PostNL,2,Male,Oneday,Netherlands
+Bram Welten,2018,Picnic PostNL,1,Male,Oneday,Netherlands
+John Degenkolb,2011,Picnic PostNL,48,Male,Oneday,Germany
+Pavel Bittner,2023,Picnic PostNL,3,Male,Sprint,Czech Republic
+Casper van Uden,2023,Picnic PostNL,5,Male,Sprint,Netherlands
+Dillon Corkery,2026,Picnic PostNL,0,Male,Sprint,Ireland
+Niklas Märkl,2021,Picnic PostNL,0,Male,Sprint,Germany
+Timo de Jong,2025,Picnic PostNL,1,Male,Sprint,Netherlands
+Julius van den Berg,2019,Picnic PostNL,1,Male,Sprint,Netherlands
+Fabio Jakobsen,2018,Picnic PostNL,46,Male,Sprint,Netherlands
+Frits Biesterbos,2026,Picnic PostNL,0,Male,Sprint,Netherlands
+Adam Yates,2014,UAE Team Emirates,32,Male,Climber,Great Britain
+Marc Soler,2015,UAE Team Emirates,10,Male,Climber,Spain
+Tadej Pogačar,2019,UAE Team Emirates,108,Male,Climber,Slovenia
+Tim Wellens,2013,UAE Team Emirates,41,Male,GC,Belgium
+Pablo Torres,2025,UAE Team Emirates,0,Male,GC,Spain
+Igor Arrieta,2022,UAE Team Emirates,1,Male,GC,Spain
+Kevin Vermaerke,2021,UAE Team Emirates,0,Male,GC,United States
+João Almeida,2018,UAE Team Emirates,23,Male,GC,Portugal
+Brandon McNulty,2018,UAE Team Emirates,22,Male,GC,United States
+Jhonatan Narváez,2018,UAE Team Emirates,15,Male,GC,Ecuador
+Vegard Stake Laengen,2016,UAE Team Emirates,1,Male,GC,Norway
+Pavel Sivakov,2018,UAE Team Emirates,7,Male,GC,France
+Domen Novak,2017,UAE Team Emirates,2,Male,GC,Slovenia
+Felix Großschartner,2017,UAE Team Emirates,9,Male,GC,Austria
+Adrià Pericas,2026,UAE Team Emirates,0,Male,Hills,Spain
+Rui Oliveira,2019,UAE Team Emirates,0,Male,Hills,Portugal
+Florian Vermeersch,2021,UAE Team Emirates,1,Male,Oneday,Belgium
+António Morgado,2024,UAE Team Emirates,7,Male,Oneday,Portugal
+Jan Christen,2024,UAE Team Emirates,7,Male,Oneday,Switzerland
+Isaac Del Toro,2024,UAE Team Emirates,22,Male,Oneday,Mexico
+Nils Politt,2016,UAE Team Emirates,8,Male,Oneday,Germany
+Filippo Baroncini,2022,UAE Team Emirates,2,Male,Oneday,Italy
+Benoît Cosnefroy,2018,UAE Team Emirates,21,Male,Oneday,France
+Juan Sebastián Molano,2017,UAE Team Emirates,28,Male,Sprint,Colombia
+Jay Vine,2021,UAE Team Emirates,14,Male,Time Trial,Australia
+Ivo Oliveira,2019,UAE Team Emirates,7,Male,Time Trial,Portugal
+Mikkel Bjerg,2018,UAE Team Emirates,1,Male,Time Trial,Denmark
+Rune Herregodts,2021,UAE Team Emirates,5,Male,Time Trial,Belgium
+Julius Johansen,2020,UAE Team Emirates,0,Male,Time Trial,Denmark
+Tobias Halland Johannessen,2022,Uno-X Mobility,4,Male,Climber,Norway
+Anthon Charmig,2022,Uno-X Mobility,1,Male,GC,Denmark
+Ådne Holter,2022,Uno-X Mobility,0,Male,GC,Norway
+Johannes Kulset,2024,Uno-X Mobility,0,Male,GC,Norway
+Anders Halland Johannessen,2022,Uno-X Mobility,1,Male,GC,Norway
+Andreas Leknessund,2020,Uno-X Mobility,7,Male,GC,Norway
+Torstein Træen,2020,Uno-X Mobility,1,Male,GC,Norway
+Martin Tjøtta,2025,Uno-X Mobility,0,Male,GC,Norway
+Simon Dalby,2025,Uno-X Mobility,0,Male,GC,Denmark
+Sven Erik Bystrøm,2015,Uno-X Mobility,1,Male,GC,Norway
+Alexander Kamp,2019,Uno-X Mobility,5,Male,Hills,Denmark
+Andreas Kron,2019,Uno-X Mobility,4,Male,Hills,Denmark
+Sakarias Koller Løland,2024,Uno-X Mobility,1,Male,Hills,Norway
+Magnus Cort,2015,Uno-X Mobility,34,Male,Hills,Denmark
+Tobias Svarre,2026,Uno-X Mobility,0,Male,Hills,Denmark
+Erik Nordsæter Resell,2020,Uno-X Mobility,0,Male,Oneday,Norway
+Stian Fredheim,2023,Uno-X Mobility,1,Male,Oneday,Norway
+Fredrik Dversnes Lavik,2022,Uno-X Mobility,6,Male,Oneday,Norway
+William Blume Levy,2022,Uno-X Mobility,0,Male,Oneday,Denmark
+Martin Urianstad Bugge,2020,Uno-X Mobility,0,Male,Oneday,Norway
+Jonas Hvideberg,2020,Uno-X Mobility,0,Male,Oneday,Norway
+Rasmus Tiller,2019,Uno-X Mobility,5,Male,Oneday,Norway
+Anders Skaarseth,2020,Uno-X Mobility,0,Male,Oneday,Norway
+Jonas Abrahamsen,2020,Uno-X Mobility,4,Male,Oneday,Norway
+Markus Hoelgaard,2020,Uno-X Mobility,5,Male,Oneday,Norway
+Storm Ingebrigtsen,2026,Uno-X Mobility,1,Male,Sprint,Norway
+Henrik Pedersen,2025,Uno-X Mobility,0,Male,Sprint,Denmark
+Erlend Blikra,2020,Uno-X Mobility,4,Male,Sprint,Norway
+Carl-Frederik Bévort,2024,Uno-X Mobility,0,Male,TT,Denmark
+Søren Wærenskjold,2021,Uno-X Mobility,18,Male,TT,Norway
+Clément Champoussin,2021,XDS Astana,3,Male,Climber,France
+Sergio Higuita,2019,XDS Astana,10,Male,Climber,Colombia
+Harold Tejada,2020,XDS Astana,1,Male,Climber,Colombia
+Davide Toneatti,2025,XDS Astana,0,Male,GC,Italy
+Aaron Gate,2017,XDS Astana,17,Male,GC,New Zealand
+Darren van Bekkum,2025,XDS Astana,0,Male,GC,Netherlands
+Nicolas Vinokurov,2024,XDS Astana,0,Male,GC,Kazakhstan
+Harold Martín López,2024,XDS Astana,4,Male,GC,Colombia
+Henok Mulubrhan,2023,XDS Astana,12,Male,GC,Eritrea
+Cristián Rodríguez,2016,XDS Astana,3,Male,GC,Spain
+Anton Kuzmin,2020,XDS Astana,1,Male,GC,Kazakhstan
+Nicola Conci,2018,XDS Astana,0,Male,GC,Italy
+Lorenzo Fortunato,2019,XDS Astana,6,Male,GC,Italy
+Diego Ulissi,2010,XDS Astana,49,Male,GC,Italy
+Florian Samuel Kajamini,2025,XDS Astana,0,Male,Hills,Italy
+Alessandro Romele,2025,XDS Astana,0,Male,Hills,Italy
+Mike Teunissen,2015,XDS Astana,8,Male,Oneday,Netherlands
+Christian Scaroni,2020,XDS Astana,10,Male,Oneday,Italy
+Haoyu Su,2025,XDS Astana,0,Male,Oneday,China
+Marco Schrettl,2026,XDS Astana,0,Male,Oneday,Austria
+Guillermo Thomas Silva,2024,XDS Astana,4,Male,Oneday,Argentina
+Alberto Bettiol,2014,XDS Astana,8,Male,Oneday,Italy
+Davide Ballerini,2017,XDS Astana,9,Male,Oneday,Italy
+Arjen Livyns,2019,XDS Astana,0,Male,Oneday,Belgium
+Yevgeniy Fedorov,2021,XDS Astana,11,Male,Oneday,Kazakhstan
+Simone Velasco,2016,XDS Astana,5,Male,Oneday,Italy
+Gleb Syritsa,2023,XDS Astana,4,Male,Sprint,Russia
+Lev Gonov,2026,XDS Astana,2,Male,Sprint,Russia
+Matteo Malucelli,2016,XDS Astana,18,Male,Sprint,Italy
+Max Kanter,2019,XDS Astana,2,Male,Sprint,Germany
+Chris Harper,2020,Q36.5 Pro Cycling,4,Male,GC,Australia
+Mark Donovan,2020,Q36.5 Pro Cycling,1,Male,GC,Great Britain
+Milan Vader,2022,Q36.5 Pro Cycling,2,Male,GC,Netherlands
+Sjoerd Bax,2022,Q36.5 Pro Cycling,3,Male,GC,Netherlands
+Kamil Małecki,2015,Q36.5 Pro Cycling,0,Male,GC,Poland
+Harm Vanhoucke,2019,Q36.5 Pro Cycling,0,Male,GC,Belgium
+Matteo Badilatti,2018,Q36.5 Pro Cycling,1,Male,GC,Switzerland
+Eddie Dunbar,2018,Q36.5 Pro Cycling,5,Male,GC,Ireland
+David De La Cruz,2011,Q36.5 Pro Cycling,6,Male,GC,Spain
+Thomas Gloag,2023,Q36.5 Pro Cycling,1,Male,GC,Great Britain
+Xandro Meurisse,2016,Q36.5 Pro Cycling,5,Male,GC,Belgium
+Damien Howson,2014,Q36.5 Pro Cycling,7,Male,GC,Australia
+Marcel Camprubí,2023,Q36.5 Pro Cycling,0,Male,Hills,Spain
+Nicolò Parisini,2023,Q36.5 Pro Cycling,1,Male,Hills,Italy
+David González,2019,Q36.5 Pro Cycling,0,Male,Hills,Spain
+Walter Calzoni,2023,Q36.5 Pro Cycling,0,Male,Hills,Italy
+Joseph Pidcock,2025,Q36.5 Pro Cycling,0,Male,Hills,Great Britain
+Fred Wright,2020,Q36.5 Pro Cycling,1,Male,Hills,Great Britain
+Quinten Hermans,2020,Q36.5 Pro Cycling,3,Male,Hills,Belgium
+Thomas Pidcock,2021,Q36.5 Pro Cycling,10,Male,Oneday,Great Britain
+Nickolas Zukowsky,2020,Q36.5 Pro Cycling,1,Male,Oneday,Canada
+Brent Van Moer,2020,Q36.5 Pro Cycling,1,Male,Oneday,Belgium
+Frederik Frison,2015,Q36.5 Pro Cycling,0,Male,Oneday,Belgium
+Aimé De Gendt,2016,Q36.5 Pro Cycling,1,Male,Oneday,Belgium
+Fabio Christen,2023,Q36.5 Pro Cycling,2,Male,Oneday,Switzerland
+Matteo Moschetti,2019,Q36.5 Pro Cycling,14,Male,Sprint,Italy
+Sam Bennett,2014,Q36.5 Pro Cycling,71,Male,Sprint,Ireland
+Emmanuel Houcou,2026,Q36.5 Pro Cycling,0,Male,Sprint,France
+Emīls Liepiņš,2019,Q36.5 Pro Cycling,5,Male,Sprint,Latvia
+Xabier Mikel Azparren,2021,Q36.5 Pro Cycling,0,Male,Time Trial,Spain
+Robin Donzé,2026,Tudor Pro Cycling,0,Male,Climber,Switzerland
+Michael Storer,2018,Tudor Pro Cycling,10,Male,Climber,Australia
+Yannis Voisard,2023,Tudor Pro Cycling,2,Male,GC,Switzerland
+Mathys Rondel,2025,Tudor Pro Cycling,0,Male,GC,France
+Marco Brenner,2021,Tudor Pro Cycling,2,Male,GC,Germany
+Hannes Wilksch,2024,Tudor Pro Cycling,0,Male,GC,Germany
+Larry Warbasse,2013,Tudor Pro Cycling,2,Male,GC,United States
+Florian Stork,2020,Tudor Pro Cycling,1,Male,GC,Germany
+Roland Thalmann,2023,Tudor Pro Cycling,0,Male,GC,Switzerland
+Robin Froidevaux,2023,Tudor Pro Cycling,1,Male,Hills,Switzerland
+Luc Wirtgen,2020,Tudor Pro Cycling,0,Male,Hills,Luxembourg
+Marius Mayrhofer,2022,Tudor Pro Cycling,2,Male,Hills,Germany
+Rick Pluimers,2023,Tudor Pro Cycling,1,Male,Hills,Netherlands
+Marc Hirschi,2019,Tudor Pro Cycling,24,Male,Oneday,Switzerland
+Luca Mozzato,2020,Tudor Pro Cycling,3,Male,Oneday,Italy
+Fabian Lienhard,2019,Tudor Pro Cycling,0,Male,Oneday,Switzerland
+Marco Haller,2012,Tudor Pro Cycling,6,Male,Oneday,Austria
+Julian Alaphilippe,2014,Tudor Pro Cycling,45,Male,Oneday,France
+Matteo Trentin,2012,Tudor Pro Cycling,32,Male,Oneday,Italy
+Jacob Eriksson,2023,Tudor Pro Cycling,1,Male,Oneday,Sweden
+Arvid De Kleijn,2020,Tudor Pro Cycling,18,Male,Sprint,Netherlands
+Sebastian Kolze Changizi,2023,Tudor Pro Cycling,0,Male,Sprint,Denmark
+Petr Kelemen,2023,Tudor Pro Cycling,0,Male,Time Trial,Czech Republic
+Arthur Kluckers,2023,Tudor Pro Cycling,2,Male,Time Trial,Luxembourg
+Maikel Zijlaard,2023,Tudor Pro Cycling,1,Male,Time Trial,Netherlands
+Joel Suter,2020,Tudor Pro Cycling,2,Male,Time Trial,Switzerland
+Aivaras Mikutis,2025,Tudor Pro Cycling,4,Male,Time Trial,Lithuania
+Fabian Weiss,2025,Tudor Pro Cycling,0,Male,Time Trial,Switzerland
+Stefan Küng,2015,Tudor Pro Cycling,30,Male,Time Trial,Switzerland
+Will Barta,2018,Tudor Pro Cycling,1,Male,Time Trial,United States
+Eivind Broholt Fougner,2026,Unibet Rose Rockets,0,Male,Climber,Norway
+Adrien Maire,2024,Unibet Rose Rockets,1,Male,Climber,France
+Colin Savioz,2026,Unibet Rose Rockets,0,Male,Climber,Switzerland
+Wout Poels,2009,Unibet Rose Rockets,26,Male,GC,Netherlands
+Odd Christian Eiking,2016,Unibet Rose Rockets,3,Male,GC,Norway
+Killian Verschuren,2025,Unibet Rose Rockets,0,Male,GC,Belgium
+Victor Lafay,2019,Unibet Rose Rockets,4,Male,GC,France
+Cedrik Bakke Christophersen,2024,Unibet Rose Rockets,0,Male,GC,Norway
+Jannis Peter,2026,Unibet Rose Rockets,1,Male,GC,Germany
+Sergio Meris,2025,Unibet Rose Rockets,0,Male,Hills,Italy
+Karsten Larsen Feldmann,2026,Unibet Rose Rockets,0,Male,Hills,Denmark
+Owen Geleijn,2024,Unibet Rose Rockets,0,Male,Hills,Netherlands
+Lander Loockx,2024,Unibet Rose Rockets,1,Male,Hills,Belgium
+Adam Ťoupalík,2024,Unibet Rose Rockets,3,Male,Hills,Czech Republic
+Rory Townsend,2023,Unibet Rose Rockets,6,Male,Oneday,Ireland
+Clément Venturini,2016,Unibet Rose Rockets,4,Male,Oneday,France
+Jelle Johannink,2024,Unibet Rose Rockets,0,Male,Oneday,Netherlands
+Matyáš Kopecký,2022,Unibet Rose Rockets,0,Male,Sprint,Czech Republic
+Tobias Müller,2026,Unibet Rose Rockets,0,Male,Sprint,Germany
+Ronan Augé,2026,Unibet Rose Rockets,0,Male,Sprint,France
+Lukáš Kubiš,2025,Unibet Rose Rockets,4,Male,Sprint,Slovakia
+Martijn Rasenberg,2025,Unibet Rose Rockets,0,Male,Sprint,Netherlands
+Joren Bloem,2024,Unibet Rose Rockets,0,Male,Sprint,Netherlands
+Hartthijs de Vries,2020,Unibet Rose Rockets,1,Male,Sprint,Netherlands
+Abram Stockman,2024,Unibet Rose Rockets,0,Male,Sprint,Belgium
+Elmar Reinders,2017,Unibet Rose Rockets,0,Male,Sprint,Netherlands
+Dylan Groenewegen,2015,Unibet Rose Rockets,78,Male,Sprint,Netherlands
+Wessel Mouris,2025,Unibet Rose Rockets,0,Male,Time Trial,Netherlands
+Tomáš Kopecký,2024,Unibet Rose Rockets,0,Male,Time Trial,Czech Republic
+Niklas Larsen,2020,Unibet Rose Rockets,1,Male,Time Trial,Denmark
+Jamie Meehan,2025,Cofidis,0,Male,Climber,Ireland
+Yaël Joalland,2026,Cofidis,0,Male,Climber,France
+Simon Carr,2020,Cofidis,7,Male,Climber,Great Britain
+Sergio Samitier,2018,Cofidis,0,Male,GC,Spain
+Sam Maisonobe,2025,Cofidis,0,Male,GC,France
+Clément Izquierdo,2025,Cofidis,0,Male,GC,France
+Louis Rouland,2025,Cofidis,0,Male,GC,France
+Sylvain Moniquet,2021,Cofidis,1,Male,GC,Belgium
+Emanuel Buchmann,2015,Cofidis,5,Male,GC,Germany
+Jan Maas,2022,Cofidis,0,Male,GC,Netherlands
+Dylan Teuns,2015,Cofidis,14,Male,GC,Belgium
+Ion Izagirre,2011,Cofidis,18,Male,GC,Spain
+Paul Ourselin,2017,Cofidis,0,Male,GC,France
+Edoardo Zamperini,2026,Cofidis,0,Male,Hills,Italy
+Hugo Page,2022,Cofidis,1,Male,Oneday,France
+Damien Touzé,2019,Cofidis,0,Male,Oneday,France
+Jenthe Biermans,2017,Cofidis,3,Male,Oneday,Belgium
+Alexis Renard,2020,Cofidis,0,Male,Oneday,France
+Valentin Ferron,2021,Cofidis,4,Male,Oneday,France
+Piet Allegaert,2017,Cofidis,1,Male,Oneday,Belgium
+Ludovic Robeet,2017,Cofidis,2,Male,Oneday,Belgium
+Nicolas Debeaumarché,2024,Cofidis,0,Male,Oneday,France
+Alex Aranburu,2017,Cofidis,9,Male,Oneday,Spain
+Stanisław Aniołkowski,2021,Cofidis,5,Male,Sprint,Poland
+Milan Fretin,2022,Cofidis,5,Male,Sprint,Belgium
+Bryan Coquard,2013,Cofidis,54,Male,Sprint,France
+Oliver Knight,2024,Cofidis,1,Male,Time Trial,Great Britain
+Benjamin Thomas,2018,Cofidis,10,Male,Time Trial,France
+Alex Kirsch,2015,Cofidis,2,Male,Time Trial,Luxembourg
+Camille Charret,2026,Cofidis,0,Male,Time Trial,France
+Jesús Herrada,2011,Burgos Burpellet BH,21,Male,GC,Spain
+Fernando Gaviria,2016,Caja Rural - Seguros RGA,52,Male,Sprint,Spain

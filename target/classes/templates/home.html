@@ -50,7 +50,7 @@
         <div th:each="guess : ${guessHistory}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 20px; margin-bottom: 20px;">
             <p th:text="${guess.guessedCyclist.name}" style="font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; width: 100%; text-align: center;">Name</p>
             <div th:style="'background-color: ' + ${guess.colors[0]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'"> 
-                <p style="font-weight: 600;">Debut</p>
+                <p style="font-weight: 600;">Pro Debut</p>
                 <p>
                     <span th:text="${guess.guessedCyclist.debut}" style="font-size: 20px;"></span>
                     <span th:text="${guess.arrows[0]}" style="font-size: 20px;"></span>
