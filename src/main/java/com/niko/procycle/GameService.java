@@ -13,6 +13,7 @@ public class GameService {
     ArrayList<Guess> Guesses = new ArrayList<>();
     Cyclist currentAnswer;
     String mode;
+    String difficulty;
 
     public GameService() {
         try {
@@ -21,6 +22,7 @@ public class GameService {
             System.out.println("Error loading cyclists: " + e.getMessage());
         }
         mode = "Daily";
+        difficulty = "Hard";
         currentAnswer = getDailyCyclist();
     }
 
@@ -32,14 +34,67 @@ public class GameService {
         String line = br.readLine();
         while (line != null){
             String[] parts = line.split(",");
-            cyclists.add(new Cyclist(parts[0], Integer.parseInt(parts[1]), parts[2], Integer.parseInt(parts[3]), parts[4], parts[5], parts[6]));
+            cyclists.add(new Cyclist(parts[0], Integer.parseInt(parts[1]), parts[2], Integer.parseInt(parts[3]), parts[4], parts[5], parts[6], parts[7]));
             line = br.readLine();
         }
     }
 
+    public ArrayList<Cyclist> getFilteredList(){
+        ArrayList<Cyclist> filteredCyclists = new ArrayList<>();
+        if(difficulty.equals("Hard")){
+            return cyclists;
+        }
+        if(difficulty.equals("Medium")){
+            for(int i = 0; i<cyclists.size(); i++){
+                if(cyclists.get(i).getDifficulty().equals("Medium") || cyclists.get(i).getDifficulty().equals("Easy") || cyclists.get(i).getDifficulty().equals("Noob")){
+                    filteredCyclists.add(cyclists.get(i));
+                }
+            }
+        }
+        if(difficulty.equals("Easy")){
+            for(int i = 0; i<cyclists.size(); i++){
+                if(cyclists.get(i).getDifficulty().equals("Easy") || cyclists.get(i).getDifficulty().equals("Noob")){
+                    filteredCyclists.add(cyclists.get(i));
+                }
+            }
+        }
+        if(difficulty.equals("Noob")){
+            for(int i = 0; i<cyclists.size(); i++){
+                if(cyclists.get(i).getDifficulty().equals("Noob")){
+                    filteredCyclists.add(cyclists.get(i));
+                }
+            }
+        }
+        return filteredCyclists;
+    }
+
+    public String setNoob(){
+        difficulty = "Noob";
+        return difficulty;
+    }
+
+    public String setEasy(){
+        difficulty = "Easy";
+        return difficulty;
+    }
+
+    public String setMedium(){
+        difficulty = "Medium";
+        return difficulty;
+    }
+
+    public String setHard(){
+        difficulty = "Hard";
+        return difficulty;
+    }
+
+    public String getDifficulty(){
+        return difficulty;
+    }
+
     public ArrayList<String> getListOfNames(){
         ArrayList<String> listOfNames = new ArrayList<>();
-        for (Cyclist i: cyclists){
+        for (Cyclist i: getFilteredList()){
             listOfNames.add(i.getName());
         }
         return listOfNames;
@@ -51,6 +106,10 @@ public class GameService {
 
     public void setCurrentAnswerToRandom() {
         currentAnswer = getRandomCyclist();
+    }
+
+    public void setCurrentAnswerToDaily(){
+        currentAnswer = getDailyCyclist();
     }
     
     public String getMode(){
@@ -67,21 +126,17 @@ public class GameService {
         return mode;
     }
 
-    public void setCurrentAnswerToDaily(){
-        currentAnswer = getDailyCyclist();
-    }
-
     public Cyclist getDailyCyclist(){
         LocalDate today = LocalDate.now();
         int seed = today.getYear() * 1000 + today.getDayOfYear();
         Random random = new Random(seed);
-        int randomIndex = random.nextInt(cyclists.size());
-        return cyclists.get(randomIndex);
+        int randomIndex = random.nextInt(getFilteredList().size());
+        return getFilteredList().get(randomIndex);
     }
-     public Cyclist getRandomCyclist(){
+    public Cyclist getRandomCyclist(){
         Random random = new Random();
-        int randomIndex = random.nextInt(cyclists.size());
-        return cyclists.get(randomIndex);
+        int randomIndex = random.nextInt(getFilteredList().size());
+        return getFilteredList().get(randomIndex);
     }
 
     public String[] compareGuess(Cyclist guess, Cyclist answer){
@@ -140,7 +195,7 @@ public class GameService {
     }
 
     public Cyclist findCyclistByName(String guess){
-        for (Cyclist i: cyclists){
+        for (Cyclist i: getFilteredList()){
             if (i.getName().equals(guess)){
                 System.out.println(i);
                 return i;

@@ -8,8 +8,9 @@ public class Cyclist {
     private String gender;
     private String specialty;
     private String nationality;
+    private String difficulty;
 
-public Cyclist(String name, int debut, String team, int wins, String gender, String specialty, String nationality){
+public Cyclist(String name, int debut, String team, int wins, String gender, String specialty, String nationality, String difficulty){
     this.name = name;
     this.debut = debut;
     this.team = team;
@@ -17,6 +18,7 @@ public Cyclist(String name, int debut, String team, int wins, String gender, Str
     this.gender = gender;
     this.specialty = specialty;
     this.nationality = nationality;
+    this.difficulty = difficulty;
     }
 
 public String getName(){
@@ -40,12 +42,16 @@ public String getSpecialty(){
 public String getNationality(){
     return nationality;
 }
+public String getDifficulty(){
+    return difficulty;
+}
+
 public String toString(){
         return getName() + " is the cyclist";
     }
 
 public static void main(String[] args){
-    Cyclist pogacar = new Cyclist("Tadej Pogacar",2019, "UAE-Team Emiretes", 105, "Male", "Everything", "Slovinia");
+    Cyclist pogacar = new Cyclist("Tadej Pogacar",2019, "UAE-Team Emiretes", 105, "Male", "Everything", "Slovinia", "noob");
     System.out.println(pogacar.getName());
     System.out.println(pogacar.getDebut());
     System.out.println(pogacar.getTeam());
@@ -53,7 +59,7 @@ public static void main(String[] args){
     System.out.println(pogacar.getGender());
     System.out.println(pogacar.getSpecialty());
     System.out.println(pogacar.getNationality());
+    System.out.println(pogacar.getDifficulty());
+
 }
-
-
 }

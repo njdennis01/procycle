@@ -30,6 +30,7 @@ public class HomeController {
             model.addAttribute("guessHistory", theData.getGuesses());
             model.addAttribute("listOfNames", theData.getListOfNames());
             model.addAttribute("mode", theData.getMode());
+            model.addAttribute("difficulty", theData.getDifficulty());
             return "home";
         }
         Cyclist answerCyclist = theData.getCurrentAnswer();
@@ -40,6 +41,7 @@ public class HomeController {
         model.addAttribute("arrows", arrows);
         model.addAttribute("listOfNames", theData.getListOfNames());
         model.addAttribute("mode", theData.getMode());
+        model.addAttribute("difficulty", theData.getDifficulty());
         Guess aGuess = new Guess(guessedCyclist, colors, arrows);
         ArrayList<Guess> guessHistory = theData.guessHistory(aGuess);
         model.addAttribute("guessHistory", guessHistory);
@@ -55,12 +57,14 @@ public class HomeController {
         theData.clearHistory();
         model.addAttribute("listOfNames", theData.getListOfNames());
         model.addAttribute("mode", theData.getMode());
+        model.addAttribute("difficulty", theData.getDifficulty());
         return "home";
     }
 
     @PostMapping("/daily")
     public String dailyMode(Model model){
         theData.setDailyMode();
+        theData.setHard();
         theData.setCurrentAnswerToDaily();
         theData.clearHistory();
         model.addAttribute("listOfNames", theData.getListOfNames());
@@ -74,6 +78,45 @@ public class HomeController {
         model.addAttribute("guessHistory", theData.getGuesses());
         model.addAttribute("listOfNames", theData.getListOfNames());
         model.addAttribute("mode", theData.getMode());
+        model.addAttribute("difficulty", theData.getDifficulty());
         return "home";
-}
+
+    }
+    @PostMapping("/Noob")
+    public String noob(Model model){
+        theData.setNoob();
+        theData.clearHistory();
+        theData.setCurrentAnswerToRandom();
+        model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
+        return "home";
+    }
+    @PostMapping("/Easy")
+    public String easy(Model model){
+        theData.setEasy();
+        theData.clearHistory();
+        theData.setCurrentAnswerToRandom();
+        model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
+        return "home";
+    }
+    @PostMapping("/Medium")
+    public String medium(Model model){
+        theData.setMedium();
+        theData.clearHistory();
+        theData.setCurrentAnswerToRandom();
+        model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
+        return "home";
+    }
+    @PostMapping("/Hard")
+    public String hard(Model model){
+        theData.setHard();
+        theData.clearHistory();
+        theData.setCurrentAnswerToRandom();
+        model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
+        return "home";
+    }
+
 }

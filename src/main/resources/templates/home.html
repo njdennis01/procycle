@@ -12,6 +12,10 @@
     </div>
     <h2 th:if="${mode == 'Daily'}" style="text-align: center; font-weight: 700;">Welcome to Daily PROCYCLE!</h2>
     <h2 th:if="${mode == 'Unlimited'}" style="text-align: center; font-weight: 700;">Welcome to Unlimited PROCYCLE!</h2>
+    <h3 th:if="${difficulty == 'Noob'}" style="text-align: center; font-weight: 600;">Difficulty: Noob</h3>
+    <h3 th:if="${difficulty == 'Easy'}" style="text-align: center; font-weight: 600;">Difficulty: Easy</h3>
+    <h3 th:if="${difficulty == 'Medium'}" style="text-align: center; font-weight: 600;">Difficulty: Medium</h3>
+    <h3 th:if="${difficulty == 'Hard' and mode == 'Unlimited'}" style="text-align: center; font-weight: 600;">Difficulty: Hard</h3>
     <div style="position: absolute; top: 60px; right: 10px;">
         <form action="/reveal" method="post" th:if="${won == null and guessHistory != null and revealed == null}" style="display: inline;">
             <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Reveal Answer</button>
@@ -21,6 +25,18 @@
         </form>
         <form th:if="${mode == 'Unlimited'}" action="/daily" method="post" style="display: inline;">
             <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Play Daily</button>
+        </form>
+        <form th:if="${mode == 'Unlimited'}" action="/Noob" method="post" style="display: inline;">
+            <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Noob</button>
+        </form>
+        <form th:if="${mode == 'Unlimited'}" action="/Easy" method="post" style="display: inline;">
+            <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Easy</button>
+        </form>
+        <form th:if="${mode == 'Unlimited'}" action="/Medium" method="post" style="display: inline;">
+            <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Medium</button>
+        </form>
+        <form th:if="${mode == 'Unlimited'}" action="/Hard" method="post" style="display: inline;">
+            <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Hard</button>
         </form>
     </div>
     <form action="/guess" method="post" style="text-align: center;" th:if="${won == null and revealed == null}">
@@ -45,6 +61,9 @@
         </div>
         <div th:if="${revealed}" style="text-align: center;">
             <h3 th:text="'The answer was ' + ${revealedCyclist.name}"></h3>
+            <form action="/Unlimited" method="post">
+                    <button style="border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Play Unlimited</button>
+            </form>
         </div>
         
         <div th:each="guess : ${guessHistory}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 20px; margin-bottom: 20px;">
