@@ -14,16 +14,16 @@
     <h2 th:if="${mode == 'Unlimited'}" style="text-align: center; font-weight: 700; padding-bottom: 0px;">Welcome to Unlimited PROCYCLE!</h2>
     <div style="text-align: center; padding-bottom: 15px;">
         <form th:if="${mode == 'Unlimited'}" action="/Noob" method="post" style="display: inline;">
-            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${difficulty == 'Noob'} ? 'lightgreen' : 'white')">Noob</button>
+            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${difficulty == 'Noob'} ? '#36a73e' : 'white')">Noob</button>
         </form>
         <form th:if="${mode == 'Unlimited'}" action="/Easy" method="post" style="display: inline;">
-            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${difficulty == 'Easy'} ? 'lightgreen' : 'white')">Easy</button>
+            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${difficulty == 'Easy'} ? '#ffed00' : 'white')">Easy</button>
         </form>
         <form th:if="${mode == 'Unlimited'}" action="/Medium" method="post" style="display: inline;">
-            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${difficulty == 'Medium'} ? 'lightgreen' : 'white')">Medium</button>
+            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${difficulty == 'Medium'} ? '#007bbf' : 'white')">Medium</button>
         </form>
         <form th:if="${mode == 'Unlimited'}" action="/Hard" method="post" style="display: inline;">
-            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${difficulty == 'Hard'} ? 'lightgreen' : 'white')">Hard</button>
+            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${difficulty == 'Hard'} ? '#da2430' : 'white')">Hard</button>
         </form>
     </div>
     <div style="position: absolute; top: 60px; right: 10px;">

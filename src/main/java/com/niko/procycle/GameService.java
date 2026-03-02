@@ -14,16 +14,16 @@ public class GameService {
     Cyclist currentAnswer;
     String mode;
     String difficulty;
-    ArrayList<String> northAmerica = new ArrayList<>();
-    ArrayList<String> SouthAmerica = new ArrayList<>();
-    ArrayList<String> Africa = new ArrayList<>();
-    ArrayList<String> Australia = new ArrayList<>();
-    ArrayList<String> Asia = new ArrayList<>();
-    ArrayList<String> WesternEurope = new ArrayList<>();
-    ArrayList<String> EasternEurope = new ArrayList<>();
-    ArrayList<String> NorthernEurope = new ArrayList<>();
-    ArrayList<String> SouthernEurope = new ArrayList<>();
-    ArrayList<String> CentralEurope = new ArrayList<>();
+    ArrayList<String> northAmerica = new ArrayList<>(Arrays.asList("USA", "Canada", "Mexico", "Guatemala", "Honduras", "El Salvador", "Nicaragua", "Costa Rica", "Panama", "Belize", "Cuba", "Jamaica", "Haiti", "Dominican Republic", "Puerto Rico", "Trinidad and Tobago", "Bahamas", "Barbados", "Grenada", "Saint Lucia", "Saint Vincent and the Grenadines", "Antigua and Barbuda", "Dominica", "Saint Kitts and Nevis"));
+    ArrayList<String> southAmerica = new ArrayList<>(Arrays.asList("Colombia", "Ecuador", "Brazil", "Argentina", "Chile", "Venezuela", "Uruguay", "Peru", "Bolivia", "Paraguay", "Guyana", "Suriname", "French Guiana"));
+    ArrayList<String> africa = new ArrayList<>(Arrays.asList("South Africa", "Eritrea", "Ethiopia", "Algeria", "Morocco", "Rwanda", "Namibia", "Egypt", "Nigeria", "Kenya", "Ghana", "Tanzania", "Uganda", "Cameroon", "Ivory Coast", "Senegal", "Zimbabwe", "Zambia", "Botswana", "Mozambique", "Angola", "Tunisia", "Libya", "Sudan", "South Sudan", "DR Congo", "Mali", "Burkina Faso", "Niger", "Chad", "Somalia", "Madagascar", "Malawi", "Mauritius", "Togo", "Benin", "Sierra Leone", "Liberia", "Central African Republic", "Gabon", "Congo", "Equatorial Guinea", "Guinea", "Guinea-Bissau", "Gambia", "Lesotho", "Eswatini", "Djibouti", "Comoros", "Cape Verde", "Sao Tome and Principe", "Seychelles"));
+    ArrayList<String> oceania = new ArrayList<>(Arrays.asList("Australia", "New Zealand", "Fiji", "Papua New Guinea", "Samoa", "Tonga", "Vanuatu", "Solomon Islands", "Micronesia", "Kiribati", "Marshall Islands", "Palau", "Nauru", "Tuvalu"));
+    ArrayList<String> asia = new ArrayList<>(Arrays.asList("Japan", "Kazakhstan", "Uzbekistan", "Iran", "Israel", "China", "South Korea", "North Korea", "Taiwan", "India", "Pakistan", "Bangladesh", "Indonesia", "Philippines", "Vietnam", "Thailand", "Malaysia", "Singapore", "Myanmar", "Cambodia", "Laos", "Nepal", "Sri Lanka", "Afghanistan", "Iraq", "Saudi Arabia", "UAE", "Qatar", "Kuwait", "Bahrain", "Oman", "Yemen", "Jordan", "Lebanon", "Syria", "Turkey", "Georgia", "Armenia", "Azerbaijan", "Turkmenistan", "Tajikistan", "Kyrgyzstan", "Mongolia", "Bhutan", "Maldives", "Brunei", "Timor-Leste", "Palestine", "Cyprus"));
+    ArrayList<String> westernEurope = new ArrayList<>(Arrays.asList("Britain", "Ireland", "France", "Belgium", "Netherlands", "Luxembourg", "Monaco", "Andorra"));
+    ArrayList<String> easternEurope = new ArrayList<>(Arrays.asList("Romania", "Bulgaria", "Moldova", "Ukraine", "Belarus", "Russia"));
+    ArrayList<String> northernEurope = new ArrayList<>(Arrays.asList("Denmark", "Norway", "Sweden", "Finland", "Iceland", "Estonia", "Latvia", "Lithuania"));
+    ArrayList<String> southernEurope = new ArrayList<>(Arrays.asList("Spain", "Portugal", "Italy", "San Marino", "Malta", "Greece", "Cyprus", "Albania", "North Macedonia", "Croatia", "Bosnia and Herzegovina", "Montenegro", "Serbia", "Kosovo", "Andorra"));
+    ArrayList<String> centralEurope = new ArrayList<>(Arrays.asList("Germany", "Austria", "Switzerland", "Poland", "Czech Republic", "Slovakia", "Hungary", "Liechtenstein", "Slovenia"));
 
     public GameService() {
         try {
@@ -149,9 +149,28 @@ public class GameService {
         return getFilteredList().get(randomIndex);
     }
 
-    public String getRegion(){
-
-        return "i";
+    public ArrayList<String> getRegion(){
+        if (southernEurope.contains(currentAnswer.getNationality()))
+            return southernEurope;
+        if (centralEurope.contains(currentAnswer.getNationality()))
+            return centralEurope;
+        if (easternEurope.contains(currentAnswer.getNationality()))
+            return easternEurope;
+        if (northernEurope.contains(currentAnswer.getNationality()))
+            return northernEurope;
+        if (westernEurope.contains(currentAnswer.getNationality()))
+            return westernEurope;
+        if (oceania.contains(currentAnswer.getNationality()))
+            return oceania;
+        if (northAmerica.contains(currentAnswer.getNationality()))
+            return northAmerica;
+        if (southAmerica.contains(currentAnswer.getNationality()))
+            return southAmerica;
+        if (africa.contains(currentAnswer.getNationality()))
+            return africa;
+        if (asia.contains(currentAnswer.getNationality()))
+            return asia;
+    return null;
     }
 
     public String[] compareGuess(Cyclist guess, Cyclist answer){
@@ -173,7 +192,6 @@ public class GameService {
             result[2] = "Green";
         else if (guess.getWins() >= (answer.getWins() - 5) && guess.getWins() <= (answer.getWins() + 5))
             result[2] = "#F0C040";
-            //add more or less
         else result[2] = "Black";
 
 
@@ -189,8 +207,10 @@ public class GameService {
 
         if (guess.getNationality().equals(answer.getNationality()))
             result[5] = "Green";
+        else if (getRegion().contains(guess.getNationality()))
+            result[5] = "#F0C040";
         else result[5] = "Black";
-            //will add geographic location yellow later, not sure how to yet!
+            
         System.out.println(Arrays.toString(result));
 
         return result;
