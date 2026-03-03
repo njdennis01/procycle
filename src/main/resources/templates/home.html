@@ -36,6 +36,15 @@
         <form th:if="${mode == 'Unlimited'}" action="/daily" method="post" style="display: inline;">
             <button style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Play Daily</button>
         </form>
+        <form th:if="${mode == 'Unlimited'}" action="/Both" method="post" style="display: inline;">
+            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${genderMode == 'Both'} ? '#36a73e' : 'white')">Both</button>
+        </form>
+        <form th:if="${mode == 'Unlimited'}" action="/Men" method="post" style="display: inline;">
+            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${genderMode == 'Men'} ? '#36a73e' : 'white')">Men</button>
+        </form>
+        <form th:if="${mode == 'Unlimited'}" action="/Women" method="post" style="display: inline;">
+            <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${genderMode == 'Women'} ? '#36a73e' : 'white')">Women</button>
+        </form>
     </div>
     <form action="/guess" method="post" style="text-align: center;" th:if="${won == null and revealed == null}">
         <div style="position: relative; display: inline-block;">
@@ -60,7 +69,7 @@
         <div th:if="${revealed}" style="text-align: center;">
             <h3 th:text="'The answer was ' + ${revealedCyclist.name}"></h3>
             <form action="/Unlimited" method="post">
-                    <button style="border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Play Unlimited</button>
+                    <button style="border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: #36a73e">Play Unlimited</button>
             </form>
         </div>
         

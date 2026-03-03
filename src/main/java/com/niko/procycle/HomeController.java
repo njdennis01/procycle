@@ -70,6 +70,7 @@ public class HomeController {
     public String dailyMode(Model model){
         theData.setDailyMode();
         theData.setHard();
+        theData.setBoth();
         theData.setCurrentAnswerToDaily();
         theData.clearHistory();
         model.addAttribute("listOfNames", theData.getListOfNames());
@@ -137,16 +138,37 @@ public class HomeController {
 
     @PostMapping("/Both")
     public String both(Model model){
+        theData.setBoth();
+        theData.clearHistory();
+        theData.setCurrentAnswerToRandom();
+        model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
+        model.addAttribute("difficulty", theData.getDifficulty());
+        model.addAttribute("genderMode", theData.getGenderMode());
         return "home";
     }
 
     @PostMapping("/Men")
     public String men(Model model){
+        theData.setMen();
+        theData.clearHistory();
+        theData.setCurrentAnswerToRandom();
+        model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
+        model.addAttribute("difficulty", theData.getDifficulty());
+        model.addAttribute("genderMode", theData.getGenderMode());
         return "home";
     }
 
     @PostMapping("/Women")
     public String women(Model model){
+        theData.setWomen();
+        theData.clearHistory();
+        theData.setCurrentAnswerToRandom();
+        model.addAttribute("listOfNames", theData.getListOfNames());
+        model.addAttribute("mode", theData.getMode());
+        model.addAttribute("difficulty", theData.getDifficulty());
+        model.addAttribute("genderMode", theData.getGenderMode());
         return "home";
     }
 }

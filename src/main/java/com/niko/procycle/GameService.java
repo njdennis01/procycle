@@ -32,10 +32,10 @@ public class GameService {
         } catch (Exception e) {
             System.out.println("Error loading cyclists: " + e.getMessage());
         }
+        genderMode = "Both";
         mode = "Daily";
         difficulty = "Hard";
         currentAnswer = getDailyCyclist();
-        genderMode = "Both";
     }
 
     public void createCyclists() throws Exception {
