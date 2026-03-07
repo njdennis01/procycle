@@ -18,17 +18,18 @@
 </div>
     <div style="height: 50px; width: 100%; background: linear-gradient(to bottom, #007bbf 0% 20%, #da2430 20% 40%, #111012 40% 60%, #ffed00 60% 80%, #36a73e 80% 100%);"></div>
 <div style="flex-grow: 1">
-    <div style="text-align: center; padding-top: 10px;">
-        <div id="menubutton" style="display: inline; padding-right: 10px; vertical-align: middle">
+    <div style="padding-top: 10px; display: flex; justify-content: space-between; align-items: center; width: 530px; margin: auto;">
+        <div id="menubutton" style="display: inline; vertical-align: middle; width: 48px;">
             <button style="cursor: pointer; font-size: 40px; font-weight: 500; background: none; border: none; line-height: 1">☰</button>
         </div>
         <div style="text-align: center; display: inline; vertical-align: middle">
             <h1 style="font-size: 60px; text-align: center; font-weight: 800; letter-spacing: 5px; display: inline; padding-right: 0px;"><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">P</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">R</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">O</span></h1><h1 style="font-size: 60px; text-align: center; font-weight: 800; display: inline"><span style="color:#007bbf">C</span><span style="color: #da2430">Y</span><span style="color: #111012">C</span><span style="color:#ffed00">L</span><span style="color: #36a73e">E</span></h1>
         </div>
-        <div id="directionsbutton" style=" display: inline; padding-left: 10px; vertical-align: middle">
+        <div id="directionsbutton" style=" display: inline; vertical-align: middle; width: 48px;">
             <button style="border-radius: 20px; background-color: white; cursor: pointer; font-size: 30px; font-weight: 500; height: 40px; padding-left: 10px; padding-right: 10px;">?</button>
         </div>
     </div>
+    <hr style="width: 530px; border: 1px solid gray; margin: auto;">
 
     <div id="sidebar" style="display: none; height: 600px; width: 660px; z-index: 100; padding: 40px 20px; flex-direction: column; gap: 10px; background-color: lightgray; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 30px; border: 2px solid black;">
         <button id="closebutton" style="background: none; border: none; cursor: pointer; font-size: 30px; font-weight: 500; position: fixed; top: 10px; Right: 10px;">X</button>
@@ -92,10 +93,10 @@
         <button id="close2button" style="background: none; border: none; cursor: pointer; font-size: 30px; font-weight: 500; position: fixed; top: 10px; Right: 10px;">X</button>
     </div>
 
-    <h2 th:if="${mode == 'Daily'}" style=" margin: 10px; text-align: center; font-weight: 650; font-Size: 20px">Welcome to The Daily PROCYCLE</h2>
-    <h2 th:if="${mode == 'Unlimited'}" style=" margin: 10px; text-align: center; font-weight: 650; font-Size: 20px;">Welcome to Unlimited PROCYCLE</h2>
+    <h2 th:if="${mode == 'Daily'}" style=" padding-top: 20px; padding-bottom: 5px; margin: 0px; text-align: center; font-weight: 650; font-Size: 20px">Welcome to The Daily PROCYCLE</h2>
+    <h2 th:if="${mode == 'Unlimited'}" style=" padding-top: 20px; padding-bottom: 5px; margin: 0px; text-align: center; font-weight: 650; font-Size: 20px;">Welcome to Unlimited PROCYCLE</h2>
 
-    <div style="text-align: center; padding-bottom: 15px;">
+    <div style="text-align: center; padding-bottom: 15px; padding-top: 10px;">
         <form th:if="${mode == 'Unlimited'}" action="/Noob" method="post" style="display: inline;">
             <button th:style="'border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; background-color: ' + (${difficulty == 'Noob'} ? '#36a73e' : 'white')">Noob</button>
         </form>
@@ -147,15 +148,8 @@
                 </form>
             </div>
         </div>
-        <div th:if="${revealedCyclist != null}">
-            <h3 style="font-size: 25px;text-align: center; margin-bottom: 5px; margin-top: 0px; font-weight: 800; color: red; padding-bottom: 10px;">You lost.</h3>
-            <div style="text-align: center;">
-                <form action="/Unlimited" method="post">
-                    <button style="border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; color: white; background-color: black; padding-left: 20px; padding-right: 20px; cursor: pointer;">Play Unlimited</button>
-                </form>
-            </div>
-        </div>
         <div th:if="${revealed}" style="text-align: center;">
+            <h3 style="font-size: 25px;text-align: center; margin-bottom: 5px; margin-top: 0px; font-weight: 800; color: red; padding-bottom: 10px;">You lost.</h3>
             <form action="/Unlimited" method="post">
                     <button style="border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; color: white; padding-left: 20px; padding-right: 20px; cursor: pointer; background-color: Black">Play Unlimited</button>
             </form>
