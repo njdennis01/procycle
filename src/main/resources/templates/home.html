@@ -201,8 +201,8 @@
         <button id="howtoplaybutton" style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">How to Play</button>
         <button id="attributesbutton" style="border-radius: 20px; height: 30px; font-size: 15px; font-weight: 600; background-color: white; padding-left: 15px; padding-right: 15px; cursor: pointer;">Attributes Explination</button>
         <div id="page1" style="display: block;">
-            <h1 style="text-align: center; font-weight: 600px; margin: 0px; padding-bottom: 20px; padding-top: 20px;">How To Play</h1>
-            <div style="margin: 0px; padding-bottom: 20px;"><h2 style="text-align: center; font-weight: 600px; display: inline;">Your Goal:</h2><h2 style="text-align: center; font-weight: 500; display: inline;"> Guess the Unkown Pro Cyclist.</h2></div>
+            <h1 style="text-align: center; font-weight: 600px; margin: 0px; padding-bottom: 20px; padding-top: 20px; font-size: 50px;">How To Play</h1>
+            <div style="margin: 0px; padding-bottom: 20px; text-align: center;"><h2 style="text-align: center; font-weight: 600px; display: inline;">Your Goal:</h2><h2 style="text-align: center; font-weight: 500; display: inline;"> Guess the Unkown Pro Cyclist.</h2></div>
             <div style="padding-bottom: 20px;">
                 <span style="display: inline-flex; align-items: center; justify-content: center;width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">1</span><h2 style="font-size: 20px; display: inline; padding-left: 15px; font-weight: 500;">Search for a cyclist to make your first guess.</h2> 
             </div>
@@ -214,11 +214,16 @@
             </div>
         </div>
         <div id="page2" style="display: none;">
-            <h1 style="text-align: center; font-weight: 600px; margin: 0px; padding-bottom: 20px; padding-top: 20px;">Attributes</h1>
-            <h2 style="font-weight: 500px; margin: 0px; padding-bottom: 20px;">All cycling statistic from procyclingstats.</h2>
-            <h2>Pro Debut</h2>
-                <p style="color: gray; font-weight: 500;">The Year of the Cyclist's first season on a  World Tour team or UCI ProTeam.</p>
-                <div style="display: flex;">
+            <div style="text-align: center;">
+                <h1 style="font-weight: 600px; margin: 0px; padding-top: 20px; font-size: 50px;">Attributes</h1>
+                <p style="font-weight: 600; font-size: 20px">All cyclist statistics from procyclingstats.com.</p>
+                <p style="font-weight: 500; color: gray;">A big thanks to procyclingstats for making this game possible through the statistics on their website.</p>
+                <p style="font-weight: 600; font-size: 20px;">All attributes acurate as of the start of the 2026 season and should be updated anually.</p>
+            </div>
+            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Pro Debut</h2>
+                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The year of the cyclists firsts season on a UCI World Tour or UCI ProTeam.</p>
+                <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
                     </div>
@@ -229,9 +234,10 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <h2>Team</h2>
-                <p style="color: gray; font-weight: 500;">The Cyclist's most recent Team. If they are Retired it will say as much instead.</p>
-                <div style="display: flex;">
+            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Team</h2>
+                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclist's most recent Team. This could be any UCI World Tour team or a few UCI ProTeam mentioned below. If instead the cyclist is retired it will say as much.</p>
+                <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
                     </div>
@@ -239,9 +245,10 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <h2>Wins</h2>
-                <p style="color: gray; font-weight: 500;">How many Professional wins the cyclist has achieved.</p>
-                <div style="display: flex;">
+            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Wins</h2>
+                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">How many pofessional wins the cyclist has achieved. A professional win is a win on UCI .1 level or higher.</p>
+                <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
                     </div>
@@ -252,8 +259,10 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <h2>Gender</h2>
-                <div style="display: flex;">
+            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Gender</h2>
+                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclists gender.</p>
+                <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
                     </div>
@@ -261,8 +270,10 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <h2>Specialty</h2>
-                <div style="display: flex;">
+            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Specialty</h2>
+                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclists specialty. There are 6 specialties assigned by Pro Cycling Stats: Oneday races, GC, Time Trial, Sprint, and Hills.</p>
+                <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
                     </div>
@@ -270,31 +281,50 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <h2>Nationality</h2>
-                <div style="display: flex;">
-                    <div class="legend-box" style="background-color: black;">
-                        <p>Incorrect</p>
-                    </div>
-                    <div class="legend-box" style="background-color: #F0C040;">
-                        <p>Same Continent</p>
-                    </div>
-                    <div class="legend-box" style="background-color: green;">
-                        <p>Correct</p>
-                    </div>
-                </div>
-                <h3>But, if the rider is european then</h3>
+            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Nationality</h2>
+                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclists nationality.</p>
                 <div style="display: flex;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
                     </div>
                     <div class="legend-box" style="background-color: #F0C040;">
-                        <p>Same Region</p>
+                        <p>Same continent</p>
                     </div>
                     <div class="legend-box" style="background-color: green;">
                         <p>Correct</p>
                     </div>
                 </div>
-                <h3>Europe regions: Western Europe, Eastern Europe, Southern Europe, North Europe, Central Europe</h3>
+                <h3>if the cyclists nationality is european, then</h3>
+                <div style="display: flex; padding-bottom: 15px;">
+                    <div class="legend-box" style="background-color: black;">
+                        <p>Incorrect</p>
+                    </div>
+                    <div class="legend-box" style="background-color: #F0C040;">
+                        <p>Same region</p>
+                    </div>
+                    <div class="legend-box" style="background-color: green;">
+                        <p>Correct</p>
+                    </div>
+                </div>
+                <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+                <h2 style="padding-top: 10px;">Europe Regions</h2> 
+                
+                    <div style="padding-bottom: 10px;"><p style="display: inline;">Western Europe:</p><p style="color: gray; font-weight: 500; display: inline;"> Britain, Ireland, France, Belgium, Netherlands, Luxembourg, Monaco, Andorra</p></div>
+                    <div style="padding-bottom: 10px;"><p style="display: inline;">Eastern Europe:</p><p style="color: gray; font-weight: 500; display: inline;"> Romania, Bulgaria, Moldova, Ukraine, Belarus, Russia</p></div>
+                    <div style="padding-bottom: 10px;"><p style="display: inline;">Southern Europe:</p><p style="color: gray; font-weight: 500; display: inline;"> Spain, Portugal, Italy, San Marino, Malta, Greece, Cyprus, Albania, North Macedonia, Croatia, Bosnia and Herzegovina, Montenegro, Serbia, Kosovo, Andorra</p></div>
+                    <div style="padding-bottom: 10px;"><p style="display: inline;">North Europe:</p><p style="color: gray; font-weight: 500; display: inline;"> Denmark, Norway, Sweden, Finland, Iceland, Estonia, Latvia, Lithuania</p></div>
+                    <div style="padding-bottom: 20px;"><p style="display: inline;">Central Europe:</p><p style="color: gray; font-weight: 500; display: inline;"> Germany, Austria, Switzerland, Poland, Czech Republic, Slovakia, Hungary, Liechtenstein, Slovenia</p></div>
+                
+                <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+                <h2 style="padding-top: 10px;">Which proffesional cyclists are in the game?</h2>
+                <p style="font-weight: 600; font-size: 20px;">The complete list of cyclists includes:</p>
+                <p style="font-weight: 500; padding-left: 30px; color: gray;">● Every cyclists from all 18 mens UCI World Tour teams and all 14 womens UCI World Tour teams.</p>
+                <p style="font-weight: 500; padding-left: 30px; color: gray;">● Every cyclists from the following mens UCI ProTeams: Tudor Pro Cycling, Cofidis, Pinarello Q36.5 Pro Cycling, and Unibet Rose Rockets.</p>
+                <p style="font-weight: 500; padding-left: 30px; color: gray;">● Significant pro cyclists who retired after 2020.</p>
+                <p style="font-weight: 500; padding-left: 30px; color: gray;">● A few additions on UCI ProTeams that were not included: Jesús Herrada, Fernando Gaviria, Iván Ramiro Sosa, Yukiya Arashiro, Anthony Turgis, Allison Jackson, and Chris Froome (Not retired but not on a team).</p>
+                <p style="font-weight: 600;">The Daily ProCycle will reset to the full list at the start of ever month.</p>
+
         </div>
     </div>
 
@@ -507,7 +537,9 @@
     var directionsbutton = document.getElementById("directionsbutton");
     var directionsPage = document.getElementById("directionsPage");
     var close2button = document.getElementById("close2button");
-    
+    const page1 = document.getElementById("page1");
+    const page2 = document.getElementById("page2");
+
     if (sessionStorage.getItem("directionsOpen") == "true") {
         directionsPage.classList.add("active");
         overlay.style.display = "flex";
@@ -517,6 +549,8 @@
         sessionStorage.setItem("directionsOpen", "true");
         overlay.style.display = "flex";
         document.body.style.overflow = "hidden";
+        page1.style.display = "block";
+        page2.style.display = "none";
     });
     close2button.addEventListener("click", function() {
         directionsPage.classList.remove("active");
@@ -525,8 +559,6 @@
         document.body.style.overflow = "hidden";
     });
 
-    const page1 = document.getElementById("page1");
-    const page2 = document.getElementById("page2");
     const howtoplaybutton = document.getElementById("howtoplaybutton");
     const attributesbutton = document.getElementById("attributesbutton");
 
