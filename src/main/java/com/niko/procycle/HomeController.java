@@ -1,11 +1,14 @@
 package com.niko.procycle;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 
 @Controller
@@ -61,6 +64,43 @@ public class HomeController {
         }
         return "home";
     }
+
+    @PostMapping("/guessAjax")
+    @ResponseBody
+    public Map<String, Object> handleGuessAjax(@RequestParam String guess) {
+        Cyclist guessedCyclist = theData.findCyclistByName(guess);
+        if (guessedCyclist == null) {
+            return Map.of("error", "Cyclist not found, try again!");
+        }
+        Cyclist answerCyclist = theData.getCurrentAnswer();
+        String[] arrows = theData.getArrows(guessedCyclist, answerCyclist);
+        String[] colors = theData.compareGuess(guessedCyclist, answerCyclist);
+        Guess aGuess = new Guess(guessedCyclist, colors, arrows);
+        ArrayList<Guess> guessHistory = theData.guessHistory(aGuess);
+        Map<String, Object> response = new HashMap<>();
+        response.put("name", guessedCyclist.getName());
+        response.put("colors", colors);
+        response.put("arrows", arrows);
+        response.put("debut", guessedCyclist.getDebut());
+        response.put("team", guessedCyclist.getTeam());
+        response.put("wins", guessedCyclist.getWins());
+        response.put("gender", guessedCyclist.getGender());
+        response.put("specialty", guessedCyclist.getSpecialty());
+        response.put("nationality", guessedCyclist.getNationality());
+        response.put("won", guessedCyclist.getName().equals(answerCyclist.getName()));
+        response.put("revealed", theData.getGuesses().size() >= 10 && !guessedCyclist.getName().equals(answerCyclist.getName()) && theData.getGuessMode().equals("Limited"));
+        if (theData.getGuesses().size() >= 10 && !guessedCyclist.getName().equals(answerCyclist.getName()) && theData.getGuessMode().equals("Limited")) {
+            response.put("revealedName", answerCyclist.getName());
+            response.put("revealedDebut", answerCyclist.getDebut());
+            response.put("revealedTeam", answerCyclist.getTeam());
+            response.put("revealedWins", answerCyclist.getWins());
+            response.put("revealedGender", answerCyclist.getGender());
+            response.put("revealedSpecialty", answerCyclist.getSpecialty());
+            response.put("revealedNationality", answerCyclist.getNationality());
+        }
+        return response;
+    }
+
     @PostMapping("/Unlimited")
     public String unlimitedMode(Model model){
         theData.setUnlimitedMode();

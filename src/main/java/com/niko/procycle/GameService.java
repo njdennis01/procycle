@@ -262,7 +262,7 @@ public class GameService {
 
         if (guess.getNationality().equals(answer.getNationality()))
             result[5] = "Green";
-        else if (getRegion().contains(guess.getNationality()))
+        else if (getRegion() != null && getRegion().contains(guess.getNationality()))
             result[5] = "#F0C040";
         else result[5] = "Black";
             
