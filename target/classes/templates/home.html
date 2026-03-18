@@ -562,6 +562,57 @@
     let guessMode = [[${guessMode}]];
     let gameMode = [[${mode}]];
 
+    const flags = {
+        "Belgium": "🇧🇪",
+        "Netherlands": "🇳🇱",
+        "France": "🇫🇷",
+        "Great Britain": "🇬🇧",
+        "Italy": "🇮🇹",
+        "United States": "🇺🇸",
+        "Norway": "🇳🇴",
+        "Denmark": "🇩🇰",
+        "Australia": "🇦🇺",
+        "Canada": "🇨🇦",
+        "Slovenia": "🇸🇮",
+        "Austria": "🇦🇹",
+        "Switzerland": "🇨🇭",
+        "Spain": "🇪🇸",
+        "Hungary": "🇭🇺",
+        "Colombia": "🇨🇴",
+        "Portugal": "🇵🇹",
+        "Russia": "🇷🇺",
+        "Croatia": "🇭🇷",
+        "Poland": "🇵🇱",
+        "Ecuador": "🇪🇨",
+        "Ireland": "🇮🇪",
+        "Estonia": "🇪🇪",
+        "New Zealand": "🇳🇿",
+        "Luxembourg": "🇱🇺",
+        "Monaco": "🇲🇨",
+        "Eritrea": "🇪🇷",
+        "Latvia": "🇱🇻",
+        "Czech Republic": "🇨🇿",
+        "Sweden": "🇸🇪",
+        "Venezuela": "🇻🇪",
+        "Kazakhstan": "🇰🇿",
+        "Israel": "🇮🇱",
+        "Slovakia": "🇸🇰",
+        "South Africa": "🇿🇦",
+        "Mexico": "🇲🇽",
+        "China": "🇨🇳",
+        "Argentina": "🇦🇷",
+        "Lithuania": "🇱🇹",
+        "Finland": "🇫🇮",
+        "Mauritius": "🇲🇺",
+        "Belarus": "🇧🇾",
+        "Serbia": "🇷🇸",
+        "Cuba": "🇨🇺",
+        "Japan": "🇯🇵"
+    };
+
+    function getFlag(nationality) {
+        return flags[nationality] || "";
+    }
 
     var playButton = document.getElementById("playButton");
     var splashScreen = document.getElementById("splashScreen");
@@ -1032,8 +1083,9 @@
                 box.style.backgroundColor = "black";
 
                 const label = document.createElement("p");
-                label.textContent = attr.label;
+                label.textContent = index === 5 ? getFlag(data.nationality) : attr.label;
                 label.style.fontWeight = "600";
+                
                 
                 const value = document.createElement("p");
                 value.textContent = attr.value;
