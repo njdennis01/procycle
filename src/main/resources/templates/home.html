@@ -563,51 +563,52 @@
     let gameMode = [[${mode}]];
 
     const flags = {
-        "Belgium": "🇧🇪",
-        "Netherlands": "🇳🇱",
-        "France": "🇫🇷",
-        "Great Britain": "🇬🇧",
-        "Italy": "🇮🇹",
-        "United States": "🇺🇸",
-        "Norway": "🇳🇴",
-        "Denmark": "🇩🇰",
-        "Australia": "🇦🇺",
-        "Canada": "🇨🇦",
-        "Slovenia": "🇸🇮",
-        "Austria": "🇦🇹",
-        "Switzerland": "🇨🇭",
-        "Spain": "🇪🇸",
-        "Hungary": "🇭🇺",
-        "Colombia": "🇨🇴",
-        "Portugal": "🇵🇹",
-        "Russia": "🇷🇺",
-        "Croatia": "🇭🇷",
-        "Poland": "🇵🇱",
-        "Ecuador": "🇪🇨",
-        "Ireland": "🇮🇪",
-        "Estonia": "🇪🇪",
-        "New Zealand": "🇳🇿",
-        "Luxembourg": "🇱🇺",
-        "Monaco": "🇲🇨",
-        "Eritrea": "🇪🇷",
-        "Latvia": "🇱🇻",
-        "Czech Republic": "🇨🇿",
-        "Sweden": "🇸🇪",
-        "Venezuela": "🇻🇪",
-        "Kazakhstan": "🇰🇿",
-        "Israel": "🇮🇱",
-        "Slovakia": "🇸🇰",
-        "South Africa": "🇿🇦",
-        "Mexico": "🇲🇽",
-        "China": "🇨🇳",
-        "Argentina": "🇦🇷",
-        "Lithuania": "🇱🇹",
-        "Finland": "🇫🇮",
-        "Mauritius": "🇲🇺",
-        "Belarus": "🇧🇾",
-        "Serbia": "🇷🇸",
-        "Cuba": "🇨🇺",
-        "Japan": "🇯🇵"
+        "Belgium": "be",
+        "Netherlands": "nl",
+        "France": "fr",
+        "Great Britain": "gb",
+        "Italy": "it",
+        "United States": "us",
+        "Norway": "no",
+        "Denmark": "dk",
+        "Australia": "au",
+        "Canada": "ca",
+        "Slovenia": "si",
+        "Germany": "de",
+        "Austria": "at",
+        "Switzerland": "ch",
+        "Spain": "es",
+        "Hungary": "hu",
+        "Colombia": "co",
+        "Portugal": "pt",
+        "Russia": "ru",
+        "Croatia": "hr",
+        "Poland": "pl",
+        "Ecuador": "ec",
+        "Ireland": "ie",
+        "Estonia": "ee",
+        "New Zealand": "nz",
+        "Luxembourg": "lu",
+        "Monaco": "mc",
+        "Eritrea": "er",
+        "Latvia": "lv",
+        "Czech Republic": "cz",
+        "Sweden": "se",
+        "Venezuela": "ve",
+        "Kazakhstan": "kz",
+        "Israel": "il",
+        "Slovakia": "sk",
+        "South Africa": "za",
+        "Mexico": "mx",
+        "China": "cn",
+        "Argentina": "ar",
+        "Lithuania": "lt",
+        "Finland": "fi",
+        "Mauritius": "mu",
+        "Belarus": "by",
+        "Serbia": "rs",
+        "Cuba": "cu",
+        "Japan": "jp"
     };
 
     function getFlag(nationality) {
@@ -889,6 +890,7 @@
                     sidebar.classList.remove("active");
                     overlay.style.display = "none";
                     sessionStorage.removeItem('menuOpen');
+                    document.body.style.overflow = "";
                     resetGame();
                 });
             });
@@ -1041,6 +1043,8 @@
         
         function animateRevealedTiles() {
             document.querySelectorAll(".revealed-tile").forEach(function(tile) {
+                tile.classList.remove("flip-in");
+                tile.classList.remove("flip-out");
                 tile.style.backgroundColor = "Black";
                 requestAnimationFrame(function() {
                     requestAnimationFrame(function() {
@@ -1053,6 +1057,15 @@
                     });
                 });
             });
+        }
+
+        function getFlag(nationality) {
+            const code = flags[nationality];
+            if (!code) return "";
+            const img = document.createElement("img");
+            img.src = "https://flagcdn.com/w80/" + code + ".png";
+            img.style.width = nationality === "Switzerland" ? "40px" : "80px";
+            return img;
         }
 
         function addGuessRow(data) {
@@ -1080,23 +1093,30 @@
                 const box = document.createElement("div");
                 box.classList.add("tile");
                 box.style.cssText = "width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;";
-                box.style.backgroundColor = "black";
+                box.style.backgroundColor = "dimgray";
 
                 const label = document.createElement("p");
-                label.textContent = index === 5 ? getFlag(data.nationality) : attr.label;
-                label.style.fontWeight = "600";
-                
+                if (index != 5){
+                    label.textContent = attr.label;
+                    label.style.fontWeight = "600";
+                } else{
+                    label.appendChild(getFlag(data.nationality));
+                }
                 
                 const value = document.createElement("p");
                 value.textContent = attr.value;
                 value.style.fontSize = "20px";
+                if (index == 5){
+                    value.style.fontWeight = "600";
+                    value.style.fontSize = "16px";
+                }
                 
                 box.appendChild(label);
                 box.appendChild(value);
                 row.appendChild(box);
                 requestAnimationFrame(function() {
                     requestAnimationFrame(function() {
-                        if (data.colors[index] !== "Black") {
+                        if (data.colors[index] !== "dimgray") {
                             box.classList.add("flip-out");
                             setTimeout(function() {
                                 box.style.backgroundColor = data.colors[index];
