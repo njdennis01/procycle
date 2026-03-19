@@ -144,6 +144,30 @@
             transform: translate(-50%, -50%) translateY(0px);
         }
 
+        .closebutton {
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            font-size: 30px;
+            font-weight: 600; 
+            position: fixed; 
+            top: 5px; 
+            Right: 10px;}
+
+        .bigButton {
+            border-radius: 20px; 
+            height: 40px; 
+            width: 180px; 
+            font-size: 20px; 
+            font-weight: 600; 
+            background-color: black; 
+            color: white; 
+            padding-left: 15px; 
+            padding-right: 15px; 
+            cursor: pointer; 
+            font-family: Nunito, 'Times New Roman', serif;
+        }
+
         .revealed-tile {
             background-color: green;
             width: 150px; 
@@ -158,6 +182,7 @@
             justify-content: center; 
             flex-direction: column;
         }
+
         .label{
             font-weight: 600;
             margin: 10px; 
@@ -167,6 +192,32 @@
         .value{
             font-size: 25px;
             margin: 10px;
+        }
+
+        .grayline{
+            width: 620px; 
+            border: 1px solid lightgray; 
+            margin: auto;
+        }
+
+        .directSentence{
+            font-size: 20px; 
+            display: inline; 
+            padding-left: 15px; 
+            font-weight: 500;
+        }
+
+        .settingTitle{
+            font-size: 20px; 
+            margin: 0px; 
+            padding-bottom: 5px; 
+            padding-top: 5px;
+            font-family: Nunito, 'Times New Roman', serif;
+        }
+
+        .menuText{
+            Text-align: center; 
+            font-family: Nunito, 'Times New Roman', serif;
         }
 
         .tile {
@@ -215,35 +266,38 @@
 
 
     <div id="sidebar">
-        <button id="closebutton" style="background: none; border: none; cursor: pointer; font-size: 30px; font-weight: 600; position: fixed; top: 5px; Right: 10px;">&#x2715;</button>
+        <button id="closebutton" class="closebutton">&#x2715;</button>
         <div style="padding-top: 5px; padding-bottom: 10px; text-align: center;">
-            <button id="homeButton" style="width: 180px; border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; background-color: black; color: white; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">Home</button>
+            <button id="homeButton" class="bigButton">Home</button>
         </div>
         <div style="padding-bottom: 10px; text-align: center;">
             <div id="unlimitedButtonDiv" th:style="${mode == 'Daily'} ? 'display: inline;' : 'display: none;'" style="display: inline;">
-                <button class="unlimitedButton" style="border-radius: 20px; height: 40px; width: 180px; font-size: 20px; font-weight: 600; background-color: black; color: white; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">Play Unlimited</button>
+                <button class="unlimitedButton bigButton">Play Unlimited</button>
             </div>
             <div id="dailyButtonDiv" th:style="${mode == 'Unlimited'} ? 'display: inline;' : 'display: none;'" style="display: inline;">
-                <button class="dailyButton" style="border-radius: 20px; height: 40px; width: 180px; font-size: 20px; font-weight: 600; background-color: black; color: white; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">Play The Daily</button>
+                <button class="dailyButton bigButton">Play The Daily</button>
             </div>
         </div>
         <div style="text-align: center; padding-bottom: 15px;">
-            <form method="post" style="display: inline;">
-                <button style="border-radius: 20px; height: 40px; width: 180px; font-size: 20px; font-weight: 600; background-color: black; color: white; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;" onclick="sessionStorage.removeItem('menuOpen');">Follow Us</button>
-            </form>
+            <button class="bigButton">Follow Us</button>
         </div>
-        <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+        <hr class="grayline">
+
+
         <div id="revealSection" style="display: none; text-align: center;">
             <p style="font-size: 15px; margin-bottom: 5px; margin-top: 5px; font-family: Nunito, 'Times New Roman', serif;">Want to give up?</p>
             <div style="padding-bottom: 10px;">
                 <button class="revealButton" style="border-radius: 20px; height: 40px; width: 180px; font-size: 20px; font-weight: 600; background-color: black; color: white; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">Reveal Answer</button>
             </div>
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <hr class="grayline">
         </div>
+
+
+
         <div id="settings" th:style="${mode == 'Unlimited'} ? 'display: block;' : 'display: none;'">
             <p style="font-size: 30px; font-weight: 600; margin: 0px; padding: 0px; padding-top: 10px; font-family: Nunito, 'Times New Roman', serif; text-align: center;">Play Settings</p>
-            <div style="font-family: Nunito, 'Times New Roman', serif; text-align: center;">
-                <p style="font-size: 20px; margin: 0px; padding-bottom: 5px; padding-top: 5px;">Difficulty</p>
+            <div style="text-align: center;">
+                <p class="settingTitle">Difficulty</p>
                 <div style="display: inline;">
                     <button id="noobButton" class="noobButton menu-button" th:style="'background-color: ' + (${difficulty == 'Noob'} ? '#36a73e' : 'black')">Noob</button>
                 </div>
@@ -257,8 +311,8 @@
                     <button class="hardButton menu-button" th:style="'background-color: ' + (${difficulty == 'Hard'} ? '#da2430' : 'black')">Hard</button>
                 </div>
             </div>
-            <div style="font-family: Nunito, 'Times New Roman', serif; text-align: center;">
-                <p style="font-size: 20px; margin: 0px; padding-bottom: 5px; padding-top: 5px;">Gender</p>
+            <div style="text-align: center;">
+                <p class="settingTitle">Gender</p>
                 <div style="display: inline;">
                     <button class="bothButton menu-button" th:style="'background-color: ' + (${genderMode == 'Both'} ? '#36a73e' : 'black')">Both</button>
                 </div>
@@ -269,8 +323,8 @@
                     <button class="womenButton menu-button" th:style="'background-color: ' + (${genderMode == 'Women'} ? '#36a73e' : 'black')">Women</button>
                 </div>
             </div>
-            <div style="font-family: Nunito, 'Times New Roman', serif; text-align: center; padding-bottom: 20px;">
-                <p style="font-size: 20px; margin: 0px; padding-bottom: 5px; padding-top: 5px;">Guesses</p>
+            <div style="text-align: center; padding-bottom: 20px;">
+                <p class="settingTitle">Guesses</p>
                 <div style="display: inline;">
                     <button class="limitedButton menu-button" th:style="'background-color: ' + (${guessMode == 'Limited'} ? '#36a73e' : 'black')">Ten</button>
                 </div>
@@ -278,28 +332,24 @@
                     <button class="infiniteButton menu-button" th:style="'background-color: ' + (${guessMode == 'Infinite'} ? '#36a73e' : 'black')">Infinite</button>
                 </div>
             </div>
-            <div><hr style="width: 620px; border: 1px solid lightgray; margin: auto;"></div>
+            <hr class="grayline">
         </div>
-        <p style="Text-align: center; font-family: Nunito, 'Times New Roman', serif;">Find a bug? Have a suggestions? Let me know!</p>
-        <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
-        <p style="Text-align: center; font-family: Nunito, 'Times New Roman', serif;">ProCycle was heavily inspired by Spotle and Wordle.</p>
-        <p style="Text-align: center; font-family: Nunito, 'Times New Roman', serif;">A big thanks to procyclingstats.com for making this game possible through the statistics on their website.</p>
-        <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
-        <p style="text-align:center; margin: 0px; padding-bottom: 5px; padding-top: 10px; font-family: Nunito, 'Times New Roman', serif;">Next PROCYCLE</p>
+
+        
+        <p class="menuText">Find a bug? Have a suggestions? Let me know!</p>
+        <hr class="grayline">
+        <p class="menuText">ProCycle was heavily inspired by Spotle and Wordle.</p>
+        <p class="menuText">A big thanks to procyclingstats.com for making this game possible through the statistics on their website.</p>
+        <hr class="grayline">
+        <p class="menuText" style="margin: 0px; padding-bottom: 5px; padding-top: 10px;">Next PROCYCLE</p>
         <p style="text-align:center; margin: 0px; font-family: 'Roboto Mono', monospace;"><span id="timer"></span></p>
-        <p style="text-align: center; font-family: Nunito, 'Times New Roman', serif;">Made by Niko (insert Github)</p>
+        <p class="menuText">Made by Niko (insert Github)</p>
     </div>
-
-    <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: 50;"></div>
-
-
-
-
 
 
 
     <div id="directionsPage">
-        <button id="close2button" style="background: none; border: none; cursor: pointer; font-size: 30px; font-weight: 600; position: fixed; top: 5px; Right: 10px;">&#x2715;</button>
+        <button id="close2button" class="closebutton">&#x2715;</button>
         <div style="text-align: center; padding-top: 5px;">
             <button id="howtoplaybutton" class="active-page-btn" style="width: 150px; display: inline; border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">How to Play</button>
             <button id="attributesbutton" style="width: 150px; display: inline; border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">Attributes</button>
@@ -308,45 +358,49 @@
             <h1 style="text-align: center; font-weight: 600px; margin: 0px; padding-bottom: 15px; padding-top: 10px; font-size: 50px; font-family: Nunito, 'Times New Roman', serif;">How to Play</h1>
             <div style="margin: 0px; text-align: center; padding-bottom: 10px;"><h2 style="text-align: center; font-weight: 600px; display: inline; font-family: Nunito, 'Times New Roman', serif;">Your Goal:</h2><h2 style="text-align: center; font-weight: 500; display: inline; font-family: Nunito, 'Times New Roman', serif;"> Guess the unkown pro cyclist.</h2></div>
             <p style="text-align: center; font-weight: 500; margin-top: 0px; padding-bottom: 15px; margin-bottom: 0px; font-family: Nunito, 'Times New Roman', serif;">Each guess reveals that cyclist's attributes and compares them to the attributes of the unkown cyclist.</p>
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
-            <div style="margin-top: 0px; padding-top: 20px; padding-bottom: 10px;">
-                <span style="display: inline-flex; align-items: center; justify-content: center;width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">1</span><h2 style="font-size: 20px; display: inline; padding-left: 15px; font-weight: 500;">Search for a cyclist to make your first guess.</h2> 
+            <hr class="grayline">
+            <h2 style="padding-top: 15px; margin: 0px;">Directions</h2>
+            <div style="margin-top: 0px; padding-top: 15px; padding-bottom: 10px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center;width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">1</span><h2 class="directSentence" >Search for a cyclist to make your first guess.</h2> 
             </div>
             <img src="/Guess1.png" style="width: 300px; height: 243px; object-fit: contain; display: block; margin: auto;">
             <div style="padding-top: 30px; padding-bottom: 10px;">
-                <span style="display: inline-flex; align-items: center; justify-content: center;width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">2</span><h2 style="font-size: 20px; display: inline; padding-left: 15px; font-weight: 500;">Narrow down the peleton with each guess.</h2>
+                <span style="display: inline-flex; align-items: center; justify-content: center;width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">2</span><h2 class="directSentence">Narrow down the peleton with each guess.</h2>
             </div>
             <img src="/Guess2.png" style="width: 300px; height: 240px; object-fit: contain; display: block; margin: auto;">
             <div style="padding-top: 30px; padding-bottom: 10px;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">3</span><h2 style="font-size: 20px; display: inline; padding-left: 15px; font-weight: 500;">Piece together the clues until you guess the cyclist.</h2>
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">3</span><h2 class="directSentence">Piece together the clues until you guess the cyclist.</h2>
             </div>
             <img src="/Guess3.png" style="width: 300px; height: 200px; object-fit: contain; display: block; margin: auto; padding-bottom: 20px;">
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
-            
-            <h2 style="text-align: center; font-family: Nunito, 'Times New Roman', serif;">What are the play settings?</h2>
+            <hr class="grayline">
+
+
             <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Difficulty</h2>
             <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">Difficulty is based on the number and popularity of cyclists in the game.</p>
             <div style="display: flex; justify-content: center;">
                 <div style="background-color: green; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; flex-direction: column;">
                     <p class="difficultyTitle">Noob</p>
-                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">20 of the biggest Pro Cyclists today.</p>
+                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">20 of the most famous pro cyclists today.</p>
                 </div>
                 <div style="background-color: #F0C040; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; flex-direction: column;">
                     <p class="difficultyTitle">Easy</p>
-                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">About 200 of the most well-known Cyclists.</p>
+                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">About 200 of the most well-known cyclists.</p>
                 </div>
                 <div style="background-color: #007bbf; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; justify-content: center; flex-direction: column;">
                     <p class="difficultyTitle">Medium</p>
-                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">About half of the Cyclists in the game.</p>
+                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">About half of the cyclists in the game.</p>
                 </div>
                 <div style="background-color: #da2430; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; flex-direction: column;">
                     <p class="difficultyTitle">Hard</p>
                     <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">The entire list. Roughly 1000 cyclists.</p>
                 </div>
             </div>
-            <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The full breakdown of which cyclists are in the list is available under the attributes tab.</p>
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <p style="color: gray; font-weight: 500;">The full breakdown of which cyclists are in the list is available under the attributes tab.</p>
+            <hr class="grayline">
         </div>
+
+
+        <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: 50;"></div>
 
 
 
@@ -357,7 +411,7 @@
                 <p style="font-weight: 500; color: gray;">A big thanks to procyclingstats for making this game possible through the statistics on their website.</p>
                 <p style="font-weight: 600; font-size: 20px;">All attributes acurate as of the start of the 2026 season and should be updated anually.</p>
             </div>
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <hr class="grayline">
             <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Pro Debut</h2>
                 <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The year of the cyclists firsts season on a UCI World Tour or UCI ProTeam.</p>
                 <div style="display: flex; padding-bottom: 15px;">
@@ -371,7 +425,7 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <hr class="grayline">
             <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Team</h2>
                 <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclist's most recent Team. This could be any UCI World Tour team or a few UCI ProTeam mentioned below. If instead the cyclist is retired it will say as much.</p>
                 <div style="display: flex; padding-bottom: 15px;">
@@ -382,7 +436,7 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <hr class="grayline">
             <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Wins</h2>
                 <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">How many pofessional wins the cyclist has achieved. A professional win is a win on UCI .1 level or higher.</p>
                 <div style="display: flex; padding-bottom: 15px;">
@@ -396,7 +450,7 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <hr class="grayline">
             <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Gender</h2>
                 <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclists gender.</p>
                 <div style="display: flex; padding-bottom: 15px;">
@@ -407,7 +461,7 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <hr class="grayline">
             <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Specialty</h2>
                 <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclists specialty. There are 6 specialties assigned by Pro Cycling Stats: Oneday races, GC, Time Trial, Sprint, and Hills.</p>
                 <div style="display: flex; padding-bottom: 15px;">
@@ -418,7 +472,7 @@
                         <p>Correct</p>
                     </div>
                 </div>
-            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            <hr class="grayline">
             <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Nationality</h2>
                 <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclists nationality.</p>
                 <div style="display: flex;">
@@ -444,7 +498,7 @@
                         <p>Correct</p>
                     </div>
                 </div>
-                <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+                <hr class="grayline">
                 <h2 style="padding-top: 10px;">Europe Regions</h2> 
                 
                     <div style="padding-bottom: 10px;"><p style="display: inline;">Western Europe:</p><p style="color: gray; font-weight: 500; display: inline;"> Britain, Ireland, France, Belgium, Netherlands, Luxembourg, Monaco, Andorra</p></div>
@@ -453,7 +507,7 @@
                     <div style="padding-bottom: 10px;"><p style="display: inline;">North Europe:</p><p style="color: gray; font-weight: 500; display: inline;"> Denmark, Norway, Sweden, Finland, Iceland, Estonia, Latvia, Lithuania</p></div>
                     <div style="padding-bottom: 20px;"><p style="display: inline;">Central Europe:</p><p style="color: gray; font-weight: 500; display: inline;"> Germany, Austria, Switzerland, Poland, Czech Republic, Slovakia, Hungary, Liechtenstein, Slovenia</p></div>
                 
-                <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+                <hr class="grayline">
                 <h2 style="padding-top: 10px;">Which proffesional cyclists are in the game?</h2>
                 <p style="font-weight: 600; font-size: 20px;">The complete list of cyclists includes:</p>
                 <p style="font-weight: 500; padding-left: 30px; color: gray;">● Every cyclists from all 18 mens UCI World Tour teams and all 14 womens UCI World Tour teams.</p>
@@ -466,6 +520,8 @@
     </div>
 
 
+
+    <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: 50;"></div>
 
 
 
