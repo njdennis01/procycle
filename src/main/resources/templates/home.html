@@ -2,7 +2,7 @@
 <html style="margin: 0; padding: 0;">
 <!mvn spring-boot:run>
 <head>
-    <title>PROCYCLE: Guess the Pro Cyclist</title>
+    <title>PROCYCLE: Cycling Guessing Game</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;450;500;550;600;650;700;750;800;850;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
@@ -56,6 +56,11 @@
             text-align: center; 
             color: white; 
             border-radius: 10px;
+        }
+
+        .difficultyTitle{
+            margin: 5px; 
+            font-size: 20px;
         }
 
         #sidebar.no-transition {
@@ -203,6 +208,12 @@
     </div>
     <hr style="width: 530px; border: 1px solid gray; margin: auto;">
 
+
+
+
+
+
+
     <div id="sidebar">
         <button id="closebutton" style="background: none; border: none; cursor: pointer; font-size: 30px; font-weight: 600; position: fixed; top: 5px; Right: 10px;">&#x2715;</button>
         <div style="padding-top: 5px; padding-bottom: 10px; text-align: center;">
@@ -281,6 +292,12 @@
 
     <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: 50;"></div>
 
+
+
+
+
+
+
     <div id="directionsPage">
         <button id="close2button" style="background: none; border: none; cursor: pointer; font-size: 30px; font-weight: 600; position: fixed; top: 5px; Right: 10px;">&#x2715;</button>
         <div style="text-align: center; padding-top: 5px;">
@@ -304,7 +321,35 @@
                 <span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">3</span><h2 style="font-size: 20px; display: inline; padding-left: 15px; font-weight: 500;">Piece together the clues until you guess the cyclist.</h2>
             </div>
             <img src="/Guess3.png" style="width: 300px; height: 200px; object-fit: contain; display: block; margin: auto; padding-bottom: 20px;">
+            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
+            
+            <h2 style="text-align: center; font-family: Nunito, 'Times New Roman', serif;">What are the play settings?</h2>
+            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Difficulty</h2>
+            <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">Difficulty is based on the number and popularity of cyclists in the game.</p>
+            <div style="display: flex; justify-content: center;">
+                <div style="background-color: green; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; flex-direction: column;">
+                    <p class="difficultyTitle">Noob</p>
+                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">20 of the biggest Pro Cyclists today.</p>
+                </div>
+                <div style="background-color: #F0C040; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; flex-direction: column;">
+                    <p class="difficultyTitle">Easy</p>
+                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">About 200 of the most well-known Cyclists.</p>
+                </div>
+                <div style="background-color: #007bbf; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; justify-content: center; flex-direction: column;">
+                    <p class="difficultyTitle">Medium</p>
+                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">About half of the Cyclists in the game.</p>
+                </div>
+                <div style="background-color: #da2430; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; flex-direction: column;">
+                    <p class="difficultyTitle">Hard</p>
+                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">The entire list. Roughly 1000 cyclists.</p>
+                </div>
+            </div>
+            <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The full breakdown of which cyclists are in the list is available under the attributes tab.</p>
+            <hr style="width: 620px; border: 1px solid lightgray; margin: auto;">
         </div>
+
+
+
         <div id="page2" style="display: none;">
             <div style="text-align: center;">
                 <h1 style="font-weight: 600px; margin: 0px; padding-top: 10px; font-size: 50px; font-family: Nunito, 'Times New Roman', serif;">Attributes</h1>
@@ -420,6 +465,11 @@
         </div>
     </div>
 
+
+
+
+
+
     <h2 th:if="${mode == 'Daily'}" style=" padding-top: 10px; padding-bottom: 10px; margin: 0px; text-align: center; font-weight: 650; font-Size: 20px; font-family: Nunito, 'Times New Roman', serif;">Welcome to The Daily PROCYCLE</h2>
     <h2 th:if="${mode == 'Unlimited'}" style=" padding-top: 10px; padding-bottom: 10px; margin: 0px; text-align: center; font-weight: 650; font-Size: 20px; font-family: Nunito, 'Times New Roman', serif;">Welcome to Unlimited PROCYCLE</h2>
 
@@ -489,14 +539,14 @@
                 <p id="revealedSpecialty" class="value"></p>
             </div>
             <div class="revealed-tile tile">
-                <p id="revealedFlag" style="margin: 5px;">Nationality</p>
-                <p id="revealedNationality" style="font-size: 20px; margin-top: 0px; font-weight: 600;"></p>
+                <p id="revealedFlag" style="margin-bottom: 5px; margin-top: 10px;">Nationality</p>
+                <p id="revealedNationality" style="font-size: 20px; margin-top: 0px; margin-bottom: 5px; font-weight: 600;"></p>
             </div>
         </div>
     </div>
     <div id="guessContainer">
         <div th:each="guess : ${guessHistory}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 0px; margin-bottom: 20px;">
-            <p th:text="${guess.guessedCyclist.name}" style="font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; width: 100%; text-align: center;">Name</p>
+            <p th:text="${guess.guessedCyclist.name}" style="font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; margin-top: 0px; width: 100%; text-align: center;">Name</p>
             <div th:style="'background-color: ' + ${guess.colors[0]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'"> 
                 <p style="font-weight: 600;">Pro Debut</p>
                 <p>
@@ -1105,7 +1155,7 @@
             // Cyclist name
             const name = document.createElement("p");
             name.textContent = data.name;
-            name.style.cssText = "font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; width: 100%; text-align: center;";
+            name.style.cssText = "font-size: 35px; font-weight: 700; color: black; margin-bottom: 20px; margin-top: 20px; width: 100%; text-align: center;";
             row.appendChild(name);
             
             const attributes = [
@@ -1131,7 +1181,8 @@
                     label.style.fontSize = "20px";
                 } else{
                     label.appendChild(getFlag(data.nationality));
-                    label.style.margin = "5px";
+                    label.style.marginBottom = "5px";
+                    label.style.marginTop = "10px";
                 }
                 const value = document.createElement("p");
                 value.textContent = attr.value;
@@ -1142,6 +1193,7 @@
                 if (index == 5){
                     value.style.fontWeight = "600";
                     value.style.marginTop = "0px";
+                    value.style.marginBottom = "5px";
                     value.style.fontSize = "20px";
                 }
                 if (index == 1){
