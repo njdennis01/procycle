@@ -236,36 +236,36 @@ public class GameService {
         else if (guess.getDebut() >= (answer.getDebut() - 3) && guess.getDebut() <= (answer.getDebut()+ 3))
             result[0] = "#F0C040";
             //Need to figure out how to add if it is more or less
-        else result[0] = "Black";
+        else result[0] = "dimgray";
 
 
         if (guess.getTeam().equals(answer.getTeam()))
             result[1] = "Green";
-        else result[1] = "Black";
+        else result[1] = "dimgray";
 
 
         if (guess.getWins() == answer.getWins())
             result[2] = "Green";
         else if (guess.getWins() >= (answer.getWins() - 5) && guess.getWins() <= (answer.getWins() + 5))
             result[2] = "#F0C040";
-        else result[2] = "Black";
+        else result[2] = "dimgray";
 
 
         if (guess.getGender().equals(answer.getGender()))
             result[3] = "Green";
-        else result[3] = "Black";
+        else result[3] = "dimgray";
 
 
         if (guess.getSpecialty().equals(answer.getSpecialty()))
             result[4] = "Green";
-        else result[4] = "Black";
+        else result[4] = "dimgray";
 
 
         if (guess.getNationality().equals(answer.getNationality()))
             result[5] = "Green";
         else if (getRegion() != null && getRegion().contains(guess.getNationality()))
             result[5] = "#F0C040";
-        else result[5] = "Black";
+        else result[5] = "dimgray";
             
         System.out.println(Arrays.toString(result));
 

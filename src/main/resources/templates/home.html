@@ -259,8 +259,8 @@
     <div id="directionsPage">
         <button id="close2button" style="background: none; border: none; cursor: pointer; font-size: 30px; font-weight: 600; position: fixed; top: 5px; Right: 10px;">&#x2715;</button>
         <div style="text-align: center; padding-top: 5px;">
-            <button id="howtoplaybutton" class="active-page-btn" style="display: inline; border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">How to Play</button>
-            <button id="attributesbutton" style="display: inline; border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">Attributes</button>
+            <button id="howtoplaybutton" class="active-page-btn" style="width: 150px; display: inline; border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">How to Play</button>
+            <button id="attributesbutton" style="width: 150px; display: inline; border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">Attributes</button>
         </div>
         <div id="page1" style="display: block;">
             <h1 style="text-align: center; font-weight: 600px; margin: 0px; padding-bottom: 15px; padding-top: 10px; font-size: 50px; font-family: Nunito, 'Times New Roman', serif;">How to Play</h1>
@@ -481,8 +481,8 @@
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[1]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p style="font-weight: 600;">Team</p>
-                <p th:text="${guess.guessedCyclist.team}" style="font-size: 20px;"></p>
+                <p style="font-weight: 600; margin-bottom: 0px;">Team</p>
+                <p th:text="${guess.guessedCyclist.team}" style="font-size: 20px; margin-top: 0px;"></p>
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[2]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
@@ -504,8 +504,8 @@
             </div>
 
             <div th:style="'background-color: ' + ${guess.colors[5]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p style="font-weight: 600;">Nationality</p>
-                <p th:text="${guess.guessedCyclist.nationality}" style="font-size: 20px;"></p>
+                <p style="font-weight: 600;  margin-bottom: 0px;">Nationality</p>
+                <p th:text="${guess.guessedCyclist.nationality}"></p>
             </div>
         </div>
     </div>
@@ -568,7 +568,7 @@
         "France": "fr",
         "Great Britain": "gb",
         "Italy": "it",
-        "United States": "us",
+        "USA": "us",
         "Norway": "no",
         "Denmark": "dk",
         "Australia": "au",
@@ -703,7 +703,7 @@
         directionsPage.classList.remove("active");
         sessionStorage.removeItem("directionsOpen");
         overlay.style.display = "none";
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = "";
     });
 
     const howtoplaybutton = document.getElementById("howtoplaybutton");
@@ -1064,7 +1064,7 @@
             if (!code) return "";
             const img = document.createElement("img");
             img.src = "https://flagcdn.com/w80/" + code + ".png";
-            img.style.width = nationality === "Switzerland" ? "40px" : "80px";
+            img.style.width = nationality === "Switzerland" ? "50px" : "80px";
             return img;
         }
 
@@ -1092,23 +1092,31 @@
             attributes.forEach(function(attr, index) {
                 const box = document.createElement("div");
                 box.classList.add("tile");
-                box.style.cssText = "width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;";
+                box.style.cssText = "width: 150px; height: 120px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column;";
                 box.style.backgroundColor = "dimgray";
 
                 const label = document.createElement("p");
                 if (index != 5){
                     label.textContent = attr.label;
                     label.style.fontWeight = "600";
+                    label.style.margin = "10px";
+                    label.style.fontSize = "20px";
                 } else{
                     label.appendChild(getFlag(data.nationality));
+                    label.style.marginBottom = "5px";
                 }
-                
                 const value = document.createElement("p");
                 value.textContent = attr.value;
-                value.style.fontSize = "20px";
+                value.style.fontSize = "25px";
+                value.style.margin = "10px";
                 if (index == 5){
                     value.style.fontWeight = "600";
-                    value.style.fontSize = "16px";
+                    value.style.fontSize = "20px";
+                    value.style.marginTop = "0px";
+                }
+                if (index == 1){
+                    value.style.marginTop = "0px";
+                    value.style.fontSize = "20px";
                 }
                 
                 box.appendChild(label);
