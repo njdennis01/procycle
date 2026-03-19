@@ -139,6 +139,31 @@
             transform: translate(-50%, -50%) translateY(0px);
         }
 
+        .revealed-tile {
+            background-color: green;
+            width: 150px; 
+            height: 120px; 
+            padding: 10px; 
+            margin: 5px; 
+            text-align: center; 
+            color: white; 
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-direction: column;
+        }
+        .label{
+            font-weight: 600;
+            margin: 10px; 
+            font-size: 20px;
+        }
+
+        .value{
+            font-size: 25px;
+            margin: 10px;
+        }
+
         .tile {
             transition: transform 0.3s ease-in;
         }
@@ -443,29 +468,29 @@
         </div>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 0px; margin-bottom: 20px;">
             <p id="revealedName" style="font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; width: 100%; text-align: center;">Name</p>
-            <div class="revealed-tile tile" style="background-color: green; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;"> 
-                <p style="font-weight: 600;">Pro Debut</p>
-                <p id="revealedProDebut" style="font-size: 20px;"></p>
+            <div class="revealed-tile tile"> 
+                <p class="label">Pro Debut</p>
+                <p id="revealedProDebut" class="value"></p>
             </div>
-            <div class="revealed-tile tile" style="background-color: green; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;">
-                <p style="font-weight: 600;">Team</p>
-                <p id="revealedTeam" style="font-size: 20px;"></p>
+            <div class="revealed-tile tile">
+                <p class="label">Team</p>
+                <p id="revealedTeam" style="margin-top: 0px; font-size: 20px;"></p>
             </div>
-            <div class="revealed-tile tile" style="background-color: green; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;">
-                <p style="font-weight: 600;">Professional Wins</p>
-                <p id="revealedWins" style="font-size: 20px;"></p>
+            <div class="revealed-tile tile">
+                <p class="label">Pro Wins</p>
+                <p id="revealedWins" class="value"></p>
             </div>
-            <div class="revealed-tile tile" style="background-color: green; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;">
-                <p style="font-weight: 600;">Gender</p>
-                <p id="revealedGender" style="font-size: 20px;"></p>
+            <div class="revealed-tile tile">
+                <p class="label">Gender</p>
+                <p id="revealedGender" class="value"></p>
             </div>
-            <div class="revealed-tile tile" style="background-color: green; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;">
-                <p style="font-weight: 600;">Specialty</p>
-                <p id="revealedSpecialty" style="font-size: 20px;"></p>
+            <div class="revealed-tile tile">
+                <p class="label">Specialty</p>
+                <p id="revealedSpecialty" class="value"></p>
             </div>
-            <div class="revealed-tile tile" style="background-color: green; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;">
-                <p style="font-weight: 600;">Nationality</p>
-                <p id="revealedNationality" style="font-size: 20px;"></p>
+            <div class="revealed-tile tile">
+                <p id="revealedFlag" style="margin: 5px;">Nationality</p>
+                <p id="revealedNationality" style="font-size: 20px; margin-top: 0px; font-weight: 600;"></p>
             </div>
         </div>
     </div>
@@ -1027,6 +1052,9 @@
                     document.getElementById("revealedGender").textContent = data.revealedGender;
                     document.getElementById("revealedSpecialty").textContent = data.revealedSpecialty;
                     document.getElementById("revealedNationality").textContent = data.revealedNationality;
+                    const revealedFlagEl = document.getElementById("revealedFlag");
+                    revealedFlagEl.innerHTML = "";
+                    revealedFlagEl.appendChild(getFlag(data.revealedNationality));
                     animateRevealedTiles()
 
                     document.getElementById("guessTracker").style.display = "none";
@@ -1103,16 +1131,18 @@
                     label.style.fontSize = "20px";
                 } else{
                     label.appendChild(getFlag(data.nationality));
-                    label.style.marginBottom = "5px";
+                    label.style.margin = "5px";
                 }
                 const value = document.createElement("p");
                 value.textContent = attr.value;
-                value.style.fontSize = "25px";
-                value.style.margin = "10px";
+                if (index != 5 && index != 1){
+                    value.style.fontSize = "25px";
+                    value.style.margin = "10px";
+                }
                 if (index == 5){
                     value.style.fontWeight = "600";
-                    value.style.fontSize = "20px";
                     value.style.marginTop = "0px";
+                    value.style.fontSize = "20px";
                 }
                 if (index == 1){
                     value.style.marginTop = "0px";
@@ -1167,6 +1197,9 @@
                         document.getElementById("revealedGender").textContent = data.revealedGender;
                         document.getElementById("revealedSpecialty").textContent = data.revealedSpecialty;
                         document.getElementById("revealedNationality").textContent = data.revealedNationality;
+                        const revealedFlagEl = document.getElementById("revealedFlag");
+                        revealedFlagEl.innerHTML = "";
+                        revealedFlagEl.appendChild(getFlag(data.revealedNationality));
                         animateRevealedTiles()
                     }
 
