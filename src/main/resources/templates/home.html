@@ -215,9 +215,85 @@
             font-family: Nunito, 'Times New Roman', serif;
         }
 
+        .directionsTitle{
+            font-weight: 600px; 
+            margin: 0px; 
+            padding-top: 10px; 
+            font-size: 50px; 
+            font-family: Nunito, 'Times New Roman', serif;
+        }
+
         .menuText{
             Text-align: center; 
             font-family: Nunito, 'Times New Roman', serif;
+        }
+
+        .directionNums{
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            border: 2px solid black; 
+            background-color: black; 
+            color: white; 
+            font-size: 25px;
+        }
+
+        .diffBox{
+            display: inline; 
+            border-radius: 20px; 
+            width: 120px; 
+            height: 120px; 
+            padding: 10px; 
+            margin: 5px; 
+            text-align: center;
+            color: white; 
+            align-items: center; 
+            flex-direction: column;
+        }
+
+        .diffExpl{ 
+            margin-top: 0px; 
+            font-size: 16px; 
+            font-weight: 600; 
+        }
+
+        .attTitle{
+            padding-top: 15px; 
+            margin: 0px; 
+            padding-bottom: 10px;
+        }
+
+        .grayText{
+            color: gray; 
+            font-weight: 500;
+            margin-top: 0px;
+        }
+
+        .listBullet{
+            font-weight: 500; 
+            padding-left: 30px; 
+            color: gray;
+        }
+
+        .welcome{
+            padding-top: 10px; 
+            padding-bottom: 10px; 
+            margin: 0px; 
+            text-align: center; 
+            font-weight: 650; 
+            font-Size: 20px; 
+            font-family: Nunito, 'Times New Roman', serif;
+        }
+
+        .endMessage{
+            font-size: 25px;
+            text-align: center; 
+            margin-bottom: 5px; 
+            margin-top: 0px; 
+            font-weight: 800; 
         }
 
         .tile {
@@ -246,6 +322,7 @@
 </div>
     <div style="height: 50px; width: 100%; background: linear-gradient(to bottom, #007bbf 0% 20%, #da2430 20% 40%, #111012 40% 60%, #ffed00 60% 80%, #36a73e 80% 100%);"></div>
 <div style="flex-grow: 1">
+
     <div style="padding-top: 10px; display: flex; justify-content: space-between; align-items: center; width: 530px; margin: auto;">
         <div id="menubutton" style="display: inline; vertical-align: middle; width: 48px;">
             <button style="cursor: pointer; font-size: 40px; font-weight: 500; background: none; border: none; line-height: 1">☰</button>
@@ -334,7 +411,6 @@
             </div>
             <hr class="grayline">
         </div>
-
         
         <p class="menuText">Find a bug? Have a suggestions? Let me know!</p>
         <hr class="grayline">
@@ -355,44 +431,44 @@
             <button id="attributesbutton" style="width: 150px; display: inline; border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; padding-left: 15px; padding-right: 15px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">Attributes</button>
         </div>
         <div id="page1" style="display: block;">
-            <h1 style="text-align: center; font-weight: 600px; margin: 0px; padding-bottom: 15px; padding-top: 10px; font-size: 50px; font-family: Nunito, 'Times New Roman', serif;">How to Play</h1>
+            <h1 class="directionsTitle" style="text-align: center;">How to Play</h1>
             <div style="margin: 0px; text-align: center; padding-bottom: 10px;"><h2 style="text-align: center; font-weight: 600px; display: inline; font-family: Nunito, 'Times New Roman', serif;">Your Goal:</h2><h2 style="text-align: center; font-weight: 500; display: inline; font-family: Nunito, 'Times New Roman', serif;"> Guess the unkown pro cyclist.</h2></div>
             <p style="text-align: center; font-weight: 500; margin-top: 0px; padding-bottom: 15px; margin-bottom: 0px; font-family: Nunito, 'Times New Roman', serif;">Each guess reveals that cyclist's attributes and compares them to the attributes of the unkown cyclist.</p>
             <hr class="grayline">
             <h2 style="padding-top: 15px; margin: 0px;">Directions</h2>
             <div style="margin-top: 0px; padding-top: 15px; padding-bottom: 10px;">
-                <span style="display: inline-flex; align-items: center; justify-content: center;width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">1</span><h2 class="directSentence" >Search for a cyclist to make your first guess.</h2> 
+                <span class="directionNums">1</span><h2 class="directSentence" >Search for a cyclist to make your first guess.</h2> 
             </div>
             <img src="/Guess1.png" style="width: 300px; height: 243px; object-fit: contain; display: block; margin: auto;">
             <div style="padding-top: 30px; padding-bottom: 10px;">
-                <span style="display: inline-flex; align-items: center; justify-content: center;width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">2</span><h2 class="directSentence">Narrow down the peleton with each guess.</h2>
+                <span class="directionNums">2</span><h2 class="directSentence">Narrow down the peleton with each guess.</h2>
             </div>
             <img src="/Guess2.png" style="width: 300px; height: 240px; object-fit: contain; display: block; margin: auto;">
             <div style="padding-top: 30px; padding-bottom: 10px;">
-                <span style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; border: 2px solid black; background-color: black; color: white; font-size: 25px;">3</span><h2 class="directSentence">Piece together the clues until you guess the cyclist.</h2>
+                <span class="directionNums">3</span><h2 class="directSentence">Piece together the clues until you guess the cyclist.</h2>
             </div>
             <img src="/Guess3.png" style="width: 300px; height: 200px; object-fit: contain; display: block; margin: auto; padding-bottom: 20px;">
             <hr class="grayline">
 
 
             <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Difficulty</h2>
-            <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">Difficulty is based on the number and popularity of cyclists in the game.</p>
+            <p class="grayText">Difficulty is based on the number and popularity of cyclists in the game.</p>
             <div style="display: flex; justify-content: center;">
-                <div style="background-color: green; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; flex-direction: column;">
+                <div class="diffBox" style="background-color: green;">
                     <p class="difficultyTitle">Noob</p>
-                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">20 of the most famous pro cyclists today.</p>
+                    <p class="diffExpl">20 of the most famous pro cyclists today.</p>
                 </div>
-                <div style="background-color: #F0C040; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; flex-direction: column;">
+                <div class="diffBox" style="background-color: #F0C040;">
                     <p class="difficultyTitle">Easy</p>
-                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">About 200 of the most well-known cyclists.</p>
+                    <p class="diffExpl">About 200 of the most well-known cyclists.</p>
                 </div>
-                <div style="background-color: #007bbf; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; justify-content: center; flex-direction: column;">
+                <div class="diffBox" style="background-color: #007bbf;">
                     <p class="difficultyTitle">Medium</p>
-                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">About half of the cyclists in the game.</p>
+                    <p class="diffExpl">About half of the cyclists in the game.</p>
                 </div>
-                <div style="background-color: #da2430; display: inline; border-radius: 20px; width: 120px; height: 120px; padding: 10px; margin: 5px; text-align: center;color: white; align-items: center; flex-direction: column;">
+                <div class="diffBox" style="background-color: #da2430;">
                     <p class="difficultyTitle">Hard</p>
-                    <p style="margin-top: 0px; font-size: 16px; font-weight: 600;">The entire list. Roughly 1000 cyclists.</p>
+                    <p class="diffExpl">The entire list. Roughly 1000 cyclists.</p>
                 </div>
             </div>
             <p style="color: gray; font-weight: 500;">The full breakdown of which cyclists are in the list is available under the attributes tab.</p>
@@ -400,20 +476,18 @@
         </div>
 
 
-        <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: 50;"></div>
-
-
-
         <div id="page2" style="display: none;">
             <div style="text-align: center;">
-                <h1 style="font-weight: 600px; margin: 0px; padding-top: 10px; font-size: 50px; font-family: Nunito, 'Times New Roman', serif;">Attributes</h1>
+                <h1 class="directionsTitle">Attributes</h1>
                 <p style="font-weight: 600; font-size: 20px">All cyclist statistics from procyclingstats.com.</p>
-                <p style="font-weight: 500; color: gray;">A big thanks to procyclingstats for making this game possible through the statistics on their website.</p>
+                <p class="grayText">A big thanks to procyclingstats for making this game possible through the statistics on their website.</p>
                 <p style="font-weight: 600; font-size: 20px;">All attributes acurate as of the start of the 2026 season and should be updated anually.</p>
             </div>
+
             <hr class="grayline">
-            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Pro Debut</h2>
-                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The year of the cyclists firsts season on a UCI World Tour or UCI ProTeam.</p>
+
+            <h2 class="attTitle">Pro Debut</h2>
+                <p class="grayText">The year of the cyclists firsts season on a UCI World Tour or UCI ProTeam.</p>
                 <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
@@ -426,8 +500,8 @@
                     </div>
                 </div>
             <hr class="grayline">
-            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Team</h2>
-                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclist's most recent Team. This could be any UCI World Tour team or a few UCI ProTeam mentioned below. If instead the cyclist is retired it will say as much.</p>
+            <h2 class="attTitle">Team</h2>
+                <p class="grayText">The cyclist's most recent Team. This could be any UCI World Tour team or a few UCI ProTeam mentioned below. If instead the cyclist is retired it will say as much.</p>
                 <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
@@ -437,8 +511,8 @@
                     </div>
                 </div>
             <hr class="grayline">
-            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Wins</h2>
-                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">How many pofessional wins the cyclist has achieved. A professional win is a win on UCI .1 level or higher.</p>
+            <h2 class="attTitle">Wins</h2>
+                <p class="grayText">How many pofessional wins the cyclist has achieved. A professional win is a win on UCI .1 level or higher.</p>
                 <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
@@ -451,8 +525,8 @@
                     </div>
                 </div>
             <hr class="grayline">
-            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Gender</h2>
-                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclists gender.</p>
+            <h2 class="attTitle">Gender</h2>
+                <p class="grayText">The cyclists gender.</p>
                 <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
@@ -462,8 +536,8 @@
                     </div>
                 </div>
             <hr class="grayline">
-            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Specialty</h2>
-                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclists specialty. There are 6 specialties assigned by Pro Cycling Stats: Oneday races, GC, Time Trial, Sprint, and Hills.</p>
+            <h2 class="attTitle">Specialty</h2>
+                <p class="grayText">The cyclists specialty. There are 6 specialties assigned by Pro Cycling Stats: Oneday races, GC, Time Trial, Sprint, and Hills.</p>
                 <div style="display: flex; padding-bottom: 15px;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
@@ -473,8 +547,8 @@
                     </div>
                 </div>
             <hr class="grayline">
-            <h2 style="padding-top: 15px; margin: 0px; padding-bottom: 10px;">Nationality</h2>
-                <p style="color: gray; font-weight: 500; padding-top: 0px; margin-top: 0px;">The cyclists nationality.</p>
+            <h2 class="attTitle">Nationality</h2>
+                <p class="grayText">The cyclists nationality.</p>
                 <div style="display: flex;">
                     <div class="legend-box" style="background-color: black;">
                         <p>Incorrect</p>
@@ -510,10 +584,10 @@
                 <hr class="grayline">
                 <h2 style="padding-top: 10px;">Which proffesional cyclists are in the game?</h2>
                 <p style="font-weight: 600; font-size: 20px;">The complete list of cyclists includes:</p>
-                <p style="font-weight: 500; padding-left: 30px; color: gray;">● Every cyclists from all 18 mens UCI World Tour teams and all 14 womens UCI World Tour teams.</p>
-                <p style="font-weight: 500; padding-left: 30px; color: gray;">● Every cyclists from the following mens UCI ProTeams: Tudor Pro Cycling, Cofidis, Pinarello Q36.5 Pro Cycling, and Unibet Rose Rockets.</p>
-                <p style="font-weight: 500; padding-left: 30px; color: gray;">● Significant pro cyclists who retired after 2020.</p>
-                <p style="font-weight: 500; padding-left: 30px; color: gray;">● A few additions on UCI ProTeams that were not included: Jesús Herrada, Fernando Gaviria, Iván Ramiro Sosa, Yukiya Arashiro, Anthony Turgis, Allison Jackson, and Chris Froome (Not retired but not on a team).</p>
+                <p class="listBullet">● Every cyclists from all 18 mens UCI World Tour teams and all 14 womens UCI World Tour teams.</p>
+                <p class="listBullet">● Every cyclists from the following mens UCI ProTeams: Tudor Pro Cycling, Cofidis, Pinarello Q36.5 Pro Cycling, and Unibet Rose Rockets.</p>
+                <p class="listBullet">● Significant pro cyclists who retired after 2020.</p>
+                <p class="listBullet">● A few additions on UCI ProTeams that were not included: Jesús Herrada, Fernando Gaviria, Iván Ramiro Sosa, Yukiya Arashiro, Anthony Turgis, Allison Jackson, and Chris Froome (Not retired but not on a team).</p>
                 <p style="font-weight: 600;">The Daily ProCycle will reset to the full list at the start of ever month.</p>
 
         </div>
@@ -526,23 +600,17 @@
 
 
 
-    <h2 th:if="${mode == 'Daily'}" style=" padding-top: 10px; padding-bottom: 10px; margin: 0px; text-align: center; font-weight: 650; font-Size: 20px; font-family: Nunito, 'Times New Roman', serif;">Welcome to The Daily PROCYCLE</h2>
-    <h2 th:if="${mode == 'Unlimited'}" style=" padding-top: 10px; padding-bottom: 10px; margin: 0px; text-align: center; font-weight: 650; font-Size: 20px; font-family: Nunito, 'Times New Roman', serif;">Welcome to Unlimited PROCYCLE</h2>
+    <h2 th:if="${mode == 'Daily'}" class="welcome">Welcome to The Daily PROCYCLE</h2>
+    <h2 th:if="${mode == 'Unlimited'}" class="welcome">Welcome to Unlimited PROCYCLE</h2>
+
 
     <div id="difficulties" th:style="${mode == 'Unlimited'} ? 'display: block; text-align: center; padding-bottom: 15px; padding-top: 5px;' : 'display: none; text-align: center; padding-bottom: 15px; padding-top: 5px;'">
-        <div style="display: inline;">
-            <button class="noobButton menu-button" th:style="'background-color: ' + (${difficulty == 'Noob'} ? '#36a73e' : 'black')">Noob</button>
-        </div>
-        <div style="display: inline;">
-            <button class="easyButton menu-button" th:style="'background-color: ' + (${difficulty == 'Easy'} ? '#F0C040' : 'black')">Easy</button>
-        </div>
-        <div style="display: inline;">
-            <button class="mediumButton menu-button" th:style="'background-color: ' + (${difficulty == 'Medium'} ? '#007bbf' : 'black')">Medium</button>
-        </div>
-        <div style="display: inline;">
-            <button class="hardButton menu-button" th:style="'background-color: ' + (${difficulty == 'Hard'} ? '#da2430' : 'black')">Hard</button>
-        </div>
+        <button class="noobButton menu-button">Noob</button>
+        <button class="easyButton menu-button">Easy</button>
+        <button class="mediumButton menu-button">Medium</button>
+        <button class="hardButton menu-button">Hard</button>
     </div>
+
 
     <form id="guessForm" action="/guess" method="post" style="text-align: center; margin: 0px; margin-top: 0px" th:if="${won == null and revealed == null and (guessMode == 'Infinite' or guessHistory == null or guessHistory.size() < 10)}">
         <div style="position: relative; display: inline-block;">
@@ -552,25 +620,32 @@
         <button style="border-radius: 20px; height: 40px; font-size: 17px; font-weight: 600; color: white; background-color: green; vertical-align: middle; box-sizing: border-box; padding-left: 15px; padding-right: 15px; cursor: pointer;">Guess</button>
     </form>
 
+
     <p id="guessTracker" style="display: block;font-size: 12px; text-align: center; margin: 0px; padding-top: 6px; color: gray"></p>
     
+
     <div id="dailyIntro" style="text-align: center; display: block;">
         <p style="margin: 0px; padding-top: 25px; font-weight: 550; font-size: 15px; font-family: Nunito, 'Times New Roman', serif;">Guess the cyclist of the day.</p>
         <p style="margin: 0px; padding-top: 20px; padding-bottom: 15px; font-weight: 550; font-size: 15px; font-family: Nunito, 'Times New Roman', serif;">Search for a cyclist to make your first.</p>
     </div>
+
     
     <p id="errorMessage" style="color: red; text-align: center; display: none;"></p>
+
+
     <div id="wonMessage" style="display: none;">
-                <h3 style="font-size: 25px;text-align: center; margin-bottom: 5px; margin-top: 0px; font-weight: 800; color: green">YOU WON!</h3>
-                <p id="guessCountText" style="text-align: center; font-size: 20px; margin-top: 0px; font-weight: 750;"></p>
-                <div style="text-align: center;">
-                        <button class="unlimitedButton" style="border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; color: white; background-color: black; padding-left: 20px; padding-right: 20px; cursor: pointer; font-family: Nunito, 'Times New Roman', serif;">Play Unlimited</button>
-                </div>
-        </div>
-    <div id="revealedMessage" style="display: none;">
-        <h3 style="font-size: 25px;text-align: center; margin-bottom: 5px; margin-top: 0px; font-weight: 800; color: red; padding-bottom: 10px;">You lost.</h3>
+        <h3 class="endMessage" style="color: green">YOU WON!</h3>
+        <p id="guessCountText" style="text-align: center; font-size: 20px; margin-top: 0px; font-weight: 750;"></p>
         <div style="text-align: center;">
-                    <button class="unlimitedButton" style="border-radius: 20px; height: 40px; font-size: 20px; font-weight: 600; color: white; padding-left: 20px; padding-right: 20px; cursor: pointer; background-color: Black; font-family: Nunito, 'Times New Roman', serif;">Play Unlimited</button>
+                <button class="unlimitedButton bigButton">Play Unlimited</button>
+        </div>
+    </div>
+
+
+    <div id="revealedMessage" style="display: none;">
+        <h3 class="endMessage" style="color: red; padding-bottom: 10px;">You lost.</h3>
+        <div style="text-align: center;">
+                    <button class="unlimitedButton bigButton">Play Unlimited</button>
         </div>
         <div style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 0px; margin-bottom: 20px;">
             <p id="revealedName" style="font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; width: 100%; text-align: center;">Name</p>
@@ -600,9 +675,17 @@
             </div>
         </div>
     </div>
+
+
+        <!--style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 0px; margin-bottom: 20px;"
+            style="font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; margin-top: 0px; width: 100%; text-align: center;"
+            th:each="guess : ${guessHistory}"
+            th:text="${guess.guessedCyclist.name}"
+        -->
+
     <div id="guessContainer">
-        <div th:each="guess : ${guessHistory}" style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 0px; margin-bottom: 20px;">
-            <p th:text="${guess.guessedCyclist.name}" style="font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; margin-top: 0px; width: 100%; text-align: center;">Name</p>
+        <div th:each="guess : ${guessHistory}">
+            <p th:text="${guess.guessedCyclist.name}">Name</p>
             <div th:style="'background-color: ' + ${guess.colors[0]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'"> 
                 <p style="font-weight: 600;">Pro Debut</p>
                 <p>
@@ -655,6 +738,7 @@
     <div id="bottomBorder" style="display: none;">
         <div style="margin-top: 40px; height: 50px; width: 100%; background: linear-gradient(to bottom, #007bbf 0% 20%, #da2430 20% 40%, #111012 40% 60%, #ffed00 60% 80%, #36a73e 80% 100%);"></div>
     </div>
+
     <style>
     #suggestions {
         position: absolute;
