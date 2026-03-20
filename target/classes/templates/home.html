@@ -7,6 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <style>
+        .rainbow{ 
+            height: 50px; 
+            width: 100%; 
+            background: linear-gradient(to bottom, #007bbf 0% 20%, #da2430 20% 40%, #111012 40% 60%, #ffed00 60% 80%, #36a73e 80% 100%);
+        }
+
         body {
             background: linear-gradient(to right, lightgray 0, white 45% 55%, lightgray 100%);
             font-family: Montserrat, sans-serif;
@@ -288,12 +294,52 @@
             font-family: Nunito, 'Times New Roman', serif;
         }
 
+        #suggestions {
+            position: absolute;
+            background-color: white;
+            border: none;      
+            border-radius: 20px;        
+            overflow: hidden;            
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        #suggestions.visible {
+            border: 1px solid #ccc;
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 8px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .suggestion-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
         .endMessage{
             font-size: 25px;
             text-align: center; 
             margin-bottom: 5px; 
             margin-top: 0px; 
             font-weight: 800; 
+        }
+
+        .mainLegend{
+            width: 75px; 
+            padding: 10px; 
+            margin: 5px; 
+            text-align: center; 
+            color: white; 
+            border-radius: 10px;
         }
 
         .tile {
@@ -311,6 +357,8 @@
     </style>
 </head>
 <body>
+
+
 <div id="splashScreen" style="transition: opacity 0.3s ease-in; display: none; flex-direction: column; align-items: center; z-index: 100; padding-top: 125px; width: 100%; height: 100%; margin: auto; position: fixed; background: linear-gradient(white, lightgray); padding-top: -100px">
     <div style="Margin: 5px;">
         <h1 style="font-size: 70px; text-align: center; font-weight: 800; letter-spacing: 5px; display: inline; padding-right: 0px;"><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">P</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">R</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">O</span></h1><h1 style="font-size: 70px; text-align: center; font-weight: 800; display: inline"><span style="color:#007bbf">C</span><span style="color: #da2430">Y</span><span style="color: #111012">C</span><span style="color:#ffed00">L</span><span style="color: #36a73e">E</span></h1>
@@ -318,9 +366,12 @@
     <p style="margin: 0px; padding-bottom: 3px;font-weight: 550; font-size: 18px; font-family: Nunito, 'Times New Roman', serif;">Can you guess the Professional Cyclist?</p> 
     <p style="margin: 0px; padding-bottom: 25px; font-weight: 550; font-size: 18px; font-family: Nunito, 'Times New Roman', serif;">Test your knowledge.</p>    
     <button id="playButton" style="text-align: center; border-radius: 40px; height: 50px; font-size: 20px; font-weight: 600; color: white; background-color: black; padding-left: 50px; padding-right: 50px; cursor: pointer;">Play</button>
-    <div style="margin-top: 30px; height: 50px; width: 100%; background: linear-gradient(to bottom, #007bbf 0% 20%, #da2430 20% 40%, #111012 40% 60%, #ffed00 60% 80%, #36a73e 80% 100%);"></div>
+    <div class="rainbow" style="margin-top: 30px;"></div>
 </div>
-    <div style="height: 50px; width: 100%; background: linear-gradient(to bottom, #007bbf 0% 20%, #da2430 20% 40%, #111012 40% 60%, #ffed00 60% 80%, #36a73e 80% 100%);"></div>
+    <div class="rainbow"></div>
+
+
+
 <div style="flex-grow: 1">
 
     <div style="padding-top: 10px; display: flex; justify-content: space-between; align-items: center; width: 530px; margin: auto;">
@@ -677,100 +728,29 @@
     </div>
 
 
-        <!--style="display: flex; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 0px; margin-bottom: 20px;"
-            style="font-size: 35px; font-weight: 700; color: black; margin-bottom: 25px; margin-top: 0px; width: 100%; text-align: center;"
-            th:each="guess : ${guessHistory}"
-            th:text="${guess.guessedCyclist.name}"
-        -->
+    <div id="guessContainer"></div>
 
-    <div id="guessContainer">
-        <div th:each="guess : ${guessHistory}">
-            <p th:text="${guess.guessedCyclist.name}">Name</p>
-            <div th:style="'background-color: ' + ${guess.colors[0]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'"> 
-                <p style="font-weight: 600;">Pro Debut</p>
-                <p>
-                    <span th:text="${guess.guessedCyclist.debut}" style="font-size: 20px;"></span>
-                    <span th:text="${guess.arrows[0]}" style="font-size: 20px;"></span>
-                </p>
-            </div>
 
-            <div th:style="'background-color: ' + ${guess.colors[1]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p style="font-weight: 600; margin-bottom: 0px;">Team</p>
-                <p th:text="${guess.guessedCyclist.team}" style="font-size: 20px; margin-top: 0px;"></p>
-            </div>
-
-            <div th:style="'background-color: ' + ${guess.colors[2]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p style="font-weight: 600;">Pro Wins</p>
-                <p>
-                    <span th:text="${guess.guessedCyclist.wins}" style="font-size: 20px;"></span>
-                    <span th:text="${guess.arrows[1]}" style="font-size: 20px;"></span>
-                </p>
-            </div>
-
-            <div th:style="'background-color: ' + ${guess.colors[3]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p style="font-weight: 600;">Gender</p>
-                <p th:text="${guess.guessedCyclist.gender}" style="font-size: 20px;"></p>
-            </div>
-
-            <div th:style="'background-color: ' + ${guess.colors[4]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p style="font-weight: 600;">Specialty</p>
-                <p th:text="${guess.guessedCyclist.specialty}" style="font-size: 20px;"></p>
-            </div>
-
-            <div th:style="'background-color: ' + ${guess.colors[5]} + '; width: 150px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                <p style="font-weight: 600;  margin-bottom: 0px;">Nationality</p>
-                <p th:text="${guess.guessedCyclist.nationality}"></p>
-            </div>
+    <div  id="legend" style="display: none; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 30px; padding-bottom: 10px;">
+        <div class="mainLegend" style="background-color: black;">
+            <p>Incorrect</p>
+        </div>
+        <div class="mainLegend" style="background-color: #F0C040;">
+            <p>Close</p>
+        </div>
+        <div class="mainLegend" style="background-color: Green;">
+            <p>Correct</p>
         </div>
     </div>
-        <div  id="legend" style="display: none; flex-wrap: wrap; justify-content: center; width: 600px; margin: auto; margin-top: 30px; padding-bottom: 10px;">
-                <div th:style="'background-color: black; width: 75px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                    <p>Incorrect</p>
-                </div>
-                <div th:style="'background-color: #F0C040; width: 75px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                    <p>Close</p>
-                </div>
-                <div th:style="'background-color: Green; width: 75px; padding: 10px; margin: 5px; text-align: center; color: white; border-radius: 10px;'">
-                    <p>Correct</p>
-                </div>
-        </div>
 </div>
     <div id="bottomBorder" style="display: none;">
-        <div style="margin-top: 40px; height: 50px; width: 100%; background: linear-gradient(to bottom, #007bbf 0% 20%, #da2430 20% 40%, #111012 40% 60%, #ffed00 60% 80%, #36a73e 80% 100%);"></div>
+        <div class="rainbow" style="margin-top: 40px;"></div>
     </div>
 
-    <style>
-    #suggestions {
-        position: absolute;
-        background-color: white;
-        border: none;      
-        border-radius: 20px;        
-        overflow: hidden;            
-        width: 100%;
-        max-height: 200px;
-        overflow-y: auto;
-        z-index: 1000;
-    }
 
-    #suggestions.visible {
-        border: 1px solid #ccc;
-        display: block;
-    }
 
-    .suggestion-item {
-        padding: 8px;
-        cursor: pointer;
-        border-bottom: 1px solid #eee;
-    }
 
-    .suggestion-item:hover {
-        background-color: #f5f5f5;
-    }
-
-    .suggestion-item:last-child {
-        border-bottom: none;
-    }
-    </style>
+    
     <script th:inline="javascript">
 
     let guessCount = 0;
