@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html style="margin: 0; padding: 0;">
+<html>
 <link rel="stylesheet" href="/styles.css">
-<!mvn spring-boot:run>
 <head>
     <title>PROCYCLE: Cycling Guessing Game</title>
+    <!--link rel="icon" type="image/png" href="favicon.png"-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;450;500;550;600;650;700;750;800;850;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     <div style="padding-top: 10px; display: flex; justify-content: space-between; align-items: center; width: 530px; margin: auto;">
         <div id="menubutton" style="display: inline; vertical-align: middle; width: 48px;">
-            <button style="cursor: pointer; font-size: 40px; font-weight: 500; background: none; border: none; line-height: 1">☰</button>
+            <button style="font-family: Nunito, 'Times New Roman', serif; cursor: pointer; font-size: 40px; font-weight: 500; background: none; border: none; line-height: 1">☰</i></button>
         </div>
         <div style="text-align: center; display: inline; vertical-align: middle">
             <h1 style="font-size: 60px; text-align: center; font-weight: 800; letter-spacing: 5px; display: inline; padding-right: 0px;"><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">P</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">R</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">O</span></h1><h1 style="font-size: 60px; text-align: center; font-weight: 800; display: inline"><span style="color:#007bbf">C</span><span style="color: #da2430">Y</span><span style="color: #111012">C</span><span style="color:#ffed00">L</span><span style="color: #36a73e">E</span></h1>
@@ -72,14 +72,14 @@
             <hr class="grayline">
         </div>
 
-
+        <!--id="noobButton"-->
 
         <div id="settings" th:style="${mode == 'Unlimited'} ? 'display: block;' : 'display: none;'">
             <p style="font-size: 30px; font-weight: 600; margin: 0px; padding: 0px; padding-top: 10px; font-family: Nunito, 'Times New Roman', serif; text-align: center;">Play Settings</p>
             <div style="text-align: center;">
                 <p class="settingTitle">Difficulty</p>
                 <div style="display: inline;">
-                    <button id="noobButton" class="noobButton menu-button" th:style="'background-color: ' + (${difficulty == 'Noob'} ? '#36a73e' : 'black')">Noob</button>
+                    <button class="noobButton menu-button">Noob</button>
                 </div>
                 <div style="display: inline;">
                     <button class="easyButton menu-button">Easy</button>
@@ -175,7 +175,6 @@
                 </div>
             </div>
             <p style="color: gray; font-weight: 500;">The full breakdown of which cyclists are in the list is available under the attributes tab.</p>
-            <hr class="grayline">
         </div>
 
 
@@ -285,7 +284,7 @@
                     <div style="padding-bottom: 20px;"><p style="display: inline;">Central Europe:</p><p style="color: gray; font-weight: 500; display: inline;"> Germany, Austria, Switzerland, Poland, Czech Republic, Slovakia, Hungary, Liechtenstein, Slovenia</p></div>
                 
                 <hr class="grayline">
-                <h2 style="padding-top: 10px;">Which proffesional cyclists are in the game?</h2>
+                <h2 style="padding-top: 10px;">Which pro cyclists are in the game?</h2>
                 <p style="font-weight: 600; font-size: 20px;">The complete list of cyclists includes:</p>
                 <p class="listBullet">● Every cyclists from all 18 mens UCI World Tour teams and all 14 womens UCI World Tour teams.</p>
                 <p class="listBullet">● Every cyclists from the following mens UCI ProTeams: Tudor Pro Cycling, Cofidis, Pinarello Q36.5 Pro Cycling, and Unibet Rose Rockets.</p>
@@ -407,6 +406,4 @@
     var cyclists = /*[[${listOfNames}]]*/ [];
 </script>
 <script src="/script.js"></script>
-
-
 </body>
