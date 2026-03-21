@@ -227,14 +227,6 @@ function updateTimer() {
 setInterval(updateTimer, 1000);
 updateTimer();
 
-if (gameMode === "Daily") {
-    document.getElementById("dailyWelcome").style.display = "block";
-    document.getElementById("unlimitedWelcome").style.display = "none";
-}
-if (gameMode === "Unlimited") {
-    document.getElementById("dailyWelcome").style.display = "none";
-    document.getElementById("unlimitedWelcome").style.display = "block";
-}
 const guessForm = document.getElementById("guessForm");
 
 function resetGame() {
@@ -661,6 +653,15 @@ if (guessForm) {
 
 
 //Reload Backup Below
+
+if (gameMode === "Daily") {
+    document.getElementById("dailyWelcome").style.display = "block";
+    document.getElementById("unlimitedWelcome").style.display = "none";
+}
+if (gameMode === "Unlimited") {
+    document.getElementById("dailyWelcome").style.display = "none";
+    document.getElementById("unlimitedWelcome").style.display = "block";
+}
 
 
 updateDifficultyButtons(difficulty.toLowerCase() + "Button", getDifficultyColor(difficulty));

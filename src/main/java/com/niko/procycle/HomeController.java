@@ -1,6 +1,5 @@
 package com.niko.procycle;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -41,55 +40,24 @@ public class HomeController {
         return "home";
     }
 
-    @PostMapping("/guess")
-    public String handleGuess(@RequestParam String guess, Model model) {
-        Cyclist guessedCyclist = theData.findCyclistByName(guess);
-        if (guessedCyclist == null) {
-            model.addAttribute("error", "Cyclist not found, try again!");
-            model.addAttribute("guessHistory", theData.getGuesses());
-            model.addAttribute("listOfNames", theData.getListOfNames());
-            model.addAttribute("mode", theData.getMode());
-            model.addAttribute("difficulty", theData.getDifficulty());
-            model.addAttribute("genderMode", theData.getGenderMode());
-            model.addAttribute("guessMode", theData.getGuessMode());
-            return "home";
-        }
-        Cyclist answerCyclist = theData.getCurrentAnswer();
-        String[] arrows = theData.getArrows(guessedCyclist, answerCyclist);
-        String[] colors = theData.compareGuess(guessedCyclist, answerCyclist);
-        model.addAttribute("guessedCyclist", guessedCyclist);
-        model.addAttribute("colors", colors);
-        model.addAttribute("arrows", arrows);
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        Guess aGuess = new Guess(guessedCyclist, colors, arrows);
-        ArrayList<Guess> guessHistory = theData.guessHistory(aGuess);
-        model.addAttribute("guessHistory", guessHistory);
-        if (theData.isWon()) {
-            model.addAttribute("won", true);
-        }
-        if (theData.isRevealed()) {
-            model.addAttribute("revealedCyclist", theData.getCurrentAnswer());
-            model.addAttribute("revealed", true);
-        }
-        return "home";
-    }
-
     @PostMapping("/guessAjax")
     @ResponseBody
     public Map<String, Object> handleGuessAjax(@RequestParam String guess) {
         Cyclist guessedCyclist = theData.findCyclistByName(guess);
+
         if (guessedCyclist == null) {
             return Map.of("error", "Cyclist not found, try again!");
         }
+
         Cyclist answerCyclist = theData.getCurrentAnswer();
         String[] arrows = theData.getArrows(guessedCyclist, answerCyclist);
         String[] colors = theData.compareGuess(guessedCyclist, answerCyclist);
+
+
         Guess aGuess = new Guess(guessedCyclist, colors, arrows);
-        ArrayList<Guess> guessHistory = theData.guessHistory(aGuess);
+        theData.guessHistory(aGuess);
+
+
         Map<String, Object> response = new HashMap<>();
         response.put("name", guessedCyclist.getName());
         response.put("colors", colors);
@@ -114,20 +82,6 @@ public class HomeController {
         return response;
     }
 
-    @PostMapping("/Unlimited")
-    public String unlimitedMode(Model model){
-        theData.setUnlimitedMode();
-        theData.setCurrentAnswerToRandom();
-        theData.setInfinite();
-        theData.clearHistory();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
-    }
-
     @PostMapping("/UnlimitedAjax")
     @ResponseBody
     public Map<String, Object> unlimitedModeAjax(){
@@ -143,22 +97,6 @@ public class HomeController {
         return response;
     }
 
-    @PostMapping("/daily")
-    public String dailyMode(Model model){
-        theData.setDailyMode();
-        theData.setHard();
-        theData.setBoth();
-        theData.setLimited();
-        theData.setCurrentAnswerToDaily();
-        theData.clearHistory();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
-    }
-
     @PostMapping("/dailyAjax")
     @ResponseBody
     public Map<String, Object> dailyModeAjax(){
@@ -172,21 +110,6 @@ public class HomeController {
         response.put("listOfNames", theData.getListOfNames());
         response.put("guessMode", theData.getGuessMode());
         return response;
-    }
-
-
-    @PostMapping("/reveal")
-    public String revealAnswer(Model model){
-        model.addAttribute("revealedCyclist", theData.getCurrentAnswer());
-        model.addAttribute("revealed", true);
-        model.addAttribute("guessHistory", theData.getGuesses());
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
-
     }
 
     @PostMapping("/revealAjax")
@@ -205,19 +128,6 @@ public class HomeController {
         return response;
     }
 
-    @PostMapping("/Noob2")
-    public String noob(Model model){
-        theData.setNoob();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
-    }
-
     @PostMapping("/Noob")
     @ResponseBody
     public Map<String, Object> noob(){
@@ -225,19 +135,6 @@ public class HomeController {
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
-    }
-
-    @PostMapping("/Easy2")
-    public String easy(Model model){
-        theData.setEasy();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
     }
 
     @PostMapping("/Easy")
@@ -249,19 +146,6 @@ public class HomeController {
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
-    @PostMapping("/Medium2")
-    public String medium(Model model){
-        theData.setMedium();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
-    }
-
     @PostMapping("/Medium")
     @ResponseBody
     public Map<String, Object> medium(){
@@ -269,19 +153,6 @@ public class HomeController {
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
-    }
-
-    @PostMapping("/Hard2")
-    public String hard(Model model){
-        theData.setHard();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
     }
 
     @PostMapping("/Hard")
@@ -293,19 +164,6 @@ public class HomeController {
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
-    @PostMapping("/Both2")
-    public String both(Model model){
-        theData.setBoth();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
-    }
-
     @PostMapping("/Both")
     @ResponseBody
     public Map<String, Object> both(){
@@ -313,19 +171,6 @@ public class HomeController {
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
-    }
-
-    @PostMapping("/Men2")
-    public String men(Model model){
-        theData.setMen();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
     }
 
     @PostMapping("/Men")
@@ -337,19 +182,6 @@ public class HomeController {
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
-    @PostMapping("/Women2")
-    public String women(Model model){
-        theData.setWomen();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
-    }
-
     @PostMapping("/Women")
     @ResponseBody
     public Map<String, Object> Women(){
@@ -359,19 +191,6 @@ public class HomeController {
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
-    @PostMapping("/Limited2")
-    public String limited(Model model){
-        theData.setLimited();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
-    }
-
     @PostMapping("/Limited")
     @ResponseBody
     public Map<String, Object> limited(){
@@ -379,19 +198,6 @@ public class HomeController {
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
-    }
-
-    @PostMapping("/Infinite2")
-    public String infinite(Model model){
-        theData.setInfinite();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        return "home";
     }
 
     @PostMapping("/Infinite")
