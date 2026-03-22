@@ -53,8 +53,6 @@ public class HomeController {
         if (alreadyGuessedList.contains(guessedCyclist)) {
             return Map.of("repeat", "Already Guessed.");
         }
-        
-        alreadyGuessedList.add(guessedCyclist);
 
         Cyclist answerCyclist = theData.getCurrentAnswer();
         String[] arrows = theData.getArrows(guessedCyclist, answerCyclist);
@@ -64,7 +62,7 @@ public class HomeController {
         Guess aGuess = new Guess(guessedCyclist, colors, arrows);
         theData.guessHistory(aGuess);
 
-
+        alreadyGuessedList.add(guessedCyclist);
         Map<String, Object> response = new HashMap<>();
         response.put("name", guessedCyclist.getName());
         response.put("colors", colors);

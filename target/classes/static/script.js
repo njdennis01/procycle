@@ -624,11 +624,18 @@ if (guessForm) {
             if (data.error) {
                 errorMessage.textContent = data.error;
                 errorMessage.style.display = "block";
+                repeatMessage.style.display = "none";
+                document.getElementById("guessInput").value = "";
+                return;
             }
             if (data.repeat) {
                 repeatMessage.textContent = data.repeat;
                 repeatMessage.style.display = "block";
-            } else {
+                errorMessage.style.display = "none";
+                document.getElementById("guessInput").value = "";
+                return;
+            } 
+            else {
                 errorMessage.style.display = "none";
                 repeatMessage.style.display = "none";
                 document.getElementById("guessInput").value = "";
