@@ -61,7 +61,6 @@ public class HomeController {
 
         Guess aGuess = new Guess(guessedCyclist, colors, arrows);
         theData.guessHistory(aGuess);
-
         alreadyGuessedList.add(guessedCyclist);
         Map<String, Object> response = new HashMap<>();
         response.put("name", guessedCyclist.getName());
@@ -93,6 +92,8 @@ public class HomeController {
         theData.setUnlimitedMode();
         theData.setCurrentAnswerToRandom();
         theData.clearHistory();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         Map<String, Object> response = new HashMap<>();
         response.put("difficulty", theData.getDifficulty());
         response.put("genderMode", theData.getGenderMode());
@@ -111,6 +112,8 @@ public class HomeController {
         theData.setLimited();
         theData.setCurrentAnswerToDaily();
         theData.clearHistory();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         Map<String, Object> response = new HashMap<>();
         response.put("listOfNames", theData.getListOfNames());
         response.put("guessMode", theData.getGuessMode());
@@ -139,6 +142,8 @@ public class HomeController {
         theData.setNoob();
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
@@ -148,6 +153,8 @@ public class HomeController {
         theData.setEasy();
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
@@ -157,6 +164,8 @@ public class HomeController {
         theData.setMedium();
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
@@ -166,6 +175,8 @@ public class HomeController {
         theData.setHard();
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
@@ -175,6 +186,8 @@ public class HomeController {
         theData.setBoth();
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
@@ -184,6 +197,8 @@ public class HomeController {
         theData.setMen();
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
@@ -193,6 +208,8 @@ public class HomeController {
         theData.setWomen();
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
@@ -202,6 +219,8 @@ public class HomeController {
         theData.setLimited();
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 
@@ -211,6 +230,8 @@ public class HomeController {
         theData.setInfinite();
         theData.clearHistory();
         theData.setCurrentAnswerToRandom();
+        theData.setManuallyRevealed(false);
+        alreadyGuessedList.clear();
         return Map.of("success", true, "listOfNames", theData.getListOfNames());
     }
 }

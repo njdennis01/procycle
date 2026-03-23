@@ -162,11 +162,13 @@ attributesbutton.addEventListener("click", function() {
     howtoplaybutton.classList.remove("active-page-btn");
 });
 
-var input = document.getElementById("guessInput");
-var suggestions = document.getElementById("suggestions");
+
 if (sessionStorage.getItem("hasPlayed") !== "true") {
     splashScreen.style.display = "flex";
 }
+
+var input = document.getElementById("guessInput");
+var suggestions = document.getElementById("suggestions");
 
 if (input) {
     input.addEventListener("input", function() {
@@ -177,29 +179,42 @@ if (input) {
             suggestions.classList.remove("visible");
             return;
         }
+
         suggestions.classList.add("visible");
-        let matches = 0;
+
+        var firstNameMatches = [];
+        var lastNameMatches = [];
+
         for (var i = 0; i < cyclists.length; i++) {
-        if (cyclists[i].toLowerCase().startsWith(text) || 
-            cyclists[i].split(" ").some(function(part) { return part.toLowerCase().startsWith(text); })) {
-                var div = document.createElement("div");
-                div.textContent = cyclists[i];
-                div.className = "suggestion-item";
-                div.addEventListener("click", function() {
-                    input.value = this.textContent;
-                    suggestions.innerHTML = "";
-                    suggestions.classList.remove("visible");
-                    input.focus();
-                });
-                suggestions.appendChild(div);
-                matches++;
+            var parts = cyclists[i].split(" ");
+            if (parts[0].toLowerCase().startsWith(text)) {
+                firstNameMatches.push(cyclists[i]);
+            } else if (parts.some(function(part) { return part.toLowerCase().startsWith(text); })) {
+                lastNameMatches.push(cyclists[i]);
             }
         }
-        if (matches > 0) {
-            suggestions.classList.add("visible"); // show if matches found
-        } else {
-            suggestions.classList.remove("visible"); // hide if no matches
+
+        var allMatches = firstNameMatches.concat(lastNameMatches);
+
+        for (var i = 0; i < allMatches.length; i++) {
+            var div = document.createElement("div");
+            div.textContent = allMatches[i];
+            div.className = "suggestion-item";
+            div.addEventListener("click", function() {
+                input.value = this.textContent;
+                suggestions.innerHTML = "";
+                suggestions.classList.remove("visible");
+                input.focus();
+            });
+            suggestions.appendChild(div);
         }
+
+        if (allMatches.length > 0) {
+            suggestions.classList.add("visible");
+        } else {
+            suggestions.classList.remove("visible");
+        }
+
         input.addEventListener("keydown", function(e) {
             if (e.key === "Enter" && suggestions.firstChild) {
                 input.value = suggestions.firstChild.textContent;
@@ -235,9 +250,13 @@ function resetGame() {
     document.getElementById("revealedMessage").style.display = "none";
     document.getElementById("legend").style.display = "none";
     document.getElementById("bottomBorder").style.display = "none";
-    guessCount = 0;
-    if (guessForm) guessForm.style.display = "block";
     document.getElementById("revealSection").style.display = "none";
+    document.getElementById("errorMessage").style.display = "none";
+    document.getElementById("repeatMessage").style.display = "none";
+    
+    guessCount = 0;
+
+    if (guessForm) guessForm.style.display = "block";
 
     // guess tracker
     if (guessMode === "Limited") {
@@ -252,17 +271,17 @@ function resetGame() {
         document.getElementById("settings").style.display = "block";
         document.getElementById("difficulties").style.display = "block";
         document.getElementById("unlimitedButtonDiv").style.display = "none";
-        document.getElementById("dailyButtonDiv").style.display = "inline";
+        document.getElementById("dailyButtonDiv").style.display = "block";
         document.getElementById("dailyIntro").style.display = "none";
-        document.getElementById("unlimitedWelcome").style.display = "block";
         document.getElementById("dailyWelcome").style.display = "none";
+        document.getElementById("unlimitedWelcome").style.display = "block";
     } else {
         document.getElementById("settings").style.display = "none";
         document.getElementById("difficulties").style.display = "none";
-        document.getElementById("unlimitedButtonDiv").style.display = "inline";
+        document.getElementById("unlimitedButtonDiv").style.display = "block";
         document.getElementById("dailyButtonDiv").style.display = "none";
-        document.getElementById("unlimitedWelcome").style.display = "none";
         document.getElementById("dailyWelcome").style.display = "block";
+        document.getElementById("unlimitedWelcome").style.display = "none";
     }
 }
 
@@ -666,15 +685,6 @@ if (guessForm) {
 
 
 //Reload Backup Below
-
-if (gameMode === "Daily") {
-    document.getElementById("dailyWelcome").style.display = "block";
-    document.getElementById("unlimitedWelcome").style.display = "none";
-}
-if (gameMode === "Unlimited") {
-    document.getElementById("dailyWelcome").style.display = "none";
-    document.getElementById("unlimitedWelcome").style.display = "block";
-}
 
 
 updateDifficultyButtons(difficulty.toLowerCase() + "Button", getDifficultyColor(difficulty));

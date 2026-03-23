@@ -2,7 +2,7 @@
 <html>
 <link rel="stylesheet" href="/styles.css">
 <head>
-    <title>PROCYCLE: Cycling Guessing Game</title>
+    <title>PROCYCLE</title>
     <link rel="icon" type="image/png" href="TabLogo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;450;500;550;600;650;700;750;800;850;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
@@ -27,15 +27,15 @@
 
 <div style="flex-grow: 1">
 
-    <div style="padding-top: 10px; display: flex; justify-content: space-between; align-items: center; width: 530px; margin: auto;">
-        <div id="menubutton" style="display: inline; vertical-align: middle; width: 48px;">
-            <button style="font-family: Nunito, 'Times New Roman', serif; cursor: pointer; font-size: 40px; font-weight: 500; background: none; border: none; line-height: 1">☰</i></button>
+    <div style="padding-top: 10px; display: flex; align-items: center; width: 543px; margin: auto;">
+        <div id="menubutton" style="display: inline; vertical-align: middle; width: 46.5px;">
+            <button style="cursor: pointer; background: none; border: none; margin: 0px;"><img src="/menu2.png" style="Height: 30px; Width: 30px; object-fit: contain; padding-top: 4px;"></i></button>
         </div>
-        <div style="text-align: center; display: inline; vertical-align: middle">
+        <div style="text-align: center; display: inline; vertical-align: middle; width: 450px;">
             <h1 style="font-size: 60px; text-align: center; font-weight: 800; letter-spacing: 5px; display: inline; padding-right: 0px;"><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">P</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">R</span><span style="color: white; -webkit-text-stroke: 6px black; paint-order: stroke fill;">O</span></h1><h1 style="font-size: 60px; text-align: center; font-weight: 800; display: inline"><span style="color:#007bbf">C</span><span style="color: #da2430">Y</span><span style="color: #111012">C</span><span style="color:#ffed00">L</span><span style="color: #36a73e">E</span></h1>
         </div>
-        <div id="directionsbutton" style=" display: inline; vertical-align: middle; width: 48px;">
-            <button style="border-radius: 20px; background-color: black; color: white; cursor: pointer; font-size: 30px; font-weight: 500; height: 40px; width: 40px; padding-left: 10px; padding-right: 10px;">?</button>
+        <div id="directionsbutton" style=" display: inline; vertical-align: middle; width: 46.5px;">
+            <button style="margin-left: 2px; margin-top: 2px; border-radius: 20px; background-color: black; color: white; cursor: pointer; font-size: 30px; font-weight: 500; height: 40px; width: 40px;">?</button>
         </div>
     </div>
     <hr style="width: 530px; border: 1px solid gray; margin: auto;">
@@ -52,15 +52,17 @@
             <button id="homeButton" class="bigButton">Home</button>
         </div>
         <div style="padding-bottom: 10px; text-align: center;">
-            <div id="unlimitedButtonDiv" th:style="${mode == 'Daily'} ? 'display: inline;' : 'display: none;'" style="display: inline;">
+            <div id="unlimitedButtonDiv" th:style="${mode == 'Daily'} ? 'display: block;' : 'display: none;'">
                 <button class="unlimitedButton bigButton">Play Unlimited</button>
             </div>
-            <div id="dailyButtonDiv" th:style="${mode == 'Unlimited'} ? 'display: inline;' : 'display: none;'" style="display: inline;">
+            <div id="dailyButtonDiv" th:style="${mode == 'Unlimited'} ? 'display: block;' : 'display: none;'">
                 <button class="dailyButton bigButton">Play The Daily</button>
             </div>
         </div>
         <div style="text-align: center; padding-bottom: 15px;">
-            <button class="bigButton">Follow Us</button>
+            <a href="https://www.instagram.com/niko.__.d/" target="_blank">
+                <button class="bigButton">Follow Us</button>
+            </a>
         </div>
         <hr class="grayline">
 
@@ -72,8 +74,6 @@
             </div>
             <hr class="grayline">
         </div>
-
-        <!--id="noobButton"-->
 
         <div id="settings" th:style="${mode == 'Unlimited'} ? 'display: block;' : 'display: none;'">
             <p style="font-size: 30px; font-weight: 600; margin: 0px; padding: 0px; padding-top: 10px; font-family: Nunito, 'Times New Roman', serif; text-align: center;">Play Settings</p>
@@ -116,10 +116,10 @@
             <hr class="grayline">
         </div>
         
-        <p class="menuText">Find a bug? Have a suggestions? Let me know!</p>
+        <p class="menuText">Find a bug? Have a suggestions? Let me <a href="mailto:nikojdennis@gmail.com" target="_blank">know</a>!</p>
         <hr class="grayline">
-        <p class="menuText">ProCycle was heavily inspired by Spotle and Wordle.</p>
-        <p class="menuText">A big thanks to procyclingstats.com for making this game possible through the statistics on their website.</p>
+        <p class="menuText">PROCYCLE was heavily inspired by <a href="https://www.spotle.io" target="_blank">Spotle</a> and <a href="https://www.nytimes.com/games/wordle" target="_blank">Wordle</a></p>
+        <p class="menuText">A big thanks to <a href="https://www.procyclingstats.com" target="_blank">procyclingstats.com</a> for making this game possible through the statistics on their website.</p>
         <hr class="grayline">
         <p class="menuText" style="margin: 0px; padding-bottom: 5px; padding-top: 10px;">Next PROCYCLE</p>
         <p style="text-align:center; margin: 0px; font-family: 'Roboto Mono', monospace;"><span id="timer"></span></p>
@@ -143,11 +143,11 @@
             <div style="margin-top: 0px; padding-top: 15px; padding-bottom: 10px;">
                 <span class="directionNums">1</span><h2 class="directSentence" >Search for a cyclist to make your first guess.</h2> 
             </div>
-            <img src="/Guess1.png" style="width: 300px; height: 243px; object-fit: contain; display: block; margin: auto;">
+            <img src="/Guess1.png" style="width: 300px; height: 248px; object-fit: contain; display: block; margin: auto;">
             <div style="padding-top: 30px; padding-bottom: 10px;">
                 <span class="directionNums">2</span><h2 class="directSentence">Narrow down the peleton with each guess.</h2>
             </div>
-            <img src="/Guess2.png" style="width: 300px; height: 240px; object-fit: contain; display: block; margin: auto;">
+            <img src="/Guess2.png" style="width: 300px; height: 248px; object-fit: contain; display: block; margin: auto;">
             <div style="padding-top: 30px; padding-bottom: 10px;">
                 <span class="directionNums">3</span><h2 class="directSentence">Piece together the clues until you guess the cyclist.</h2>
             </div>
@@ -182,9 +182,8 @@
         <div id="page2" style="display: none;">
             <div style="text-align: center;">
                 <h1 class="directionsTitle">Attributes</h1>
-                <p style="font-weight: 600; font-size: 20px">All cyclist statistics from procyclingstats.com.</p>
-                <p class="grayText">A big thanks to procyclingstats for making this game possible through the statistics on their website.</p>
-                <p style="font-weight: 600; font-size: 20px;">All attributes acurate as of the start of the 2026 season and should be updated anually.</p>
+                <p style="font-weight: 600; font-size: 15px; font-family: Nunito, 'Times New Roman', serif;">All cyclist statistics are from <a href="https://www.procyclingstats.com" target="_blank">procyclingstats.com</a>. Thank You PCS!</p>
+                <p style="font-weight: 600; font-size: 15px; font-family: Nunito, 'Times New Roman', serif;">All attributes acurate as of the start of the 2026 season and will be updated anually.</p>
             </div>
 
             <hr class="grayline">
@@ -291,7 +290,8 @@
                 <p class="listBullet">● Every cyclists from the following mens UCI ProTeams: Tudor Pro Cycling, Cofidis, Pinarello Q36.5 Pro Cycling, and Unibet Rose Rockets.</p>
                 <p class="listBullet">● Significant pro cyclists who retired after 2020.</p>
                 <p class="listBullet">● A few additions on UCI ProTeams that were not included: Jesús Herrada, Fernando Gaviria, Iván Ramiro Sosa, Yukiya Arashiro, Anthony Turgis, Allison Jackson, and Chris Froome (Not retired but not on a team).</p>
-                <p style="font-weight: 600;">The Daily ProCycle will reset to the full list at the start of ever month.</p>
+                <p class="listBullet">● There are roughly 1000 cyclists in the complete list.</p>
+                <p style="font-weight: 600;">The Daily PROCYCLE will reset to the full list at the start of ever month.</p>
 
         </div>
     </div>
@@ -301,10 +301,8 @@
     <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: 50;"></div>
 
 
-
-
-    <h2 id="dailyWelcome" class="welcome">Welcome to The Daily PROCYCLE</h2>
-    <h2 id="unlimitedWelcome" class="welcome">Welcome to Unlimited PROCYCLE</h2>
+    <h2 id="dailyWelcome" class="welcome" th:style="${mode == 'Daily'} ? 'display: block;' : 'display: none;'">Welcome to The Daily PROCYCLE</h2>
+    <h2 id="unlimitedWelcome" class="welcome" th:style="${mode == 'Unlimited'} ? 'display: block;' : 'display: none;'">Welcome to Unlimited PROCYCLE</h2>
 
 
     <div id="difficulties" th:style="${mode == 'Unlimited'} ? 'display: block; text-align: center; padding-bottom: 15px; padding-top: 5px;' : 'display: none; text-align: center; padding-bottom: 15px; padding-top: 5px;'">
@@ -313,7 +311,6 @@
         <button class="mediumButton menu-button">Medium</button>
         <button class="hardButton menu-button">Hard</button>
     </div>
-    <!--th:if="${won == null and revealed == null and (guessMode == 'Infinite' or guessHistory == null or guessHistory.size() < 10)}"-->
 
     <form id="guessForm" action="/guess" method="post" style="text-align: center; margin: 0px; margin-top: 0px">
         <div style="position: relative; display: inline-block;">
