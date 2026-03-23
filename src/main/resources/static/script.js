@@ -258,7 +258,7 @@ function resetGame() {
     document.getElementById("revealSection").style.display = "none";
     document.getElementById("errorMessage").style.display = "none";
     document.getElementById("repeatMessage").style.display = "none";
-    
+    shareResult = "PROCYCLE " + dateString + " ";
     guessCount = 0;
 
     if (guessForm) guessForm.style.display = "block";
@@ -649,7 +649,17 @@ if (guessForm) {
             console.log(data);
             if (data.won) {
                 document.getElementById("wonMessage").style.display = "block";
-                document.getElementById("guessCountText").textContent = "Guesses: " + (guessCount + 1);
+                guesses = document.getElementById("guessCountText");
+                guesses.textContent = (guessCount + 1);
+                if (guessCount < 3){
+                    guesses.style.color = "green";
+                }
+                else if (guessCount < 7){
+                    guesses.style.color = "#F0C040";
+                }
+                else {
+                    guesses.style.color = "red";
+                }
                 shareResult += "🟩";
             }
             if (data.revealed) {

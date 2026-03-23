@@ -318,7 +318,7 @@
             <input type="text" name="guess" id="guessInput" placeholder="Type a Cyclist..." autocomplete="off" style="border-radius: 20px; height: 40px; font-size: 15px; font-weight: 600; background-color: black; color: white; font-family: Montserrat, sans-serif; padding-left: 15px; box-sizing: border-box; vertical-align: middle; cursor: pointer;"/>
             <div id="suggestions" style="position: absolute; background-color: white; width: 300px; left: 50%; transform: translateX(-50%); z-index: 10; max-height: 200px; overflow-y: auto;"></div>
         </div>
-        <button style="border-radius: 20px; height: 40px; font-size: 17px; font-weight: 600; color: white; background-color: green; vertical-align: middle; box-sizing: border-box; padding-left: 15px; padding-right: 15px; cursor: pointer;">Guess</button>
+        <button style="font-family: Nunito, 'Times New Roman', serif; border-radius: 20px; height: 40px; font-size: 17px; font-weight: 600; color: white; background-color: green; vertical-align: middle; box-sizing: border-box; padding-left: 15px; padding-right: 15px; cursor: pointer;">Guess</button>
     </form>
 
 
@@ -337,6 +337,7 @@
 
     <div id="wonMessage" style="display: none;">
         <h3 class="endMessage" style="color: green">YOU WON!</h3>
+        <div style="text-align: center; font-size: 20px; margin-top: 0px; font-weight: 750;"><p style="display: inline;">In </p><p id="guessCountText" style="display: inline;"></p><p style="display: inline;"> guesses.</p></div>
         <p id="guessCountText" style="text-align: center; font-size: 20px; margin-top: 0px; font-weight: 750;"></p>
         <div style="text-align: center;">
                 <button class="unlimitedButton bigButton">Play Unlimited</button>
