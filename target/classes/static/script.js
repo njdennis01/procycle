@@ -3,8 +3,10 @@ const month = String(today.getMonth() + 1).padStart(2, '0');
 const day = String(today.getDate()).padStart(2, '0');
 const dateString = month + "/" + day;
 
+
 let shareResult = "PROCYCLE " + dateString + " ";
 let guessCount = 0;
+let savedGuesses = [];
 
 const flags = {
     "Belgium": "be",
@@ -90,6 +92,7 @@ if (homeButton) {
             sidebar.classList.remove("active");
             overlay.style.display = "none";
             document.body.style.overflow = "";
+            loadGameState()
         });
     });
 }
@@ -260,6 +263,7 @@ function resetGame() {
     document.getElementById("repeatMessage").style.display = "none";
     shareResult = "PROCYCLE " + dateString + " ";
     guessCount = 0;
+    savedGuesses = [];
 
     if (guessForm) guessForm.style.display = "block";
 
@@ -355,6 +359,7 @@ document.querySelectorAll(".dailyButton").forEach(function(button) {
             sessionStorage.removeItem('menuOpen');
             document.body.style.overflow = "";
             resetGame();
+            loadGameState()
         });
     });
 });
@@ -503,6 +508,8 @@ document.querySelectorAll(".revealButton").forEach(function(button) {
             overlay.style.display = "none";
             sessionStorage.removeItem('menuOpen');
             document.body.style.overflow = "";
+
+            saveGameState("revealed");
         });
     });
 });
@@ -661,7 +668,9 @@ if (guessForm) {
                     guesses.style.color = "red";
                 }
                 shareResult += "🟩";
+                saveGameState("won");
             }
+            
             if (data.revealed) {
                 document.getElementById("revealedMessage").style.display = "block";
                 document.getElementById("revealedName").textContent = data.revealedName;
@@ -675,6 +684,7 @@ if (guessForm) {
                 revealedFlagEl.innerHTML = "";
                 revealedFlagEl.appendChild(getFlag(data.revealedNationality));
                 animateRevealedTiles()
+                saveGameState("revealed");
             }
 
             const errorMessage = document.getElementById("errorMessage");
@@ -697,7 +707,13 @@ if (guessForm) {
                 errorMessage.style.display = "none";
                 repeatMessage.style.display = "none";
                 document.getElementById("guessInput").value = "";
+
                 addGuessRow(data);
+
+                savedGuesses.push(data);
+                saveGameState("inProgress");
+
+
                 if (data.won != true){
                     shareResult += "⬜";
                     guessCount++;
@@ -724,6 +740,104 @@ if (guessForm) {
         })
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function saveGameState(currentGameState) {
+    localStorage.setItem("procycleDaily", JSON.stringify({
+        date: dateString,
+        guesses: savedGuesses,
+        guessCount: guessCount,
+        shareResult: shareResult,
+        gameState: currentGameState || "inProgress"
+    }));
+}
+
+function loadGameState() {
+    const saved = localStorage.getItem("procycleDaily");
+    if (!saved) return;
+
+    const state = JSON.parse(saved);
+
+    //Clear if old Date
+    if (state.date !== dateString) {
+        localStorage.removeItem("procycleDaily"); 
+        return;
+    }
+
+    // Restore variables
+    guessCount = state.guessCount;
+    shareResult = state.shareResult;
+    savedGuesses = state.guesses;
+
+
+    // Rebuild each row
+    state.guesses.forEach(function(guess) {
+        addGuessRow(guess);
+    });
+
+    // Restores Guess Tracker
+    if (guessMode === "Limited") {
+        document.getElementById("guessTracker").textContent = "Guess " + (guessCount + 1) + " of 10";
+        document.getElementById("guessTracker").style.display = "block";
+    }
+
+    // Restores legend and bottom border
+    if (state.guesses.length > 0) {
+        document.getElementById("legend").style.display = "flex";
+        document.getElementById("revealSection").style.display = "block";
+    }
+    if (state.guesses.length > 1) {
+        document.getElementById("bottomBorder").style.display = "block";
+    }
+
+    if (state.gameState === "won") {
+        document.getElementById("wonMessage").style.display = "block";
+        guessForm.style.display = "none";
+        document.getElementById("guessTracker").style.display = "none";
+        document.getElementById("revealSection").style.display = "none";
+    }
+    if (state.gameState === "revealed") {
+        document.getElementById("revealedMessage").style.display = "block";
+        guessForm.style.display = "none";
+        document.getElementById("guessTracker").style.display = "none";
+        document.getElementById("revealSection").style.display = "none";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Reload Backup Below
@@ -789,3 +903,8 @@ if (revealed) {
     document.getElementById("legend").style.display = "none";
     guessForm.style.display = "none";
 }
+
+
+
+loadGameState();
+    
