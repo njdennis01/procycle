@@ -262,7 +262,9 @@ function resetGame() {
     document.getElementById("revealSection").style.display = "none";
     document.getElementById("errorMessage").style.display = "none";
     document.getElementById("repeatMessage").style.display = "none";
+    document.getElementById("guessInput").value = "";
     shareResult = "PROCYCLE " + dateString + " ";
+
     guessCount = 0;
 
     if (guessForm) guessForm.style.display = "block";
@@ -281,7 +283,6 @@ function resetGame() {
         document.getElementById("difficulties").style.display = "block";
         document.getElementById("unlimitedButtonDiv").style.display = "none";
         document.getElementById("dailyButtonDiv").style.display = "block";
-        document.getElementById("dailyIntro").style.display = "none";
         document.getElementById("dailyWelcome").style.display = "none";
         document.getElementById("unlimitedWelcome").style.display = "block";
     } else {
@@ -511,7 +512,15 @@ document.querySelectorAll(".revealButton").forEach(function(button) {
             sessionStorage.removeItem('menuOpen');
             document.body.style.overflow = "";
 
-            saveGameState("revealed");
+            saveGameState("revealed", {
+                name: data.revealedName,
+                debut: data.revealedDebut,
+                team: data.revealedTeam,
+                wins: data.revealedWins,
+                gender: data.revealedGender,
+                specialty: data.revealedSpecialty,
+                nationality: data.revealedNationality
+            });
         });
     });
 });
@@ -657,10 +666,11 @@ if (guessForm) {
         .then(function(data) {
             console.log(data);
             if (data.won) {
+                addGuessRow(data);
                 savedGuesses.push(data); 
                 guessCount++;
                 saveGameState("won");
-
+                shareResult += "🟩";
 
                 document.getElementById("wonMessage").style.display = "block";
                 document.getElementById("guessTracker").style.display = "none";
@@ -668,7 +678,7 @@ if (guessForm) {
                 document.getElementById("legend").style.display = "none";
                 guessForm.style.display = "none";
                 guesses = document.getElementById("guessCountText");
-                guesses.textContent = (guessCount + 1);
+                guesses.textContent = (guessCount);
                 if (guessCount < 3){
                     guesses.style.color = "green";
                 }
@@ -678,15 +688,23 @@ if (guessForm) {
                 else {
                     guesses.style.color = "red";
                 }
-                shareResult += "🟩";
                 return;
             }
             
             if (data.revealed) {
                 savedGuesses.push(data); 
                 guessCount++;
-                saveGameState("revealed");
-
+                console.log("revealedName:", data.revealedName);
+                console.log("revealedTeam:", data.revealedTeam);
+                saveGameState("revealed", {
+                    name: data.revealedName,
+                    debut: data.revealedDebut,
+                    team: data.revealedTeam,
+                    wins: data.revealedWins,
+                    gender: data.revealedGender,
+                    specialty: data.revealedSpecialty,
+                    nationality: data.revealedNationality
+                });
                 document.getElementById("revealedMessage").style.display = "block";
                 document.getElementById("revealedName").textContent = data.revealedName;
                 document.getElementById("revealedProDebut").textContent = data.revealedDebut;
@@ -744,7 +762,6 @@ if (guessForm) {
                 }
                 document.getElementById("revealSection").style.display = "block";
                 document.getElementById("legend").style.display = "flex";
-                document.getElementById("dailyIntro").style.display = "none";
                 if (guessCount >= 2) {
                     document.getElementById("bottomBorder").style.display = "block";
                 }
@@ -775,7 +792,7 @@ if (guessForm) {
 
 
 
-function saveGameState(currentGameState) {
+function saveGameState(currentGameState, revealedData = null) {
     if (gameMode !== "Daily") return;
 
     localStorage.setItem("procycleDaily", JSON.stringify({
@@ -783,7 +800,8 @@ function saveGameState(currentGameState) {
         guesses: savedGuesses,
         guessCount: guessCount,
         shareResult: shareResult,
-        gameState: currentGameState || "inProgress"
+        gameState: currentGameState || "inProgress",
+        revealedData: revealedData
     }));
 }
 
@@ -794,12 +812,26 @@ function loadGameState() {
         return;
     }
     const state = JSON.parse(saved);
+    console.log("revealedData:", state.revealedData);
 
     //Clear if old Date
     if (state.date !== dateString) {
         console.log("returning early - date mismatch");
         localStorage.removeItem("procycleDaily"); 
         return;
+    }
+
+    if (state.gameState === "revealed" && state.revealedData) {
+        document.getElementById("revealedName").textContent = state.revealedData.name;
+        document.getElementById("revealedProDebut").textContent = state.revealedData.debut;
+        document.getElementById("revealedTeam").textContent = state.revealedData.team;
+        document.getElementById("revealedWins").textContent = state.revealedData.wins;
+        document.getElementById("revealedGender").textContent = state.revealedData.gender;
+        document.getElementById("revealedSpecialty").textContent = state.revealedData.specialty;
+        document.getElementById("revealedNationality").textContent = state.revealedData.nationality;
+        const revealedFlagEl = document.getElementById("revealedFlag");
+        revealedFlagEl.innerHTML = "";
+        revealedFlagEl.appendChild(getFlag(state.revealedData.nationality));
     }
 
     // Restore variables

@@ -16,33 +16,36 @@ import java.time.LocalDate;
 
 @Controller
 public class HomeController {
-    GameService theData = new GameService();
-
     private LocalDate lastResetDate = null;
+
+    GameService dailyGame = new GameService();
+    GameService unlimitedGame = new GameService();
+    private String currentMode = "Daily";
+    
 
     @GetMapping("/")
     public String home(Model model) {
         LocalDate today = LocalDate.now();
-    
+
         // If date has changed, reset the daily game state
         if (lastResetDate == null || !lastResetDate.equals(today)) {
             lastResetDate = today;
-            theData.clearHistory();
-            theData.setManuallyRevealed(false);
-            alreadyGuessedList.clear();
-            theData.setCurrentAnswerToDaily();
+            dailyGame.clearHistory();
+            dailyGame.setManuallyRevealed(false);
+            dailyAlreadyGuessed.clear();
+            dailyGame.setCurrentAnswerToDaily();
         }
 
-        model.addAttribute("listOfNames", theData.getListOfNames());
-        model.addAttribute("mode", theData.getMode());
-        model.addAttribute("difficulty", theData.getDifficulty());
-        model.addAttribute("genderMode", theData.getGenderMode());
-        model.addAttribute("guessMode", theData.getGuessMode());
-        model.addAttribute("guessHistory", theData.getGuesses());
-        model.addAttribute("won", theData.isWon());
-        model.addAttribute("revealed", theData.isRevealed());
-        if (theData.isRevealed()) {
-            Cyclist answer = theData.getCurrentAnswer();
+        model.addAttribute("listOfNames", dailyGame.getListOfNames());
+        model.addAttribute("mode", dailyGame.getMode());
+        model.addAttribute("difficulty", dailyGame.getDifficulty());
+        model.addAttribute("genderMode", dailyGame.getGenderMode());
+        model.addAttribute("guessMode", dailyGame.getGuessMode());
+        model.addAttribute("guessHistory", dailyGame.getGuesses());
+        model.addAttribute("won", dailyGame.isWon());
+        model.addAttribute("revealed", dailyGame.isRevealed());
+        if (dailyGame.isRevealed()) {
+            Cyclist answer = dailyGame.getCurrentAnswer();
             model.addAttribute("revealedName", answer.getName());
             model.addAttribute("revealedDebut", answer.getDebut());
             model.addAttribute("revealedTeam", answer.getTeam());
@@ -54,27 +57,32 @@ public class HomeController {
         return "home";
     }
 
-    ArrayList<Cyclist> alreadyGuessedList = new ArrayList<>();
+    ArrayList<Cyclist> dailyAlreadyGuessed = new ArrayList<>();
+    ArrayList<Cyclist> unlimitedAlreadyGuessed = new ArrayList<>();
+
 
     @PostMapping("/guessAjax")
     @ResponseBody
     public Map<String, Object> handleGuessAjax(@RequestParam String guess) {
-        Cyclist guessedCyclist = theData.findCyclistByName(guess);
+        GameService activeGame = currentMode.equals("Daily") ? dailyGame : unlimitedGame;
+        ArrayList<Cyclist> activeAlreadyGuessed = currentMode.equals("Daily") ? dailyAlreadyGuessed : unlimitedAlreadyGuessed;
+        Cyclist guessedCyclist = activeGame.findCyclistByName(guess);
 
         if (guessedCyclist == null) {
             return Map.of("error", "Cyclist not found, try again!");
         }
-        if (alreadyGuessedList.contains(guessedCyclist)) {
+        if (activeAlreadyGuessed.contains(guessedCyclist)) {
             return Map.of("repeat", "Already Guessed.");
         }
 
-        Cyclist answerCyclist = theData.getCurrentAnswer();
-        String[] arrows = theData.getArrows(guessedCyclist, answerCyclist);
-        String[] colors = theData.compareGuess(guessedCyclist, answerCyclist);
+        Cyclist answerCyclist = activeGame.getCurrentAnswer();
+        String[] arrows = activeGame.getArrows(guessedCyclist, answerCyclist);
+        String[] colors = activeGame.compareGuess(guessedCyclist, answerCyclist);
         
         Guess aGuess = new Guess(guessedCyclist, colors, arrows);
-        theData.guessHistory(aGuess);
-        alreadyGuessedList.add(guessedCyclist);
+        activeGame.guessHistory(aGuess);
+        
+        activeAlreadyGuessed.add(guessedCyclist);
         
 
         Map<String, Object> response = new HashMap<>();
@@ -87,9 +95,9 @@ public class HomeController {
         response.put("gender", guessedCyclist.getGender());
         response.put("specialty", guessedCyclist.getSpecialty());
         response.put("nationality", guessedCyclist.getNationality());
-        response.put("won", theData.isWon());
-        response.put("revealed", theData.isRevealed());
-        if (theData.isRevealed()) {
+        response.put("won", activeGame.isWon());
+        response.put("revealed", activeGame.isRevealed());
+        if (activeGame.isRevealed()) {
             response.put("revealedName", answerCyclist.getName());
             response.put("revealedDebut", answerCyclist.getDebut());
             response.put("revealedTeam", answerCyclist.getTeam());
@@ -104,42 +112,47 @@ public class HomeController {
     @PostMapping("/UnlimitedAjax")
     @ResponseBody
     public Map<String, Object> unlimitedModeAjax(){
-        theData.setUnlimitedMode();
-        theData.setCurrentAnswerToRandom();
-        theData.clearHistory();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
+        currentMode = "Unlimited";
+        unlimitedGame.setUnlimitedMode();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
         Map<String, Object> response = new HashMap<>();
-        response.put("difficulty", theData.getDifficulty());
-        response.put("genderMode", theData.getGenderMode());
-        response.put("guessMode", theData.getGuessMode());
-        response.put("listOfNames", theData.getListOfNames());
-        response.put("guessMode", theData.getGuessMode());
+        response.put("difficulty", unlimitedGame.getDifficulty());
+        response.put("genderMode", unlimitedGame.getGenderMode());
+        response.put("guessMode", unlimitedGame.getGuessMode());
+        response.put("listOfNames", unlimitedGame.getListOfNames());
+        response.put("guessMode", unlimitedGame.getGuessMode());
         return response;
     }
 
     @PostMapping("/dailyAjax")
     @ResponseBody
     public Map<String, Object> dailyModeAjax(){
-        theData.setDailyMode();
-        theData.setHard();
-        theData.setBoth();
-        theData.setLimited();
-        theData.setCurrentAnswerToDaily();
-        theData.clearHistory();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
+        currentMode = "Daily";
+        dailyGame.setDailyMode();
+        dailyGame.setHard();
+        dailyGame.setBoth();
+        dailyGame.setLimited();
+        dailyGame.setCurrentAnswerToDaily();
+        dailyGame.setManuallyRevealed(false);
+        dailyAlreadyGuessed.clear();
+        for (Guess g : dailyGame.getGuesses()) {
+            dailyAlreadyGuessed.add(g.getGuessedCyclist());
+        }
         Map<String, Object> response = new HashMap<>();
-        response.put("listOfNames", theData.getListOfNames());
-        response.put("guessMode", theData.getGuessMode());
+        response.put("listOfNames", dailyGame.getListOfNames());
+        response.put("guessMode", dailyGame.getGuessMode());
         return response;
     }
 
     @PostMapping("/revealAjax")
     @ResponseBody
     public Map<String, Object> revealAjax(){
-        Cyclist answer = theData.getCurrentAnswer();
-        theData.setManuallyRevealed(true);
+        GameService activeGame = currentMode.equals("Daily") ? dailyGame : unlimitedGame;
+        Cyclist answer = activeGame.getCurrentAnswer();
+        activeGame.setManuallyRevealed(true);
         Map<String, Object> response = new HashMap<>();
         response.put("revealedName", answer.getName());
         response.put("revealedDebut", answer.getDebut());
@@ -154,99 +167,99 @@ public class HomeController {
     @PostMapping("/Noob")
     @ResponseBody
     public Map<String, Object> noob(){
-        theData.setNoob();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
-        return Map.of("success", true, "listOfNames", theData.getListOfNames());
+        unlimitedGame.setNoob();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
+        return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Easy")
     @ResponseBody
     public Map<String, Object> easy(){
-        theData.setEasy();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
-        return Map.of("success", true, "listOfNames", theData.getListOfNames());
+        unlimitedGame.setEasy();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
+        return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Medium")
     @ResponseBody
     public Map<String, Object> medium(){
-        theData.setMedium();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
-        return Map.of("success", true, "listOfNames", theData.getListOfNames());
+        unlimitedGame.setMedium();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
+        return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Hard")
     @ResponseBody
     public Map<String, Object> hard(){
-        theData.setHard();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
-        return Map.of("success", true, "listOfNames", theData.getListOfNames());
+        unlimitedGame.setHard();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
+        return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Both")
     @ResponseBody
     public Map<String, Object> both(){
-        theData.setBoth();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
-        return Map.of("success", true, "listOfNames", theData.getListOfNames());
+        unlimitedGame.setBoth();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
+        return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Men")
     @ResponseBody
     public Map<String, Object> Men(){
-        theData.setMen();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
-        return Map.of("success", true, "listOfNames", theData.getListOfNames());
+        unlimitedGame.setMen();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
+        return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Women")
     @ResponseBody
     public Map<String, Object> Women(){
-        theData.setWomen();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
-        return Map.of("success", true, "listOfNames", theData.getListOfNames());
+        unlimitedGame.setWomen();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
+        return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Limited")
     @ResponseBody
     public Map<String, Object> limited(){
-        theData.setLimited();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
-        return Map.of("success", true, "listOfNames", theData.getListOfNames());
+        unlimitedGame.setLimited();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
+        return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Infinite")
     @ResponseBody
     public Map<String, Object> infinite(){
-        theData.setInfinite();
-        theData.clearHistory();
-        theData.setCurrentAnswerToRandom();
-        theData.setManuallyRevealed(false);
-        alreadyGuessedList.clear();
-        return Map.of("success", true, "listOfNames", theData.getListOfNames());
+        unlimitedGame.setInfinite();
+        unlimitedGame.clearHistory();
+        unlimitedGame.setCurrentAnswerToRandom();
+        unlimitedGame.setManuallyRevealed(false);
+        unlimitedAlreadyGuessed.clear();
+        return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 }
