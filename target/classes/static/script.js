@@ -171,6 +171,33 @@ attributesbutton.addEventListener("click", function() {
 });
 
 
+var statsbutton = document.getElementById("statsbutton");
+var statistics = document.getElementById("statistics");
+var close3button = document.getElementById("close3button");
+
+if (sessionStorage.getItem("statisticsOpen") == "true") {
+    statistics.classList.add("active");
+    overlay.style.display = "flex";
+}   
+statsbutton.addEventListener("click", function() {
+    statistics.classList.add("active");
+    sessionStorage.setItem("statisticsOpen", "true");
+    overlay.style.display = "flex";
+    document.body.style.overflow = "hidden";
+    displayStats(); 
+});
+close3button.addEventListener("click", function() {
+    statistics.classList.remove("active");
+    sessionStorage.removeItem("statisticsOpen");
+    overlay.style.display = "none";
+    document.body.style.overflow = "";
+});
+
+
+
+
+
+
 if (sessionStorage.getItem("hasPlayed") !== "true") {
     splashScreen.style.display = "flex";
 }
@@ -521,6 +548,7 @@ document.querySelectorAll(".revealButton").forEach(function(button) {
                 specialty: data.revealedSpecialty,
                 nationality: data.revealedNationality
             });
+            updateStats("lost")
         });
     });
 });
@@ -671,6 +699,7 @@ if (guessForm) {
                 guessCount++;
                 saveGameState("won");
                 shareResult += "🟩";
+                updateStats("won");
 
                 document.getElementById("wonMessage").style.display = "block";
                 document.getElementById("guessTracker").style.display = "none";
@@ -694,8 +723,6 @@ if (guessForm) {
             if (data.revealed) {
                 savedGuesses.push(data); 
                 guessCount++;
-                console.log("revealedName:", data.revealedName);
-                console.log("revealedTeam:", data.revealedTeam);
                 saveGameState("revealed", {
                     name: data.revealedName,
                     debut: data.revealedDebut,
@@ -705,6 +732,8 @@ if (guessForm) {
                     specialty: data.revealedSpecialty,
                     nationality: data.revealedNationality
                 });
+                updateStats("lost")
+
                 document.getElementById("revealedMessage").style.display = "block";
                 document.getElementById("revealedName").textContent = data.revealedName;
                 document.getElementById("revealedProDebut").textContent = data.revealedDebut;
@@ -881,9 +910,126 @@ function loadGameState() {
     console.log("guessCount after loadGameState:", guessCount);
 }
 
+
+function initStats() {
+    if (!localStorage.getItem("procycleDailyStats")) {
+        localStorage.setItem("procycleDailyStats", JSON.stringify({
+            gamesPlayed: 0,
+            wins: 0,
+            currentStreak: 0,
+            maxStreak: 0,
+            guessDistribution: {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0}
+        }));
+    }
+    if (!localStorage.getItem("procycleUnlimitedStats")) {
+        localStorage.setItem("procycleUnlimitedStats", JSON.stringify({
+            gamesPlayed: 0,
+            wins: 0,
+            guessDistribution: {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, "10+":0}
+        }));
+    }
+}
+
+
+function updateStats(result) {
+    const key = gameMode === "Daily" ? "procycleDailyStats" : "procycleUnlimitedStats";
+    const stats = JSON.parse(localStorage.getItem(key));
+
+    stats.gamesPlayed++;
+
+    if (result === "won") {
+        stats.wins++;
+        stats.guessDistribution[guessCount] = (stats.guessDistribution[guessCount] || 0) + 1;
+        if (gameMode === "Daily") {
+            stats.currentStreak++;
+            const key = guessCount >= 10 ? "10+" : guessCount;
+            stats.guessDistribution[key] = (stats.guessDistribution[key] || 0) + 1;
+            if (stats.currentStreak > stats.maxStreak) {
+                stats.maxStreak = stats.currentStreak;
+            }
+        }
+    } 
+    else {
+        if (gameMode === "Daily") {
+            stats.currentStreak = 0;
+        }
+    }
+
+    localStorage.setItem(key, JSON.stringify(stats));
+}
+
+
+function displayStats() {
+    if (gameMode === "Daily") {
+        const dailyStats = JSON.parse(localStorage.getItem("procycleDailyStats"));
+        const unlimitedStats = JSON.parse(localStorage.getItem("procycleUnlimitedStats"));
+
+        // Daily stats
+        document.getElementById("gamesPlayed").textContent = dailyStats.gamesPlayed;
+        document.getElementById("totalWins").textContent = dailyStats.wins;
+        document.getElementById("winRate").textContent = dailyStats.gamesPlayed === 0 ? "0%" : Math.round((dailyStats.wins / dailyStats.gamesPlayed) * 100) + "%";
+        document.getElementById("currentStreak").textContent = dailyStats.currentStreak;
+        document.getElementById("maxStreak").textContent = dailyStats.maxStreak;
+
+        // Guess distribution
+        const maxCount = Math.max(...Object.values(dailyStats.guessDistribution));
+
+        const distribution = document.getElementById("guessDistribution");
+        distribution.innerHTML = "";
+
+        for (let i = 1; i <= 10; i++) {
+            const count = dailyStats.guessDistribution[i] || 0;
+            const width = maxCount === 0 ? 0 : Math.round((count / maxCount) * 100);
+            
+            distribution.innerHTML += `
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                    <p style="margin: 0; width: 15px;">${i}</p>
+                    <div style="border-radius: 5px; background-color: gray; width: ${width}%; height: 25px; min-width: 10px;">
+                    </div>
+                    <p style="margin: 0;">${count === 0 ? '' : count}</p>
+                </div>
+            `;
+        }
+
+        document.getElementById("dailyStats").style.display = "block";
+        document.getElementById("unlimitedStats").style.display = "none";
+    }
+
+    else {
+         const unlimitedStats = JSON.parse(localStorage.getItem("procycleUnlimitedStats"));
+
+        // Unlimited stats
+        document.getElementById("unlimitedGamesPlayed").textContent = unlimitedStats.gamesPlayed;
+        document.getElementById("unlimitedTotalWins").textContent = unlimitedStats.wins;
+        document.getElementById("unlimitedWinRate").textContent = unlimitedStats.gamesPlayed === 0 ? "0%" : Math.round((unlimitedStats.wins / unlimitedStats.gamesPlayed) * 100) + "%";
+
+        //Guess Distribution
+        const maxCount = Math.max(...Object.values(unlimitedStats.guessDistribution));
+        const distribution = document.getElementById("unlimitedGuessDistribution");
+        distribution.innerHTML = "";
+        const keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, "10+"];
+        keys.forEach(function(key) {
+            const count = unlimitedStats.guessDistribution[key];
+            const width = maxCount === 0 ? 0 : Math.round((count / maxCount) * 100);
+            distribution.innerHTML += `
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                    <p style="margin: 0; width: 25px;">${key}</p>
+                    <div style="border-radius: 5px; background-color: gray; width: ${width}%; height: 25px; min-width: 10px;"></div>
+                    <p style="margin: 0;">${count === 0 ? '' : count}</p>
+                </div>`;
+        });
+
+        document.getElementById("dailyStats").style.display = "none";
+        document.getElementById("unlimitedStats").style.display = "block";
+    }
+}
+
+
+
 updateDifficultyButtons(difficulty.toLowerCase() + "Button", getDifficultyColor(difficulty));
 updateGenderButtons(genderMode.toLowerCase() + "Button");
 updateGuessModeButtons(guessMode === "Limited" ? "limitedButton" : "infiniteButton");
 
+initStats()
 loadGameState();
     

@@ -73,7 +73,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     overflow-y: overlay;
     scrollbar-width: none;
     height: 640px; 
-    width: 620px; 
+    width: 500px; 
     z-index: 100; 
     padding: 10px 30px; 
     flex-direction: column;
@@ -91,6 +91,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     transform: translate(-50%, -50%) translateY(30px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
+
 
 #sidebar.active {
     pointer-events: auto;
@@ -116,7 +117,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     overflow-y: overlay;
     scrollbar-width: none;
     height: 640px;
-    width: 620px; 
+    width: 500px; 
     z-index: 100; 
     padding: 10px 30px; 
     flex-direction: column; 
@@ -135,6 +136,45 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 #directionsPage.active {
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) translateY(0px);
+}
+
+#statistics.no-transition {
+    transition: none;
+}
+
+#statistics::-webkit-scrollbar {
+    display: none;
+}
+
+#statistics {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+    overflow-y: overlay;
+    scrollbar-width: none;
+    height: 640px; 
+    width: 500px; 
+    z-index: 100; 
+    padding: 10px 30px; 
+    flex-direction: column;
+    gap: 5px;
+    background-color: white; 
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    border-radius: 30px; 
+    border: 4px solid black;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) translateY(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+#statistics.active {
     pointer-events: auto;
     opacity: 1;
     visibility: visible;
@@ -192,15 +232,14 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 .grayline{
-    width: 620px; 
+    width: 500px; 
     border: 1px solid lightgray; 
     margin: auto;
 }
 
 .directSentence{
     font-size: 20px; 
-    display: inline; 
-    padding-left: 15px; 
+    display: inline;
     font-weight: 500;
 }
 
@@ -236,13 +275,14 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     background-color: black; 
     color: white; 
     font-size: 25px;
+    flex-shrink: 0;
 }
 
 .diffBox{
     display: inline; 
     border-radius: 20px; 
     width: 120px; 
-    height: 120px; 
+    height: 150px; 
     padding: 10px; 
     margin: 5px; 
     text-align: center;
@@ -276,8 +316,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 .welcome{
-    padding-top: 10px; 
-    padding-bottom: 10px; 
+    vertical-align: middle;
+    padding-top: 15px; 
+    padding-bottom: 15px;
+    width: 450px; 
+    padding-left: 47px;
     margin: 0px; 
     text-align: center; 
     font-weight: 650; 
@@ -364,4 +407,20 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
 #copyMessage.fade-out {
     opacity: 0;
+}
+
+.stat {
+    font-size: 40px; 
+    margin: 0px;
+}
+
+.statbox {
+    display: inline; 
+    text-align: center; 
+    width: 100px;
+}
+
+.statlabel {
+    margin-top: 10px;
+    font-size: 15px;
 }
