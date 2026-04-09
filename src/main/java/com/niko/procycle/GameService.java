@@ -25,7 +25,7 @@ public class GameService implements Serializable  {
     ArrayList<String> africa = new ArrayList<>(Arrays.asList("South Africa", "Eritrea", "Ethiopia", "Algeria", "Morocco", "Rwanda", "Namibia", "Egypt", "Nigeria", "Kenya", "Ghana", "Tanzania", "Uganda", "Cameroon", "Ivory Coast", "Senegal", "Zimbabwe", "Zambia", "Botswana", "Mozambique", "Angola", "Tunisia", "Libya", "Sudan", "South Sudan", "DR Congo", "Mali", "Burkina Faso", "Niger", "Chad", "Somalia", "Madagascar", "Malawi", "Mauritius", "Togo", "Benin", "Sierra Leone", "Liberia", "Central African Republic", "Gabon", "Congo", "Equatorial Guinea", "Guinea", "Guinea-Bissau", "Gambia", "Lesotho", "Eswatini", "Djibouti", "Comoros", "Cape Verde", "Sao Tome and Principe", "Seychelles"));
     ArrayList<String> oceania = new ArrayList<>(Arrays.asList("Australia", "New Zealand", "Fiji", "Papua New Guinea", "Samoa", "Tonga", "Vanuatu", "Solomon Islands", "Micronesia", "Kiribati", "Marshall Islands", "Palau", "Nauru", "Tuvalu"));
     ArrayList<String> asia = new ArrayList<>(Arrays.asList("Japan", "Kazakhstan", "Uzbekistan", "Iran", "Israel", "China", "South Korea", "North Korea", "Taiwan", "India", "Pakistan", "Bangladesh", "Indonesia", "Philippines", "Vietnam", "Thailand", "Malaysia", "Singapore", "Myanmar", "Cambodia", "Laos", "Nepal", "Sri Lanka", "Afghanistan", "Iraq", "Saudi Arabia", "UAE", "Qatar", "Kuwait", "Bahrain", "Oman", "Yemen", "Jordan", "Lebanon", "Syria", "Turkey", "Georgia", "Armenia", "Azerbaijan", "Turkmenistan", "Tajikistan", "Kyrgyzstan", "Mongolia", "Bhutan", "Maldives", "Brunei", "Timor-Leste", "Palestine", "Cyprus"));
-    ArrayList<String> westernEurope = new ArrayList<>(Arrays.asList("Britain", "Ireland", "France", "Belgium", "Netherlands", "Luxembourg", "Monaco", "Andorra"));
+    ArrayList<String> westernEurope = new ArrayList<>(Arrays.asList("Great Britain", "Ireland", "France", "Belgium", "Netherlands", "Luxembourg", "Monaco", "Andorra"));
     ArrayList<String> easternEurope = new ArrayList<>(Arrays.asList("Romania", "Bulgaria", "Moldova", "Ukraine", "Belarus", "Russia"));
     ArrayList<String> northernEurope = new ArrayList<>(Arrays.asList("Denmark", "Norway", "Sweden", "Finland", "Iceland", "Estonia", "Latvia", "Lithuania"));
     ArrayList<String> southernEurope = new ArrayList<>(Arrays.asList("Spain", "Portugal", "Italy", "San Marino", "Malta", "Greece", "Cyprus", "Albania", "North Macedonia", "Croatia", "Bosnia and Herzegovina", "Montenegro", "Serbia", "Kosovo", "Andorra"));
@@ -195,14 +195,6 @@ public class GameService implements Serializable  {
         mode = "Daily";
         return mode;
     }
-
-    //public Cyclist getDailyCyclist(){
-        //LocalDate today = LocalDate.now(ZoneId.of("America/Denver"));
-        //int seed = today.getYear() * 1000 + today.getDayOfYear();
-        //Random random = new Random(seed);
-        //int randomIndex = random.nextInt(getFilteredList().size());
-        //return getFilteredList().get(randomIndex);
-    //}
 
     public Cyclist getDailyCyclist() {
         LocalDate today = LocalDate.now(ZoneId.of("America/Denver"));

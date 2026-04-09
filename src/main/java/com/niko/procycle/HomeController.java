@@ -101,7 +101,7 @@ public class HomeController {
         model.addAttribute("difficulty", activeGame.getDifficulty());
         model.addAttribute("genderMode", activeGame.getGenderMode());
         model.addAttribute("guessMode", activeGame.getGuessMode());
-        model.addAttribute("guessHistory", activeGame.getGuesses());
+        //model.addAttribute("guessHistory", activeGame.getGuesses());
         model.addAttribute("won", activeGame.isWon());
         model.addAttribute("revealed", activeGame.isRevealed());
         if (activeGame.isRevealed()) {

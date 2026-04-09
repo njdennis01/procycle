@@ -547,6 +547,8 @@ document.querySelectorAll(".revealButton").forEach(function(button) {
             document.getElementById("guessTracker").style.display = "none";
             document.getElementById("revealSection").style.display = "none";
             document.getElementById("legend").style.display = "none";
+            document.getElementById("repeatMessage").style.display = "none";
+            document.getElementById("errorMessage").style.display = "none";
             guessForm.style.display = "none";
             sidebar.classList.remove("active");
             overlay.style.display = "none";
@@ -741,6 +743,9 @@ if (guessForm) {
                 return;
             }
             
+            const errorMessage = document.getElementById("errorMessage");
+            const repeatMessage = document.getElementById("repeatMessage");
+
             if (data.revealed) {
                 addGuessRow(data);
                 savedGuesses.push(data); 
@@ -767,6 +772,8 @@ if (guessForm) {
                 document.getElementById("guessTracker").style.display = "none";
                 document.getElementById("revealSection").style.display = "none";
                 document.getElementById("legend").style.display = "none";
+                repeatMessage.style.display = "none";
+                errorMessage.style.display = "none";
                 guessForm.style.display = "none";
                 const revealedFlagEl = document.getElementById("revealedFlag");
                 revealedFlagEl.innerHTML = "";
@@ -775,8 +782,6 @@ if (guessForm) {
                 return;
             }
 
-            const errorMessage = document.getElementById("errorMessage");
-            const repeatMessage = document.getElementById("repeatMessage");
             if (data.repeat) {
                 repeatMessage.textContent = data.repeat;
                 repeatMessage.style.display = "block";
@@ -917,17 +922,20 @@ function loadGameState() {
         guessForm.style.display = "none";
         document.getElementById("guessTracker").style.display = "none";
         document.getElementById("revealSection").style.display = "none";
+        document.getElementById("legend").style.display = "none";
     }
     if (state.gameState === "revealed") {
         document.getElementById("revealedMessage").style.display = "block";
         guessForm.style.display = "none";
         document.getElementById("guessTracker").style.display = "none";
         document.getElementById("revealSection").style.display = "none";
+        document.getElementById("legend").style.display = "none";
     }
     if (guessCount >= 10) {
         guessForm.style.display = "none";
         document.getElementById("guessTracker").style.display = "none";
         document.getElementById("revealSection").style.display = "none";
+        document.getElementById("legend").style.display = "none";
     }
 
     console.log("guessCount after loadGameState:", guessCount);
