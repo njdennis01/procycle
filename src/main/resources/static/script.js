@@ -568,7 +568,7 @@ function animateRevealedTiles() {
     document.querySelectorAll(".revealed-tile").forEach(function(tile) {
         tile.classList.remove("flip-in");
         tile.classList.remove("flip-out");
-        tile.style.backgroundColor = "Black";
+        tile.style.backgroundColor = "dimgray";
         requestAnimationFrame(function() {
             requestAnimationFrame(function() {
                 tile.classList.add("flip-out");

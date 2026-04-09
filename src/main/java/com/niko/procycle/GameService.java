@@ -9,8 +9,10 @@ import java.util.List;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.InputStream;
+import java.io.Serializable;
 
-public class GameService {
+public class GameService implements Serializable  {
+    private static final long serialVersionUID = 1L;
     ArrayList<Cyclist> cyclists = new ArrayList<>();
     ArrayList<Guess> Guesses = new ArrayList<>();
     Cyclist currentAnswer;

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.ui.Model;
 import java.time.LocalDate;
 
@@ -16,15 +19,63 @@ import java.time.LocalDate;
 
 @Controller
 public class HomeController {
-    private LocalDate lastResetDate = null;
+    private GameService getDailyGame(HttpSession session) {
+        GameService dailyGame = (GameService) session.getAttribute("dailyGame");
+        if (dailyGame == null) {
+            dailyGame = new GameService();
+            dailyGame.setCurrentAnswerToDaily();
+            session.setAttribute("dailyGame", dailyGame);
+        }
+        return dailyGame;
+    }
 
-    GameService dailyGame = new GameService();
-    GameService unlimitedGame = new GameService();
-    private String currentMode = "Daily";
-    
+    private GameService getUnlimitedGame(HttpSession session) {
+        GameService unlimitedGame = (GameService) session.getAttribute("unlimitedGame");
+        if (unlimitedGame == null) {
+            unlimitedGame = new GameService();
+            unlimitedGame.setCurrentAnswerToRandom();
+            session.setAttribute("unlimitedGame", unlimitedGame);
+        }
+        return unlimitedGame;
+    }
+
+    @SuppressWarnings("unchecked")
+    private ArrayList<Cyclist> getDailyAlreadyGuessed(HttpSession session) {
+        ArrayList<Cyclist> list = (ArrayList<Cyclist>) session.getAttribute("dailyAlreadyGuessed");
+        if (list == null) {
+            list = new ArrayList<>();
+            session.setAttribute("dailyAlreadyGuessed", list);
+        }
+        return list;
+    }
+
+    @SuppressWarnings("unchecked")
+    private ArrayList<Cyclist> getUnlimitedAlreadyGuessed(HttpSession session) {
+        ArrayList<Cyclist> list = (ArrayList<Cyclist>) session.getAttribute("unlimitedAlreadyGuessed");
+        if (list == null) {
+            list = new ArrayList<>();
+            session.setAttribute("unlimitedAlreadyGuessed", list);
+        }
+        return list;
+    }
+
+    private String getCurrentMode(HttpSession session) {
+        String mode = (String) session.getAttribute("currentMode");
+        if (mode == null) {
+            mode = "Daily";
+            session.setAttribute("currentMode", mode);
+        }
+        return mode;
+    }
+
+    private LocalDate getLastResetDate(HttpSession session) {
+        return (LocalDate) session.getAttribute("lastResetDate");
+    }
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, HttpSession session) {
+        GameService dailyGame = getDailyGame(session);
+        LocalDate lastResetDate = getLastResetDate(session);
         LocalDate today = LocalDate.now();
 
         // If date has changed, reset the daily game state
@@ -32,7 +83,7 @@ public class HomeController {
             lastResetDate = today;
             dailyGame.clearHistory();
             dailyGame.setManuallyRevealed(false);
-            dailyAlreadyGuessed.clear();
+            getDailyAlreadyGuessed(session).clear();
             dailyGame.setCurrentAnswerToDaily();
         }
 
@@ -57,15 +108,13 @@ public class HomeController {
         return "home";
     }
 
-    ArrayList<Cyclist> dailyAlreadyGuessed = new ArrayList<>();
-    ArrayList<Cyclist> unlimitedAlreadyGuessed = new ArrayList<>();
-
 
     @PostMapping("/guessAjax")
     @ResponseBody
-    public Map<String, Object> handleGuessAjax(@RequestParam String guess) {
-        GameService activeGame = currentMode.equals("Daily") ? dailyGame : unlimitedGame;
-        ArrayList<Cyclist> activeAlreadyGuessed = currentMode.equals("Daily") ? dailyAlreadyGuessed : unlimitedAlreadyGuessed;
+    public Map<String, Object> handleGuessAjax(@RequestParam String guess, HttpSession session) {
+        String currentMode = getCurrentMode(session);
+        GameService activeGame = currentMode.equals("Daily") ? getDailyGame(session) : getUnlimitedGame(session);
+        ArrayList<Cyclist> activeAlreadyGuessed = currentMode.equals("Daily") ? getDailyAlreadyGuessed(session) : getUnlimitedAlreadyGuessed(session);
         Cyclist guessedCyclist = activeGame.findCyclistByName(guess);
 
         if (guessedCyclist == null) {
@@ -111,13 +160,14 @@ public class HomeController {
 
     @PostMapping("/UnlimitedAjax")
     @ResponseBody
-    public Map<String, Object> unlimitedModeAjax(){
-        currentMode = "Unlimited";
+    public Map<String, Object> unlimitedModeAjax(HttpSession session){
+        session.setAttribute("currentMode", "Unlimited");
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setUnlimitedMode();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.clearHistory();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         Map<String, Object> response = new HashMap<>();
         response.put("difficulty", unlimitedGame.getDifficulty());
         response.put("genderMode", unlimitedGame.getGenderMode());
@@ -129,14 +179,16 @@ public class HomeController {
 
     @PostMapping("/dailyAjax")
     @ResponseBody
-    public Map<String, Object> dailyModeAjax(){
-        currentMode = "Daily";
+    public Map<String, Object> dailyModeAjax(HttpSession session){
+        session.setAttribute("currentMode", "Daily");
+    GameService dailyGame = getDailyGame(session);
         dailyGame.setDailyMode();
         dailyGame.setHard();
         dailyGame.setBoth();
         dailyGame.setLimited();
         dailyGame.setCurrentAnswerToDaily();
         dailyGame.setManuallyRevealed(false);
+        ArrayList<Cyclist> dailyAlreadyGuessed = getDailyAlreadyGuessed(session);
         dailyAlreadyGuessed.clear();
         for (Guess g : dailyGame.getGuesses()) {
             dailyAlreadyGuessed.add(g.getGuessedCyclist());
@@ -149,8 +201,9 @@ public class HomeController {
 
     @PostMapping("/revealAjax")
     @ResponseBody
-    public Map<String, Object> revealAjax(){
-        GameService activeGame = currentMode.equals("Daily") ? dailyGame : unlimitedGame;
+    public Map<String, Object> revealAjax(HttpSession session){
+        String currentMode = getCurrentMode(session);
+        GameService activeGame = currentMode.equals("Daily") ? getDailyGame(session) : getUnlimitedGame(session);
         Cyclist answer = activeGame.getCurrentAnswer();
         activeGame.setManuallyRevealed(true);
         Map<String, Object> response = new HashMap<>();
@@ -164,102 +217,111 @@ public class HomeController {
         return response;
     }
 
-    @PostMapping("/Noob")
+        @PostMapping("/Noob")
     @ResponseBody
-    public Map<String, Object> noob(){
+    public Map<String, Object> noob(HttpSession session){
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setNoob();
         unlimitedGame.clearHistory();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Easy")
     @ResponseBody
-    public Map<String, Object> easy(){
+    public Map<String, Object> easy(HttpSession session){
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setEasy();
         unlimitedGame.clearHistory();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Medium")
     @ResponseBody
-    public Map<String, Object> medium(){
+    public Map<String, Object> medium(HttpSession session){
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setMedium();
         unlimitedGame.clearHistory();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Hard")
     @ResponseBody
-    public Map<String, Object> hard(){
+    public Map<String, Object> hard(HttpSession session){
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setHard();
         unlimitedGame.clearHistory();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Both")
     @ResponseBody
-    public Map<String, Object> both(){
+    public Map<String, Object> both(HttpSession session){
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setBoth();
         unlimitedGame.clearHistory();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Men")
     @ResponseBody
-    public Map<String, Object> Men(){
+    public Map<String, Object> Men(HttpSession session){
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setMen();
         unlimitedGame.clearHistory();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Women")
     @ResponseBody
-    public Map<String, Object> Women(){
+    public Map<String, Object> Women(HttpSession session){
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setWomen();
         unlimitedGame.clearHistory();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Limited")
     @ResponseBody
-    public Map<String, Object> limited(){
+    public Map<String, Object> limited(HttpSession session){
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setLimited();
         unlimitedGame.clearHistory();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 
     @PostMapping("/Infinite")
     @ResponseBody
-    public Map<String, Object> infinite(){
+    public Map<String, Object> infinite(HttpSession session){
+        GameService unlimitedGame = getUnlimitedGame(session);
         unlimitedGame.setInfinite();
         unlimitedGame.clearHistory();
         unlimitedGame.setCurrentAnswerToRandom();
         unlimitedGame.setManuallyRevealed(false);
-        unlimitedAlreadyGuessed.clear();
+        getUnlimitedAlreadyGuessed(session).clear();
         return Map.of("success", true, "listOfNames", unlimitedGame.getListOfNames());
     }
 }
