@@ -67,11 +67,12 @@ function getFlag(nationality) {
 var playButton = document.getElementById("playButton");
 var splashScreen = document.getElementById("splashScreen");
  
-console.log("hasVisited:", sessionStorage.getItem("hasVisited"));
-if (!sessionStorage.getItem("hasVisited")) {
+const navEntries = performance.getEntriesByType("navigation");
+const isReload = navEntries.length > 0 && navEntries[0].type === "reload";
+
+if (!isReload) {
     splashScreen.style.display = "flex";
 }
-sessionStorage.setItem("hasVisited", "true");
 
 playButton.addEventListener("click", function() {
     splashScreen.style.opacity = "0";
