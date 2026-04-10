@@ -197,7 +197,7 @@ public class GameService implements Serializable  {
     }
 
     public Cyclist getDailyCyclist() {
-        LocalDate today = LocalDate.now(ZoneId.of("America/Denver"));
+        LocalDate today = LocalDate.now(ZoneId.of("America/Chicago"));
         
         // Use year + month as seed to shuffle the list
         int seed = today.getYear() * 100 + today.getMonthValue();

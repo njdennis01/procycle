@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 
 
@@ -82,7 +83,7 @@ public class HomeController {
     public String home(Model model, HttpSession session) {
         GameService dailyGame = getDailyGame(session);
         LocalDate lastResetDate = getLastResetDate(session);
-        LocalDate today = LocalDate.now();
+        LocalDate today = LocalDate.now(ZoneId.of("America/Chicago"));
 
         // If date has changed, reset the daily game state
         if (lastResetDate == null || !lastResetDate.equals(today)) {

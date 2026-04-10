@@ -276,11 +276,13 @@ if (input) {
 
 function updateTimer() {
     const now = new Date();
-    const midnight = new Date();
-    midnight.setHours(24, 0, 0, 0); // next midnight
-    
-    const diff = midnight - now;
-    
+    const centralTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Chicago"}));
+
+    const midnight = new Date(centralTime);
+    midnight.setHours(24, 0, 0, 0); 
+
+    const diff = midnight - centralTime;
+
     const hours = Math.floor(diff / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
@@ -715,8 +717,8 @@ if (guessForm) {
                 addGuessRow(data);
                 savedGuesses.push(data); 
                 guessCount++;
-                saveGameState("won");
                 shareResult += "🟩";
+                saveGameState("won");
                 updateStats("won");
 
                 document.getElementById("wonMessage").style.display = "block";
@@ -925,6 +927,19 @@ function loadGameState() {
         document.getElementById("guessTracker").style.display = "none";
         document.getElementById("revealSection").style.display = "none";
         document.getElementById("legend").style.display = "none";
+
+        const guesses = document.getElementById("guessCountText");
+        guesses.textContent = state.guessCount;
+        if (state.guessCount < 3) {
+            guesses.style.color = "green";
+        } else if (state.guessCount < 7) {
+            guesses.style.color = "#F0C040";
+        } else {
+            guesses.style.color = "red";
+        }
+
+        shareResult += "🟩";
+
     }
     if (state.gameState === "revealed") {
         document.getElementById("revealedMessage").style.display = "block";
